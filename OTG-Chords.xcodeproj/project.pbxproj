@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
+		70EA963C12B18C5A0053E68E /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA963912B18C5A0053E68E /* FlipsideViewController.m */; };
+		70EA963D12B18C5A0053E68E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA963B12B18C5A0053E68E /* MainViewController.m */; };
+		70EA964012B18C680053E68E /* OTG_ChordsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA963F12B18C680053E68E /* OTG_ChordsAppDelegate.m */; };
+		70EA964412B18C7A0053E68E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA964112B18C7A0053E68E /* FlipsideView.xib */; };
+		70EA964512B18C7A0053E68E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA964212B18C7A0053E68E /* MainView.xib */; };
+		70EA964612B18C7A0053E68E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA964312B18C7A0053E68E /* MainWindow.xib */; };
+		70EA964912B18CE70053E68E /* CustomDiffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA964812B18CE70053E68E /* CustomDiffViewController.m */; };
+		70EA964B12B18CF30053E68E /* CustomDiffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA964A12B18CF30053E68E /* CustomDiffView.xib */; };
+		70EA968D12B18D2C0053E68E /* 320.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965212B18D2C0053E68E /* 320.png */; };
+		70EA968E12B18D2C0053E68E /* 512.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965312B18D2C0053E68E /* 512.png */; };
+		70EA968F12B18D2C0053E68E /* 6 spoke settings black.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965412B18D2C0053E68E /* 6 spoke settings black.png */; };
+		70EA969012B18D2C0053E68E /* 6 spoke settings black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965512B18D2C0053E68E /* 6 spoke settings black@2x.png */; };
+		70EA969112B18D2C0053E68E /* 6 spoke settings white.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965612B18D2C0053E68E /* 6 spoke settings white.png */; };
+		70EA969212B18D2C0053E68E /* 6 spoke settings white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965712B18D2C0053E68E /* 6 spoke settings white@2x.png */; };
+		70EA969312B18D2C0053E68E /* 64.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965812B18D2C0053E68E /* 64.png */; };
+		70EA969412B18D2C0053E68E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965912B18D2C0053E68E /* Default.png */; };
+		70EA969512B18D2C0053E68E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965A12B18D2C0053E68E /* Icon-72.png */; };
+		70EA969612B18D2C0053E68E /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965B12B18D2C0053E68E /* Icon-Small-50.png */; };
+		70EA969712B18D2C0053E68E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965C12B18D2C0053E68E /* Icon-Small.png */; };
+		70EA969812B18D2C0053E68E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965D12B18D2C0053E68E /* Icon-Small@2x.png */; };
+		70EA969912B18D2C0053E68E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965E12B18D2C0053E68E /* Icon.png */; };
+		70EA969A12B18D2C0053E68E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA965F12B18D2C0053E68E /* Icon@2x.png */; };
+		70EA969B12B18D2C0053E68E /* Interval Trainer Icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966012B18D2C0053E68E /* Interval Trainer Icon.svg */; };
+		70EA969C12B18D2C0053E68E /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966112B18D2C0053E68E /* iTunesArtwork */; };
+		70EA969D12B18D2C0053E68E /* Left Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966212B18D2C0053E68E /* Left Arrow.png */; };
+		70EA969E12B18D2C0053E68E /* Left Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966312B18D2C0053E68E /* Left Arrow@2x.png */; };
+		70EA969F12B18D2C0053E68E /* OTG Intervals blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966412B18D2C0053E68E /* OTG Intervals blue.png */; };
+		70EA96A012B18D2C0053E68E /* OTG Intervals red.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966512B18D2C0053E68E /* OTG Intervals red.png */; };
+		70EA96A112B18D2C0053E68E /* Right Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966612B18D2C0053E68E /* Right Arrow.png */; };
+		70EA96A212B18D2C0053E68E /* Right Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966712B18D2C0053E68E /* Right Arrow@2x.png */; };
+		70EA96A312B18D2C0053E68E /* A#2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966912B18D2C0053E68E /* A#2W.wav */; };
+		70EA96A412B18D2C0053E68E /* A#3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966A12B18D2C0053E68E /* A#3W.wav */; };
+		70EA96A512B18D2C0053E68E /* A#4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966B12B18D2C0053E68E /* A#4W.wav */; };
+		70EA96A612B18D2C0053E68E /* A2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966C12B18D2C0053E68E /* A2W.wav */; };
+		70EA96A712B18D2C0053E68E /* A3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966D12B18D2C0053E68E /* A3W.wav */; };
+		70EA96A812B18D2C0053E68E /* A4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966E12B18D2C0053E68E /* A4W.wav */; };
+		70EA96A912B18D2C0053E68E /* B2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA966F12B18D2C0053E68E /* B2W.wav */; };
+		70EA96AA12B18D2C0053E68E /* B3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967012B18D2C0053E68E /* B3W.wav */; };
+		70EA96AB12B18D2C0053E68E /* B4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967112B18D2C0053E68E /* B4W.wav */; };
+		70EA96AC12B18D2C0053E68E /* C#2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967212B18D2C0053E68E /* C#2W.wav */; };
+		70EA96AD12B18D2C0053E68E /* C#3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967312B18D2C0053E68E /* C#3W.wav */; };
+		70EA96AE12B18D2C0053E68E /* C#4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967412B18D2C0053E68E /* C#4W.wav */; };
+		70EA96AF12B18D2C0053E68E /* C2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967512B18D2C0053E68E /* C2W.wav */; };
+		70EA96B012B18D2C0053E68E /* C3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967612B18D2C0053E68E /* C3W.wav */; };
+		70EA96B112B18D2C0053E68E /* C4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967712B18D2C0053E68E /* C4W.wav */; };
+		70EA96B212B18D2C0053E68E /* D#2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967812B18D2C0053E68E /* D#2W.wav */; };
+		70EA96B312B18D2C0053E68E /* D#3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967912B18D2C0053E68E /* D#3W.wav */; };
+		70EA96B412B18D2C0053E68E /* D#4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967A12B18D2C0053E68E /* D#4W.wav */; };
+		70EA96B512B18D2C0053E68E /* D2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967B12B18D2C0053E68E /* D2W.wav */; };
+		70EA96B612B18D2C0053E68E /* D3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967C12B18D2C0053E68E /* D3W.wav */; };
+		70EA96B712B18D2C0053E68E /* D4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967D12B18D2C0053E68E /* D4W.wav */; };
+		70EA96B812B18D2C0053E68E /* E2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967E12B18D2C0053E68E /* E2W.wav */; };
+		70EA96B912B18D2C0053E68E /* E3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA967F12B18D2C0053E68E /* E3W.wav */; };
+		70EA96BA12B18D2C0053E68E /* E4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968012B18D2C0053E68E /* E4W.wav */; };
+		70EA96BB12B18D2C0053E68E /* F#2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968112B18D2C0053E68E /* F#2W.wav */; };
+		70EA96BC12B18D2C0053E68E /* F#3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968212B18D2C0053E68E /* F#3W.wav */; };
+		70EA96BD12B18D2C0053E68E /* F#4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968312B18D2C0053E68E /* F#4W.wav */; };
+		70EA96BE12B18D2C0053E68E /* F2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968412B18D2C0053E68E /* F2W.wav */; };
+		70EA96BF12B18D2C0053E68E /* F3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968512B18D2C0053E68E /* F3W.wav */; };
+		70EA96C012B18D2C0053E68E /* F4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968612B18D2C0053E68E /* F4W.wav */; };
+		70EA96C112B18D2C0053E68E /* G#2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968712B18D2C0053E68E /* G#2W.wav */; };
+		70EA96C212B18D2C0053E68E /* G#3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968812B18D2C0053E68E /* G#3W.wav */; };
+		70EA96C312B18D2C0053E68E /* G#4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968912B18D2C0053E68E /* G#4W.wav */; };
+		70EA96C412B18D2C0053E68E /* G2W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968A12B18D2C0053E68E /* G2W.wav */; };
+		70EA96C512B18D2C0053E68E /* G3W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968B12B18D2C0053E68E /* G3W.wav */; };
+		70EA96C612B18D2C0053E68E /* G4W.wav in Resources */ = {isa = PBXBuildFile; fileRef = 70EA968C12B18D2C0053E68E /* G4W.wav */; };
+		70EA96C912B18D4B0053E68E /* CustomDiffTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA96C812B18D4B0053E68E /* CustomDiffTableViewController.m */; };
+		70EA96D312B18D650053E68E /* DJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA96CC12B18D650053E68E /* DJ.m */; };
+		70EA96D412B18D650053E68E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA96CE12B18D650053E68E /* Note.m */; };
+		70EA96D512B18D650053E68E /* Scorekeeper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA96D012B18D650053E68E /* Scorekeeper.m */; };
+		70EA96D612B18D650053E68E /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA96D212B18D650053E68E /* Settings.m */; };
+		70EA96E612B18F730053E68E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70EA96E512B18F730053E68E /* Entitlements.plist */; };
+		70EA96F612B18F8C0053E68E /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70EA96F512B18F8C0053E68E /* Config.plist */; };
+		70EA972812B190EE0053E68E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EA972712B190EE0053E68E /* AVFoundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* OTG-Chords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OTG-Chords.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* OTG_Chords_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTG_Chords_Prefix.pch; sourceTree = "<group>"; };
+		70EA963812B18C5A0053E68E /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideViewController.h; path = source/FlipsideViewController.h; sourceTree = "<group>"; };
+		70EA963912B18C5A0053E68E /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = source/FlipsideViewController.m; sourceTree = "<group>"; };
+		70EA963A12B18C5A0053E68E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = source/MainViewController.h; sourceTree = "<group>"; };
+		70EA963B12B18C5A0053E68E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = source/MainViewController.m; sourceTree = "<group>"; };
+		70EA963E12B18C680053E68E /* OTG_ChordsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTG_ChordsAppDelegate.h; path = source/OTG_ChordsAppDelegate.h; sourceTree = "<group>"; };
+		70EA963F12B18C680053E68E /* OTG_ChordsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTG_ChordsAppDelegate.m; path = source/OTG_ChordsAppDelegate.m; sourceTree = "<group>"; };
+		70EA964112B18C7A0053E68E /* FlipsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FlipsideView.xib; path = "interface-builder/FlipsideView.xib"; sourceTree = "<group>"; };
+		70EA964212B18C7A0053E68E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainView.xib; path = "interface-builder/MainView.xib"; sourceTree = "<group>"; };
+		70EA964312B18C7A0053E68E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = "interface-builder/MainWindow.xib"; sourceTree = "<group>"; };
+		70EA964712B18CE70053E68E /* CustomDiffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomDiffViewController.h; path = source/CustomDiffViewController.h; sourceTree = "<group>"; };
+		70EA964812B18CE70053E68E /* CustomDiffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDiffViewController.m; path = source/CustomDiffViewController.m; sourceTree = "<group>"; };
+		70EA964A12B18CF30053E68E /* CustomDiffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CustomDiffView.xib; path = "interface-builder/CustomDiffView.xib"; sourceTree = "<group>"; };
+		70EA964C12B18D100053E68E /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = source/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		70EA965212B18D2C0053E68E /* 320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 320.png; sourceTree = "<group>"; };
+		70EA965312B18D2C0053E68E /* 512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 512.png; sourceTree = "<group>"; };
+		70EA965412B18D2C0053E68E /* 6 spoke settings black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black.png"; sourceTree = "<group>"; };
+		70EA965512B18D2C0053E68E /* 6 spoke settings black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings black@2x.png"; sourceTree = "<group>"; };
+		70EA965612B18D2C0053E68E /* 6 spoke settings white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings white.png"; sourceTree = "<group>"; };
+		70EA965712B18D2C0053E68E /* 6 spoke settings white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6 spoke settings white@2x.png"; sourceTree = "<group>"; };
+		70EA965812B18D2C0053E68E /* 64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 64.png; sourceTree = "<group>"; };
+		70EA965912B18D2C0053E68E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		70EA965A12B18D2C0053E68E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		70EA965B12B18D2C0053E68E /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		70EA965C12B18D2C0053E68E /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		70EA965D12B18D2C0053E68E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		70EA965E12B18D2C0053E68E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		70EA965F12B18D2C0053E68E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		70EA966012B18D2C0053E68E /* Interval Trainer Icon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Interval Trainer Icon.svg"; sourceTree = "<group>"; };
+		70EA966112B18D2C0053E68E /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		70EA966212B18D2C0053E68E /* Left Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Left Arrow.png"; sourceTree = "<group>"; };
+		70EA966312B18D2C0053E68E /* Left Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Left Arrow@2x.png"; sourceTree = "<group>"; };
+		70EA966412B18D2C0053E68E /* OTG Intervals blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OTG Intervals blue.png"; sourceTree = "<group>"; };
+		70EA966512B18D2C0053E68E /* OTG Intervals red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OTG Intervals red.png"; sourceTree = "<group>"; };
+		70EA966612B18D2C0053E68E /* Right Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Right Arrow.png"; sourceTree = "<group>"; };
+		70EA966712B18D2C0053E68E /* Right Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Right Arrow@2x.png"; sourceTree = "<group>"; };
+		70EA966912B18D2C0053E68E /* A#2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "A#2W.wav"; sourceTree = "<group>"; };
+		70EA966A12B18D2C0053E68E /* A#3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "A#3W.wav"; sourceTree = "<group>"; };
+		70EA966B12B18D2C0053E68E /* A#4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "A#4W.wav"; sourceTree = "<group>"; };
+		70EA966C12B18D2C0053E68E /* A2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = A2W.wav; sourceTree = "<group>"; };
+		70EA966D12B18D2C0053E68E /* A3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = A3W.wav; sourceTree = "<group>"; };
+		70EA966E12B18D2C0053E68E /* A4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = A4W.wav; sourceTree = "<group>"; };
+		70EA966F12B18D2C0053E68E /* B2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = B2W.wav; sourceTree = "<group>"; };
+		70EA967012B18D2C0053E68E /* B3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = B3W.wav; sourceTree = "<group>"; };
+		70EA967112B18D2C0053E68E /* B4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = B4W.wav; sourceTree = "<group>"; };
+		70EA967212B18D2C0053E68E /* C#2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "C#2W.wav"; sourceTree = "<group>"; };
+		70EA967312B18D2C0053E68E /* C#3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "C#3W.wav"; sourceTree = "<group>"; };
+		70EA967412B18D2C0053E68E /* C#4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "C#4W.wav"; sourceTree = "<group>"; };
+		70EA967512B18D2C0053E68E /* C2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C2W.wav; sourceTree = "<group>"; };
+		70EA967612B18D2C0053E68E /* C3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C3W.wav; sourceTree = "<group>"; };
+		70EA967712B18D2C0053E68E /* C4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C4W.wav; sourceTree = "<group>"; };
+		70EA967812B18D2C0053E68E /* D#2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "D#2W.wav"; sourceTree = "<group>"; };
+		70EA967912B18D2C0053E68E /* D#3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "D#3W.wav"; sourceTree = "<group>"; };
+		70EA967A12B18D2C0053E68E /* D#4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "D#4W.wav"; sourceTree = "<group>"; };
+		70EA967B12B18D2C0053E68E /* D2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D2W.wav; sourceTree = "<group>"; };
+		70EA967C12B18D2C0053E68E /* D3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D3W.wav; sourceTree = "<group>"; };
+		70EA967D12B18D2C0053E68E /* D4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D4W.wav; sourceTree = "<group>"; };
+		70EA967E12B18D2C0053E68E /* E2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E2W.wav; sourceTree = "<group>"; };
+		70EA967F12B18D2C0053E68E /* E3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E3W.wav; sourceTree = "<group>"; };
+		70EA968012B18D2C0053E68E /* E4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E4W.wav; sourceTree = "<group>"; };
+		70EA968112B18D2C0053E68E /* F#2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "F#2W.wav"; sourceTree = "<group>"; };
+		70EA968212B18D2C0053E68E /* F#3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "F#3W.wav"; sourceTree = "<group>"; };
+		70EA968312B18D2C0053E68E /* F#4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "F#4W.wav"; sourceTree = "<group>"; };
+		70EA968412B18D2C0053E68E /* F2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F2W.wav; sourceTree = "<group>"; };
+		70EA968512B18D2C0053E68E /* F3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F3W.wav; sourceTree = "<group>"; };
+		70EA968612B18D2C0053E68E /* F4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F4W.wav; sourceTree = "<group>"; };
+		70EA968712B18D2C0053E68E /* G#2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "G#2W.wav"; sourceTree = "<group>"; };
+		70EA968812B18D2C0053E68E /* G#3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "G#3W.wav"; sourceTree = "<group>"; };
+		70EA968912B18D2C0053E68E /* G#4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "G#4W.wav"; sourceTree = "<group>"; };
+		70EA968A12B18D2C0053E68E /* G2W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G2W.wav; sourceTree = "<group>"; };
+		70EA968B12B18D2C0053E68E /* G3W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G3W.wav; sourceTree = "<group>"; };
+		70EA968C12B18D2C0053E68E /* G4W.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G4W.wav; sourceTree = "<group>"; };
+		70EA96C712B18D4B0053E68E /* CustomDiffTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomDiffTableViewController.h; path = source/CustomDiffTableViewController.h; sourceTree = "<group>"; };
+		70EA96C812B18D4B0053E68E /* CustomDiffTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomDiffTableViewController.m; path = source/CustomDiffTableViewController.m; sourceTree = "<group>"; };
+		70EA96CB12B18D650053E68E /* DJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DJ.h; path = source/DJ.h; sourceTree = "<group>"; };
+		70EA96CC12B18D650053E68E /* DJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DJ.m; path = source/DJ.m; sourceTree = "<group>"; };
+		70EA96CD12B18D650053E68E /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = source/Note.h; sourceTree = "<group>"; };
+		70EA96CE12B18D650053E68E /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = source/Note.m; sourceTree = "<group>"; };
+		70EA96CF12B18D650053E68E /* Scorekeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scorekeeper.h; path = source/Scorekeeper.h; sourceTree = "<group>"; };
+		70EA96D012B18D650053E68E /* Scorekeeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Scorekeeper.m; path = source/Scorekeeper.m; sourceTree = "<group>"; };
+		70EA96D112B18D650053E68E /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = source/Settings.h; sourceTree = "<group>"; };
+		70EA96D212B18D650053E68E /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = source/Settings.m; sourceTree = "<group>"; };
+		70EA96E512B18F730053E68E /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		70EA96F512B18F8C0053E68E /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		70EA972712B190EE0053E68E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8D1107310486CEB800E47090 /* OTG_Chords-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OTG_Chords-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
+				70EA972812B190EE0053E68E /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* OTG-Chords.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		289233A00DB2D0730083E9F9 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				70EA96CB12B18D650053E68E /* DJ.h */,
+				70EA96CC12B18D650053E68E /* DJ.m */,
+				70EA96CD12B18D650053E68E /* Note.h */,
+				70EA96CE12B18D650053E68E /* Note.m */,
+				70EA96CF12B18D650053E68E /* Scorekeeper.h */,
+				70EA96D012B18D650053E68E /* Scorekeeper.m */,
+				70EA96D112B18D650053E68E /* Settings.h */,
+				70EA96D212B18D650053E68E /* Settings.m */,
+			);
+			name = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				289233A00DB2D0730083E9F9 /* Custom Classes */,
+				70EA963012B18C160053E68E /* View Controllers */,
+				70EA962F12B18C0C0053E68E /* Application Delegate */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				70EA96E512B18F730053E68E /* Entitlements.plist */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				70EA964C12B18D100053E68E /* SynthesizeSingleton.h */,
+				32CA4F630368D1EE00C91783 /* OTG_Chords_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				70EA965112B18D2C0053E68E /* images */,
+				70EA966812B18D2C0053E68E /* sounds */,
+				70EA964A12B18CF30053E68E /* CustomDiffView.xib */,
+				70EA964112B18C7A0053E68E /* FlipsideView.xib */,
+				70EA964212B18C7A0053E68E /* MainView.xib */,
+				70EA964312B18C7A0053E68E /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* OTG_Chords-Info.plist */,
+				70EA96F512B18F8C0053E68E /* Config.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765580DF743DE002DB57D /* CoreGraphics.framework */,
+				70EA972712B190EE0053E68E /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70EA962F12B18C0C0053E68E /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				70EA963E12B18C680053E68E /* OTG_ChordsAppDelegate.h */,
+				70EA963F12B18C680053E68E /* OTG_ChordsAppDelegate.m */,
+			);
+			name = "Application Delegate";
+			sourceTree = "<group>";
+		};
+		70EA963012B18C160053E68E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				70EA964712B18CE70053E68E /* CustomDiffViewController.h */,
+				70EA964812B18CE70053E68E /* CustomDiffViewController.m */,
+				70EA96C712B18D4B0053E68E /* CustomDiffTableViewController.h */,
+				70EA96C812B18D4B0053E68E /* CustomDiffTableViewController.m */,
+				70EA963812B18C5A0053E68E /* FlipsideViewController.h */,
+				70EA963912B18C5A0053E68E /* FlipsideViewController.m */,
+				70EA963A12B18C5A0053E68E /* MainViewController.h */,
+				70EA963B12B18C5A0053E68E /* MainViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		70EA965112B18D2C0053E68E /* images */ = {
+			isa = PBXGroup;
+			children = (
+				70EA965212B18D2C0053E68E /* 320.png */,
+				70EA965312B18D2C0053E68E /* 512.png */,
+				70EA965412B18D2C0053E68E /* 6 spoke settings black.png */,
+				70EA965512B18D2C0053E68E /* 6 spoke settings black@2x.png */,
+				70EA965612B18D2C0053E68E /* 6 spoke settings white.png */,
+				70EA965712B18D2C0053E68E /* 6 spoke settings white@2x.png */,
+				70EA965812B18D2C0053E68E /* 64.png */,
+				70EA965912B18D2C0053E68E /* Default.png */,
+				70EA965A12B18D2C0053E68E /* Icon-72.png */,
+				70EA965B12B18D2C0053E68E /* Icon-Small-50.png */,
+				70EA965C12B18D2C0053E68E /* Icon-Small.png */,
+				70EA965D12B18D2C0053E68E /* Icon-Small@2x.png */,
+				70EA965E12B18D2C0053E68E /* Icon.png */,
+				70EA965F12B18D2C0053E68E /* Icon@2x.png */,
+				70EA966012B18D2C0053E68E /* Interval Trainer Icon.svg */,
+				70EA966112B18D2C0053E68E /* iTunesArtwork */,
+				70EA966212B18D2C0053E68E /* Left Arrow.png */,
+				70EA966312B18D2C0053E68E /* Left Arrow@2x.png */,
+				70EA966412B18D2C0053E68E /* OTG Intervals blue.png */,
+				70EA966512B18D2C0053E68E /* OTG Intervals red.png */,
+				70EA966612B18D2C0053E68E /* Right Arrow.png */,
+				70EA966712B18D2C0053E68E /* Right Arrow@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		70EA966812B18D2C0053E68E /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				70EA966912B18D2C0053E68E /* A#2W.wav */,
+				70EA966A12B18D2C0053E68E /* A#3W.wav */,
+				70EA966B12B18D2C0053E68E /* A#4W.wav */,
+				70EA966C12B18D2C0053E68E /* A2W.wav */,
+				70EA966D12B18D2C0053E68E /* A3W.wav */,
+				70EA966E12B18D2C0053E68E /* A4W.wav */,
+				70EA966F12B18D2C0053E68E /* B2W.wav */,
+				70EA967012B18D2C0053E68E /* B3W.wav */,
+				70EA967112B18D2C0053E68E /* B4W.wav */,
+				70EA967212B18D2C0053E68E /* C#2W.wav */,
+				70EA967312B18D2C0053E68E /* C#3W.wav */,
+				70EA967412B18D2C0053E68E /* C#4W.wav */,
+				70EA967512B18D2C0053E68E /* C2W.wav */,
+				70EA967612B18D2C0053E68E /* C3W.wav */,
+				70EA967712B18D2C0053E68E /* C4W.wav */,
+				70EA967812B18D2C0053E68E /* D#2W.wav */,
+				70EA967912B18D2C0053E68E /* D#3W.wav */,
+				70EA967A12B18D2C0053E68E /* D#4W.wav */,
+				70EA967B12B18D2C0053E68E /* D2W.wav */,
+				70EA967C12B18D2C0053E68E /* D3W.wav */,
+				70EA967D12B18D2C0053E68E /* D4W.wav */,
+				70EA967E12B18D2C0053E68E /* E2W.wav */,
+				70EA967F12B18D2C0053E68E /* E3W.wav */,
+				70EA968012B18D2C0053E68E /* E4W.wav */,
+				70EA968112B18D2C0053E68E /* F#2W.wav */,
+				70EA968212B18D2C0053E68E /* F#3W.wav */,
+				70EA968312B18D2C0053E68E /* F#4W.wav */,
+				70EA968412B18D2C0053E68E /* F2W.wav */,
+				70EA968512B18D2C0053E68E /* F3W.wav */,
+				70EA968612B18D2C0053E68E /* F4W.wav */,
+				70EA968712B18D2C0053E68E /* G#2W.wav */,
+				70EA968812B18D2C0053E68E /* G#3W.wav */,
+				70EA968912B18D2C0053E68E /* G#4W.wav */,
+				70EA968A12B18D2C0053E68E /* G2W.wav */,
+				70EA968B12B18D2C0053E68E /* G3W.wav */,
+				70EA968C12B18D2C0053E68E /* G4W.wav */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* OTG-Chords */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "OTG-Chords" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OTG-Chords";
+			productName = "OTG-Chords";
+			productReference = 1D6058910D05DD3D006BFB54 /* OTG-Chords.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = CalamitySoft;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OTG-Chords" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* OTG-Chords */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70EA964412B18C7A0053E68E /* FlipsideView.xib in Resources */,
+				70EA964512B18C7A0053E68E /* MainView.xib in Resources */,
+				70EA964612B18C7A0053E68E /* MainWindow.xib in Resources */,
+				70EA964B12B18CF30053E68E /* CustomDiffView.xib in Resources */,
+				70EA968D12B18D2C0053E68E /* 320.png in Resources */,
+				70EA968E12B18D2C0053E68E /* 512.png in Resources */,
+				70EA968F12B18D2C0053E68E /* 6 spoke settings black.png in Resources */,
+				70EA969012B18D2C0053E68E /* 6 spoke settings black@2x.png in Resources */,
+				70EA969112B18D2C0053E68E /* 6 spoke settings white.png in Resources */,
+				70EA969212B18D2C0053E68E /* 6 spoke settings white@2x.png in Resources */,
+				70EA969312B18D2C0053E68E /* 64.png in Resources */,
+				70EA969412B18D2C0053E68E /* Default.png in Resources */,
+				70EA969512B18D2C0053E68E /* Icon-72.png in Resources */,
+				70EA969612B18D2C0053E68E /* Icon-Small-50.png in Resources */,
+				70EA969712B18D2C0053E68E /* Icon-Small.png in Resources */,
+				70EA969812B18D2C0053E68E /* Icon-Small@2x.png in Resources */,
+				70EA969912B18D2C0053E68E /* Icon.png in Resources */,
+				70EA969A12B18D2C0053E68E /* Icon@2x.png in Resources */,
+				70EA969B12B18D2C0053E68E /* Interval Trainer Icon.svg in Resources */,
+				70EA969C12B18D2C0053E68E /* iTunesArtwork in Resources */,
+				70EA969D12B18D2C0053E68E /* Left Arrow.png in Resources */,
+				70EA969E12B18D2C0053E68E /* Left Arrow@2x.png in Resources */,
+				70EA969F12B18D2C0053E68E /* OTG Intervals blue.png in Resources */,
+				70EA96A012B18D2C0053E68E /* OTG Intervals red.png in Resources */,
+				70EA96A112B18D2C0053E68E /* Right Arrow.png in Resources */,
+				70EA96A212B18D2C0053E68E /* Right Arrow@2x.png in Resources */,
+				70EA96A312B18D2C0053E68E /* A#2W.wav in Resources */,
+				70EA96A412B18D2C0053E68E /* A#3W.wav in Resources */,
+				70EA96A512B18D2C0053E68E /* A#4W.wav in Resources */,
+				70EA96A612B18D2C0053E68E /* A2W.wav in Resources */,
+				70EA96A712B18D2C0053E68E /* A3W.wav in Resources */,
+				70EA96A812B18D2C0053E68E /* A4W.wav in Resources */,
+				70EA96A912B18D2C0053E68E /* B2W.wav in Resources */,
+				70EA96AA12B18D2C0053E68E /* B3W.wav in Resources */,
+				70EA96AB12B18D2C0053E68E /* B4W.wav in Resources */,
+				70EA96AC12B18D2C0053E68E /* C#2W.wav in Resources */,
+				70EA96AD12B18D2C0053E68E /* C#3W.wav in Resources */,
+				70EA96AE12B18D2C0053E68E /* C#4W.wav in Resources */,
+				70EA96AF12B18D2C0053E68E /* C2W.wav in Resources */,
+				70EA96B012B18D2C0053E68E /* C3W.wav in Resources */,
+				70EA96B112B18D2C0053E68E /* C4W.wav in Resources */,
+				70EA96B212B18D2C0053E68E /* D#2W.wav in Resources */,
+				70EA96B312B18D2C0053E68E /* D#3W.wav in Resources */,
+				70EA96B412B18D2C0053E68E /* D#4W.wav in Resources */,
+				70EA96B512B18D2C0053E68E /* D2W.wav in Resources */,
+				70EA96B612B18D2C0053E68E /* D3W.wav in Resources */,
+				70EA96B712B18D2C0053E68E /* D4W.wav in Resources */,
+				70EA96B812B18D2C0053E68E /* E2W.wav in Resources */,
+				70EA96B912B18D2C0053E68E /* E3W.wav in Resources */,
+				70EA96BA12B18D2C0053E68E /* E4W.wav in Resources */,
+				70EA96BB12B18D2C0053E68E /* F#2W.wav in Resources */,
+				70EA96BC12B18D2C0053E68E /* F#3W.wav in Resources */,
+				70EA96BD12B18D2C0053E68E /* F#4W.wav in Resources */,
+				70EA96BE12B18D2C0053E68E /* F2W.wav in Resources */,
+				70EA96BF12B18D2C0053E68E /* F3W.wav in Resources */,
+				70EA96C012B18D2C0053E68E /* F4W.wav in Resources */,
+				70EA96C112B18D2C0053E68E /* G#2W.wav in Resources */,
+				70EA96C212B18D2C0053E68E /* G#3W.wav in Resources */,
+				70EA96C312B18D2C0053E68E /* G#4W.wav in Resources */,
+				70EA96C412B18D2C0053E68E /* G2W.wav in Resources */,
+				70EA96C512B18D2C0053E68E /* G3W.wav in Resources */,
+				70EA96C612B18D2C0053E68E /* G4W.wav in Resources */,
+				70EA96E612B18F730053E68E /* Entitlements.plist in Resources */,
+				70EA96F612B18F8C0053E68E /* Config.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				70EA963C12B18C5A0053E68E /* FlipsideViewController.m in Sources */,
+				70EA963D12B18C5A0053E68E /* MainViewController.m in Sources */,
+				70EA964012B18C680053E68E /* OTG_ChordsAppDelegate.m in Sources */,
+				70EA964912B18CE70053E68E /* CustomDiffViewController.m in Sources */,
+				70EA96C912B18D4B0053E68E /* CustomDiffTableViewController.m in Sources */,
+				70EA96D312B18D650053E68E /* DJ.m in Sources */,
+				70EA96D412B18D650053E68E /* Note.m in Sources */,
+				70EA96D512B18D650053E68E /* Scorekeeper.m in Sources */,
+				70EA96D612B18D650053E68E /* Settings.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OTG_Chords_Prefix.pch;
+				INFOPLIST_FILE = "OTG_Chords-Info.plist";
+				PRODUCT_NAME = "OTG-Chords";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OTG_Chords_Prefix.pch;
+				INFOPLIST_FILE = "OTG_Chords-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				PRODUCT_NAME = "OTG-Chords";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		70EA96D912B18DC30053E68E /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CalamitySoft";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DDA13417-981C-4ACB-BD4A-826D1B9D40BB";
+				SDKROOT = iphoneos4.1;
+			};
+			name = "Ad Hoc";
+		};
+		70EA96DA12B18DC30053E68E /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OTG_Chords_Prefix.pch;
+				INFOPLIST_FILE = "OTG_Chords-Info.plist";
+				PRODUCT_NAME = "OTG-Chords";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		70EA96DB12B18DC30053E68E /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CalamitySoft";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C91A3300-CF2B-42DA-BE5D-D5E2352E83BA";
+				SDKROOT = iphoneos4.1;
+			};
+			name = "App Store";
+		};
+		70EA96DC12B18DC30053E68E /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OTG_Chords_Prefix.pch;
+				INFOPLIST_FILE = "OTG_Chords-Info.plist";
+				PRODUCT_NAME = "OTG-Chords";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "App Store";
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.1;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "OTG-Chords" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				70EA96DA12B18DC30053E68E /* Ad Hoc */,
+				70EA96DC12B18DC30053E68E /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OTG-Chords" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				70EA96D912B18DC30053E68E /* Ad Hoc */,
+				70EA96DB12B18DC30053E68E /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
