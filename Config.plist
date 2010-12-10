@@ -2,6 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NoteNames</key>
+	<dict>
+		<key>Notes</key>
+		<array>
+			<string>C</string>
+			<string>C#</string>
+			<string>D</string>
+			<string>D#</string>
+			<string>E</string>
+			<string>F</string>
+			<string>F#</string>
+			<string>G</string>
+			<string>G#</string>
+			<string>A</string>
+			<string>A#</string>
+			<string>B</string>
+		</array>
+		<key>Octaves</key>
+		<array>
+			<string>2</string>
+			<string>3</string>
+			<string>4</string>
+		</array>
+	</dict>
 	<key>ChordConstructions</key>
 	<dict>
 		<key>Major</key>

@@ -25,32 +25,8 @@
 	if (!self)
 		return nil;
 	
-	
-	NSError *loadError;
-	chordTypes = (NSDictionary*) [LoadFromFile objectForKey:@"ChordConstructions" error:&loadError];
-	if (!chordTypes) {
-		NSLog(@"(Chord) Error in loading chord constructions:%@", [loadError domain]);
-		return nil;
-	}
-	
-	
-	/*** Initialize noteNames ***/
-	// I would really like to read from a file.
-	// We'll change it soon if still necessary.
-	NSArray *tempNoteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",@"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
-	NSArray *tempNoteOctaves = [[NSArray alloc] initWithObjects:@"2",@"3",@"4",nil];
-	NSMutableArray *tempNoteStrings = [[NSMutableArray alloc] initWithCapacity:1];
-	for (NSUInteger i = 0; i < [tempNoteOctaves count]; i++) {
-		for (NSUInteger k = 0; k < [tempNoteNames count]; k++) {
-			NSString *tempStr = [[NSString alloc] initWithString:[[tempNoteNames objectAtIndex:k] stringByAppendingString:[tempNoteOctaves objectAtIndex:i]]];
-			[tempNoteStrings addObject:tempStr];
-		}
-	}
-	[self setNoteNames:(NSArray*)tempNoteStrings];
-	[tempNoteStrings release];
-	[tempNoteNames release];
-	[tempNoteOctaves release];
-	
+	[chordTypes count];
+	[noteNames count];
 	
 	return self;
 }
@@ -68,33 +44,18 @@
 
 
 
-
 #pragma mark -
-#pragma mark Proposed
-
-
-+ (NSArray*)getChordWithRoot:(NSUInteger)root ofType:(NSString*)type withNumInversions:(NSUInteger)numInversions {
-	return nil;
-}
-
-
-
-
-#pragma mark -
-#pragma mark Spec's Member Methods
+#pragma mark Public
 
 
 // picks root from noteNames >> derives noteMembers using chordTypes array, inverts if necessary
 - (NSArray*)createChord {
+	
 	return nil;
 }
 
 
-
-// inverts the chord in creasing the bottom note by an octave, moving it to the back of the array (why?)
-- (void)invert {
-}
-
+#pragma mark Private
 
 
 //	root >> create chord array >> return array
@@ -103,13 +64,79 @@
 }
 
 
+// inverts the chord by increasing the bottom note by an octave, moving it to the back of the array
+- (void)invert {
+}
+
 
 // check that the chord will fit without exceeding our note ceiling
+// I don't understand how this will do that.
 - (NSUInteger)selectNextRootToFitUnder:(NSUInteger)size {
 	return 0;
 }
 
 
+// check that the chord will fit without exceeding our note ceiling
+- (BOOL)canPlayChord:(NSArray*)chord {
+	NSEnumerator *e = [chord objectEnumerator];
+	NSUInteger *position;
+	while (position = [e nextObject]) {
+		if (position >= [noteNames count])
+			return FALSE;
+	}
+	
+	return TRUE;
+}
+
+
+/* Proposed */
+- (NSArray*)getChordWithRoot:(NSUInteger)root ofType:(NSString*)type withNumInversions:(NSUInteger)numInversions {
+	return nil;
+}
+
+
+
+#pragma mark -
+#pragma mark Accessor Methods
+
+
+- (NSDictionary*)chordTypes {
+	if (chordTypes == nil) {
+		NSError *loadError;
+		chordTypes = (NSDictionary*) [LoadFromFile objectForKey:@"ChordConstructions" error:&loadError];
+		if (!chordTypes) {
+			NSLog(@"(Chord) Error in loading chord constructions:%@", [loadError domain]);
+		}
+	}
+	return chordTypes;
+}
+
+
+- (NSArray*)noteNames {
+	if (noteNames == nil) {
+		
+		NSError *loadError;
+		NSDictionary *noteNameDict = (NSDictionary*) [LoadFromFile objectForKey:@"NoteNames" error:&loadError];
+		if (!noteNameDict) {
+			NSLog(@"(Chord) Error in loading chord constructions:%@", [loadError domain]);
+			return noteNames;
+		}
+		
+		
+		NSArray *notes = [NSArray arrayWithArray:[noteNameDict objectForKey:@"Notes"]];
+		NSArray *octaves = [NSArray arrayWithArray:[noteNameDict objectForKey:@"Octaves"]];
+		NSMutableArray *tempNoteStrings = [[NSMutableArray alloc] initWithCapacity:1];
+		for (NSUInteger i = 0; i < [octaves count]; i++) {
+			for (NSUInteger k = 0; k < [notes count]; k++) {
+				NSString *tempStr = [[NSString alloc] initWithString:[[notes objectAtIndex:k] 
+																	  stringByAppendingString:[octaves objectAtIndex:i]]];
+				[tempNoteStrings addObject:tempStr];
+			}
+		}
+		noteNames = [NSArray arrayWithArray:tempNoteStrings];
+	}
+	return noteNames;
+}
 
 
 @end

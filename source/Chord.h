@@ -11,12 +11,13 @@
 
 @interface Chord : NSObject {
 	
-	/* Proposed */
-	// Only have chordTypes.
+	/* Loaded from file, unchanging */
 	NSDictionary	*chordTypes;	// contains all chord types, which are arrays of set intervals, referenceable by name
-
-	NSArray			*noteNames;		// Basically just the array we previously had in the delegate
+	NSArray			*noteNames;		// (C2, C#2,..B4) to fill the array to return to delegate, which sends to DJ
+	
+	/* These change for each new chord */
 	NSString		*chordName;		// contains the name of the instance chord
+	NSArray			*chord;			// contains the NSUINTEGERS belonging to the chord.
 	NSArray			*noteMembers;	// contains the note names belonging to this chord, this is what we will send to the DJ.
 	NSUInteger		inversions;		// holds number of inversions
 }
@@ -28,25 +29,22 @@
 @property (nonatomic, retain) NSArray *noteMembers;
 
 
-
 #pragma mark -
-#pragma mark Proposed
+#pragma mark Public
+
+- (NSArray*)createChord;		// picks root from noteNames >> derives noteMembers using chordTypes array, inverts if necessary
+
+
+#pragma mark Private
+- (void)invert;		// inverts the chord by increasing the bottom note by an octave, moving it to the back of the array
+- (NSArray*)deriveNotesFrom:(NSUInteger)root;	//	root >> create chord array >> return array
+- (NSUInteger)selectNextRootToFitUnder:(NSUInteger)size;	// check that the chord will fit without exceeding our note ceiling
 
 /* Proposed */
-+ (NSArray*)getChordWithRoot:(NSUInteger)root ofType:(NSString*)type withNumInversions:(NSUInteger)numInversions;
+- (NSArray*)getChordWithRoot:(NSUInteger)root ofType:(NSString*)type withNumInversions:(NSUInteger)numInversions;
 //	This will create the chord we want, including inversions.
 //	This can return  nil  if the chord cannot be created
 //		(i.e. doesn't fit within the note ceiling).
-
-
-
-#pragma mark -
-#pragma mark Spec's Member Methods
-
-- (NSArray*)createChord;		// picks root from noteNames >> derives noteMembers using chordTypes array, inverts if necessary
-- (void)invert;		// inverts the chord in creasing the bottom note by an octave, moving it to the back of the array (why?)
-- (NSArray*)deriveNotesFrom:(NSUInteger)root;	//	root >> create chord array >> return array
-- (NSUInteger)selectNextRootToFitUnder:(NSUInteger)size;	// check that the chord will fit without exceeding our note ceiling
 
 
 
