@@ -63,6 +63,46 @@
 	// Config.plist's ChordNames
 	// match to ChordConstructions and return its array
 	// (make it an array as ints)
+	
+	
+	// Initialize chordNames from file
+	NSError *loadError;
+	NSArray *chordNames = (NSArray*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
+	if (!chordNames) {
+		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
+		return nil;
+	}
+	
+	
+	
+	// Settings doesn't have the difficulties atm.
+	// work a settings check in later
+	
+	
+	
+	// Choose a type
+	NSUInteger randomIndex = arc4random() % [chordNames count];
+	NSString *chosenType = [chordNames objectAtIndex:randomIndex];
+
+	// Initialize chordConstructions from file
+	NSDictionary *chordConstructions = (NSDictionary*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
+	if (!chordConstructions) {
+		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
+		return nil;
+	}
+	
+	// Turn the array of strings into array of ints
+	NSArray *chordAsStrings = [chordConstructions objectForKey:chosenType];
+	NSMutableArray *chordAsInts = [[NSMutableArray alloc] initWithCapacity:[chordConstructions count]];
+	for (NSString *str in chordAsStrings) {
+		[chordAsInts addObject:[str intValue]];
+	}
+	
+	// make chordAsInts an NSArray
+	NSArray *retArray = [NSArray arrayWithArray:(NSArray*)chordAsInts];
+	[chordAsInts release];
+	
+	return retArray;
 }
 
 
