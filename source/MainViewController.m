@@ -29,8 +29,12 @@ BOOL currentlyInGuessingState = YES;
 	
 	
 	// Initialize intervalStrings from file
-	[LoadFromFile getObject:&intervalStrings forKey:@"IntervalNames"];
-
+	NSError *loadError;
+	intervalStrings = (NSArray*) [LoadFromFile objectForKey:@"IntervalNames" error:&loadError];
+	if (!intervalStrings) {
+		NSLog(@"(MainVC) Error in loading interval names:%@", [loadError domain]);
+	}
+	
 	
 	NSUInteger randomAnswer;
 	do {

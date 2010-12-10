@@ -26,9 +26,11 @@
 		return nil;
 	
 	
-	NSInteger error = [LoadFromFile getObject:&chordTypes forKey:@"ChordConstructions"];
-	if (!error) {
-		NSLog(@"(Chord) Error in loading chord constructions: error %i", error);
+	NSError *loadError;
+	chordTypes = (NSDictionary*) [LoadFromFile objectForKey:@"ChordConstructions" error:&loadError];
+	if (!chordTypes) {
+		NSLog(@"(Chord) Error in loading chord constructions:%@", [loadError domain]);
+		return nil;
 	}
 	
 	

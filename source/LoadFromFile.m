@@ -21,24 +21,30 @@
 }
  */
 
-
-+ (NSInteger)getObject:(NSObject**)object forKey:(NSString*)key {
++ (NSObject*)objectForKey:(NSString*)key error:(NSError**)outError {
 
 	if (key==nil) {
-		NSLog(@"(LoadFromFile) key == nil");
-		return -1;
+		*outError = [NSError errorWithDomain:@"key==nil"
+											  code:-1
+										  userInfo:nil];
+		return nil;
 	}
 	
 	NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 	NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-	*object = [rawConfigDict objectForKey:key];
+	NSObject *object = [rawConfigDict objectForKey:key];
 	
-	if (*object==nil) {
-		NSLog(@"(LoadFromFile) key \"%@\" does not exist in Config.plist", key);
-		return -2;
-	} else {
-		return 1;
+	// if the key Does Not Exist in rawConfigDict, object will be nil
+	if (object==nil) {
+		NSString *error = [NSString stringWithFormat:@"key \"%@\" DNE in Config.plist"];
+		*outError = [NSError errorWithDomain:error
+										code:-2
+									userInfo:nil];
+		return nil;
 	}
+	
+	// if no errors
+	return object;
 }
 
 

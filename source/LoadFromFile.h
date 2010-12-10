@@ -8,11 +8,10 @@
 
 //
 //	Usage:
-//	NSInteger error = [LoadFromFile getObject:&obj forKey:@"IntervalNames"];
+//	NSObject *obj = [LoadFromFile objectForKey:@"IntervalNames" error:outError];
 //
 //	error	-2	object for that key does not exist
 //			-1	key == nil
-//			 1	successfully found key and placed its object in arg object
 //
 
 
@@ -22,6 +21,7 @@
 @interface LoadFromFile : NSObject {	
 }
 
-+ (NSInteger)getObject:(NSObject**)object forKey:(NSString*)key;
+
++ (NSObject*)objectForKey:(NSString*)key error:(NSError**)outError;
 
 @end
