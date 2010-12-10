@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "Settings.h"
+#import "LoadFromFile.h"
 
 
 
@@ -26,11 +27,10 @@ BOOL currentlyInGuessingState = YES;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor Second", @"Major Second",
-					   @"Minor Third", @"Major Third", @"Perfect Fourth", @"Tritone",
-					   @"Perfect Fifth", @"Minor Sixth", @"Major Sixth", @"Minor Seventh",
-					   @"Major Seventh", @"Octave", nil];
 	
+	// Initialize intervalStrings from file
+	[LoadFromFile getObject:&intervalStrings forKey:@"IntervalNames"];
+
 	
 	NSUInteger randomAnswer;
 	do {
@@ -171,7 +171,7 @@ BOOL currentlyInGuessingState = YES;
 	[delegate replayNote];									// reinforce the sound while showing the answer
 	
 	// Show the answer.
-	[self displayInterval:[delegate intervalDifferenceBetween:[delegate iCurRoot] And:[delegate iCurTarget]]];
+	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
 }
 
 - (IBAction)nextNote:(id)sender {

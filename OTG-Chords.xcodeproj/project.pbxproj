@@ -85,6 +85,7 @@
 		70EA96E612B18F730053E68E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70EA96E512B18F730053E68E /* Entitlements.plist */; };
 		70EA96F612B18F8C0053E68E /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70EA96F512B18F8C0053E68E /* Config.plist */; };
 		70EA972812B190EE0053E68E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EA972712B190EE0053E68E /* AVFoundation.framework */; };
+		70EA97BE12B1A1180053E68E /* LoadFromFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA97BD12B1A1180053E68E /* LoadFromFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +179,8 @@
 		70EA96E512B18F730053E68E /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		70EA96F512B18F8C0053E68E /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		70EA972712B190EE0053E68E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		70EA97AE12B19CE70053E68E /* LoadFromFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadFromFile.h; path = source/LoadFromFile.h; sourceTree = "<group>"; };
+		70EA97BD12B1A1180053E68E /* LoadFromFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadFromFile.m; path = source/LoadFromFile.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OTG_Chords-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OTG_Chords-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,6 +240,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				70EA97AE12B19CE70053E68E /* LoadFromFile.h */,
+				70EA97BD12B1A1180053E68E /* LoadFromFile.m */,
 				70EA964C12B18D100053E68E /* SynthesizeSingleton.h */,
 				32CA4F630368D1EE00C91783 /* OTG_Chords_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -503,6 +508,7 @@
 				70EA96D412B18D650053E68E /* Note.m in Sources */,
 				70EA96D512B18D650053E68E /* Scorekeeper.m in Sources */,
 				70EA96D612B18D650053E68E /* Settings.m in Sources */,
+				70EA97BE12B1A1180053E68E /* LoadFromFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +607,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;

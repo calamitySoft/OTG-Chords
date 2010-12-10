@@ -9,6 +9,7 @@
 #import "OTG_ChordsAppDelegate.h"
 #import "MainViewController.h"
 #import "Settings.h"
+#import "LoadFromFile.h"
 
 @implementation OTG_ChordsAppDelegate
 
@@ -42,6 +43,7 @@
 						  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+	
 	
     return YES;
 }
@@ -79,13 +81,6 @@
 	[tempNoteStrings release];
 	[noteNames release];
 	[noteOctaves release];
-	
-	
-	/*** Initialize array of interval names ***/
-	intervalStrings = [[NSArray alloc] initWithObjects:@"Unison", @"Minor\nSecond", @"Major\nSecond",
-					   @"Minor\nThird", @"Major\nThird", @"Perfect\nFourth", @"Tritone",
-					   @"Perfect\nFifth", @"Minor\nSixth", @"Major\nSixth", @"Minor\nSeventh",
-					   @"Major\nSeventh", @"Octave", nil];
 	
 	
 	/*** Set default root - any. ***/
@@ -314,14 +309,6 @@
 }
 
 
-- (NSString *)intervalDifferenceBetween:(NSNumber *)first And:(NSNumber *)second {
-	interval theInterval = [second intValue] - [first intValue];
-	NSLog(@"(Delegate) The target is: %i the root is: %i", [second intValue], [first intValue]);
-	
-	if (theInterval<0 || theInterval>=INTERVAL_RANGE)	// must be >= 0 or < range (because 0 is valid)
-		return @"Invalid interval";
-	return [intervalStrings objectAtIndex:theInterval];
-}
 
 
 #pragma mark -
