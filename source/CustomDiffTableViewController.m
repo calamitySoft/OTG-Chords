@@ -9,6 +9,7 @@
 #import "CustomDiffTableViewController.h"
 #import "MainViewController.h"
 #import "Settings.h"
+#import "LoadFromFile.h"
 
 
 @implementation CustomDiffTableViewController
@@ -176,11 +177,13 @@
 
 - (NSArray *)dataSourceArray {
     if (dataSourceArray == nil) {
-		
-		dataSourceArray = [[NSArray alloc] initWithObjects:@"Unison",  @"Minor Second", @"Major Second",
-						   @"Minor Third", @"Major Third", @"Perfect Fourth", @"Tritone",
-						   @"Perfect Fifth", @"Minor Sixth", @"Major Sixth", @"Minor Seventh",
-						   @"Major Seventh", @"Octave", nil];
+
+		// Initialize dataSourceArray (interval names) from file
+		NSError *loadError;
+		dataSourceArray = (NSArray*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
+		if (!dataSourceArray) {
+			NSLog(@"(CustomDiffTableVC) Error in loading interval names: %@", [loadError domain]);
+		}
     }
     return dataSourceArray;
 }
