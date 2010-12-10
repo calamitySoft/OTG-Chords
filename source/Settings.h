@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 
-static NSString *kEasyDifficulty = @"EasyDifficulty";
-static NSString *kMediumDifficulty = @"MediumDifficulty";
-static NSString *kHardDifficulty = @"HardDifficulty";
-static NSString *kCustomDifficulty = @"CustomDifficulty";
+#define kEasyDifficulty @"EasyDifficulty"
+#define kMediumDifficulty @"MediumDifficulty"
+#define kHardDifficulty @"HardDifficulty"
+#define kCustomDifficulty @"CustomDifficulty"
 
 typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFourth, tritone, 
 	perFifth, minSixth, majSixth, minSeventh, majSeventh, octave} interval;
