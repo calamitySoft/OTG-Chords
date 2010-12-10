@@ -19,7 +19,10 @@
 	NSUInteger					tempDifficultySetting;
 	IBOutlet UITextView			*intervalSettingsDisplay;
 	NSArray						*abbrIntervalNames;
+	
 	IBOutlet UISwitch			*isArpeggiatedSwitch;
+	IBOutlet UISwitch			*allowInversionsSwitch;
+	
 	IBOutlet UILabel			*rootName;
 	IBOutlet UIButton			*switchRootLeftBtn;
 	IBOutlet UIButton			*switchRootRightBtn;
@@ -39,6 +42,7 @@
 - (void)setCustomDifficulty;				// allow the player to set his own intervals to practice
 - (void)setDifficultyDisplay;				// adjust Settings page's display to reflect current difficulty
 - (IBAction)toggleArpeggiate:(id)sender;	// reacts to arpeggiate mode off and on
+- (IBAction)toggleInversions:(id)sender;	// reacts to allowing inversions off and on
 - (IBAction)switchRootLeft;					// invoked by the "Set Root" left arrow; tells the delegate
 - (IBAction)switchRootRight;				// invoked by the "Set Root" right arrow; tells the delegate
 - (void)updateRootDisplay;					// updates display

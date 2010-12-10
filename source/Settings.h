@@ -20,7 +20,10 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 @interface Settings : NSObject {
 	NSArray			*intervalNames;
+	
 	BOOL			isArpeggiated;			// True if we're arpeggiating as a base
+	BOOL			allowInversions;		// YES if inversions are allowed
+	
 	NSArray			*easyDifficulty;		// NSArray of NSNumbers
 	NSArray			*mediumDifficulty;		// NSArray of NSNumbers
 	NSArray			*hardDifficulty;		// NSArray of NSNumbers
@@ -31,6 +34,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 @property (nonatomic, retain, readonly) NSArray *intervalNames;
 @property (nonatomic) BOOL isArpeggiated;
+@property (nonatomic) BOOL allowInversions;
 @property (nonatomic, retain, readonly) NSArray *easyDifficulty;
 @property (nonatomic, retain, readonly) NSArray *mediumDifficulty;
 @property (nonatomic, retain, readonly) NSArray *hardDifficulty;

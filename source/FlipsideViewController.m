@@ -39,6 +39,14 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	[isArpeggiatedSwitch setOn:[[Settings sharedSettings] isArpeggiated]];
+	[allowInversionsSwitch setOn:[[Settings sharedSettings] allowInversions]];
+}
+
+
 - (IBAction)done:(id)sender {
 	[[Settings sharedSettings] setDifficultyWithUInt:self.tempDifficultySetting];
 	
@@ -78,14 +86,22 @@
     [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Arpeggiate Control
 
-// Inverts whatever the arpeggiate mode is set too
-// Also updates the button with text to reflect current action
+
+#pragma mark -
+#pragma mark Play Style Control
+
+// tells Settings about the new isArpeggiated setting
 - (IBAction)toggleArpeggiate:(id)sender {
 	[[Settings sharedSettings] setIsArpeggiated:[sender isOn]];
 }
+
+// tells Settings about the new allowInversions setting
+- (IBAction)toggleInversions:(id)sender {
+	[[Settings sharedSettings] setAllowInversions:[sender isOn]];
+}
+
+
 
 #pragma mark -
 #pragma mark Difficulty Control

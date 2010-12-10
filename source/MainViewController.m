@@ -86,6 +86,8 @@ BOOL currentlyInGuessingState = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
 	//	Check isArpeggiated for the correct button title
 	[self checkIsArpeggiatedForGiveUpBtn];
 }
