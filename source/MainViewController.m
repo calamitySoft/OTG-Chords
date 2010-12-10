@@ -32,7 +32,7 @@ BOOL currentlyInGuessingState = YES;
 	NSError *loadError;
 	intervalStrings = (NSArray*) [LoadFromFile objectForKey:@"IntervalNames" error:&loadError];
 	if (!intervalStrings) {
-		NSLog(@"(MainVC) Error in loading interval names:%@", [loadError domain]);
+		NSLog(@"(MainVC) Error in loading interval names: %@", [loadError domain]);
 	}
 	
 	

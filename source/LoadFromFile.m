@@ -36,7 +36,7 @@
 	
 	// if the key Does Not Exist in rawConfigDict, object will be nil
 	if (object==nil) {
-		NSString *error = [NSString stringWithFormat:@"key \"%@\" DNE in Config.plist"];
+		NSString *error = [NSString stringWithFormat:@"key \"%@\" DNE in Config.plist", key];
 		*outError = [NSError errorWithDomain:error
 										code:-2
 									userInfo:nil];
