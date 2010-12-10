@@ -86,6 +86,7 @@
 		70EA96F612B18F8C0053E68E /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70EA96F512B18F8C0053E68E /* Config.plist */; };
 		70EA972812B190EE0053E68E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EA972712B190EE0053E68E /* AVFoundation.framework */; };
 		70EA97BE12B1A1180053E68E /* LoadFromFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA97BD12B1A1180053E68E /* LoadFromFile.m */; };
+		70EA98F912B1C0960053E68E /* Chord.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA98F812B1C0960053E68E /* Chord.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +182,8 @@
 		70EA972712B190EE0053E68E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		70EA97AE12B19CE70053E68E /* LoadFromFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadFromFile.h; path = source/LoadFromFile.h; sourceTree = "<group>"; };
 		70EA97BD12B1A1180053E68E /* LoadFromFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadFromFile.m; path = source/LoadFromFile.m; sourceTree = "<group>"; };
+		70EA98F312B1C0660053E68E /* Chord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Chord.h; path = source/Chord.h; sourceTree = "<group>"; };
+		70EA98F812B1C0960053E68E /* Chord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Chord.m; path = source/Chord.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OTG_Chords-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OTG_Chords-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +221,8 @@
 				70EA96D012B18D650053E68E /* Scorekeeper.m */,
 				70EA96D112B18D650053E68E /* Settings.h */,
 				70EA96D212B18D650053E68E /* Settings.m */,
+				70EA98F312B1C0660053E68E /* Chord.h */,
+				70EA98F812B1C0960053E68E /* Chord.m */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 				70EA96D512B18D650053E68E /* Scorekeeper.m in Sources */,
 				70EA96D612B18D650053E68E /* Settings.m in Sources */,
 				70EA97BE12B1A1180053E68E /* LoadFromFile.m in Sources */,
+				70EA98F912B1C0960053E68E /* Chord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
