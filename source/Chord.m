@@ -12,7 +12,7 @@
 
 @implementation Chord
 
-@synthesize chordTypes, noteNames, chordName, noteMembers;
+@synthesize chordTypes, noteNames, chordType, chord;
 
 
 
@@ -36,8 +36,8 @@
 - (void)dealloc {
 	[chordTypes release];
 	[noteNames release];
-	[chordName release];
-	[noteMembers release];
+	[chordType release];
+	[chord release];
 	
 	[super dealloc];
 }
@@ -55,24 +55,29 @@
 }
 
 
+
 #pragma mark Private
 
 
-//	root >> create chord array >> return array
-- (NSArray*)deriveNotesFrom:(NSUInteger)root {
-	return nil;
+- (NSArray*)chooseType {
+	// Config.plist's ChordNames
+	// match to ChordConstructions and return its array
+	// (make it an array as ints)
 }
 
 
-// inverts the chord by increasing the bottom note by an octave, moving it to the back of the array
-- (void)invert {
+- (NSArray*)chooseInversionForChord:(NSArray*)chord {
+	// if inversions are allowed in Settings
+	//
+	// invert the chord by subtracting 12 from some numbers
+	// we do this so that the root stays 0, which means we can get its chord name
+	//		and allow/disallow based on Root settings
 }
 
 
-// check that the chord will fit without exceeding our note ceiling
-// I don't understand how this will do that.
-- (NSUInteger)selectNextRootToFitUnder:(NSUInteger)size {
-	return 0;
+- (NSArray*)chooseRootForChord:(NSArray*)chord {
+	// pick a root that works with the array we have so far
+	// (includes type and inversions)
 }
 
 
@@ -86,12 +91,6 @@
 	}
 	
 	return TRUE;
-}
-
-
-/* Proposed */
-- (NSArray*)getChordWithRoot:(NSUInteger)root ofType:(NSString*)type withNumInversions:(NSUInteger)numInversions {
-	return nil;
 }
 
 

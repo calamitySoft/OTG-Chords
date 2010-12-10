@@ -16,17 +16,17 @@
 	NSArray			*noteNames;		// (C2, C#2,..B4) to fill the array to return to delegate, which sends to DJ
 	
 	/* These change for each new chord */
-	NSString		*chordName;		// contains the name of the instance chord
+	NSString		*chordType;		// contains the name of the instance chord
 	NSArray			*chord;			// contains the NSUINTEGERS belonging to the chord.
-	NSArray			*noteMembers;	// contains the note names belonging to this chord, this is what we will send to the DJ.
 	NSUInteger		inversions;		// holds number of inversions
 }
 
 
 @property (nonatomic, retain) NSDictionary *chordTypes;
 @property (nonatomic, retain) NSArray *noteNames;
-@property (nonatomic, retain) NSString *chordName;
-@property (nonatomic, retain) NSArray *noteMembers;
+
+@property (nonatomic, retain) NSString *chordType;
+@property (nonatomic, retain) NSArray *chord;
 
 
 #pragma mark -
@@ -36,15 +36,11 @@
 
 
 #pragma mark Private
-- (void)invert;		// inverts the chord by increasing the bottom note by an octave, moving it to the back of the array
-- (NSArray*)deriveNotesFrom:(NSUInteger)root;	//	root >> create chord array >> return array
-- (NSUInteger)selectNextRootToFitUnder:(NSUInteger)size;	// check that the chord will fit without exceeding our note ceiling
 
-/* Proposed */
-- (NSArray*)getChordWithRoot:(NSUInteger)root ofType:(NSString*)type withNumInversions:(NSUInteger)numInversions;
-//	This will create the chord we want, including inversions.
-//	This can return  nil  if the chord cannot be created
-//		(i.e. doesn't fit within the note ceiling).
+- (NSArray*)chooseType;
+- (NSArray*)chooseInversionForChord:(NSArray*)chord;
+- (NSArray*)chooseRootForChord:(NSArray*)chord;
+- (BOOL)canPlayChord:(NSArray*)chord;
 
 
 
