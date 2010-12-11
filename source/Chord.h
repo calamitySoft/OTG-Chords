@@ -18,7 +18,7 @@
 	/* These change for each new chord */
 	NSString		*chordType;		// contains the name of the instance chord
 	NSArray			*chord;			// contains the NSUINTEGERS belonging to the chord.
-	NSString		*chordName;		// holds the name of the name
+	NSString		*rootName;		// holds the name of the name
 	NSUInteger		inversions;		// holds number of inversions
 	
 	/*  chordType, chordName, and inversions are
@@ -32,14 +32,18 @@
 
 @property (nonatomic, retain) NSString *chordType;
 @property (nonatomic, retain) NSArray *chord;
-@property (nonatomic, retain) NSString *chordName;
+@property (nonatomic, retain) NSString *rootName;
 @property (nonatomic) NSUInteger inversions;
 
 
 #pragma mark -
 #pragma mark Public
 
-- (NSArray*)createChord;		// picks root from noteNames >> derives noteMembers using chordTypes array, inverts if necessary
+- (NSArray*)createChord;		// picks type, then inverts, then picks root
+- (BOOL)verifyChordAnswer:(NSString*)_chordType;		// is _chordType the correct guess?
+- (BOOL)verifyChordAnswer:(NSString*)_chordType andNumInversions:(NSUInteger)_inversions;
+			// are _chordType and _inversions
+			// the correct answers?
 
 
 #pragma mark Private
