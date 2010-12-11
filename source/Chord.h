@@ -18,7 +18,12 @@
 	/* These change for each new chord */
 	NSString		*chordType;		// contains the name of the instance chord
 	NSArray			*chord;			// contains the NSUINTEGERS belonging to the chord.
+	NSString		*chordName;		// holds the name of the name
 	NSUInteger		inversions;		// holds number of inversions
+	
+	/*  chordType, chordName, and inversions are
+		held for answer verification
+	 */
 }
 
 
@@ -27,6 +32,7 @@
 
 @property (nonatomic, retain) NSString *chordType;
 @property (nonatomic, retain) NSArray *chord;
+@property (nonatomic, retain) NSString *chordName;
 @property (nonatomic) NSUInteger inversions;
 
 

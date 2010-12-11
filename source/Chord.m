@@ -13,7 +13,7 @@
 
 @implementation Chord
 
-@synthesize chordTypes, noteNames, chordType, chord, inversions;
+@synthesize chordTypes, noteNames, chordType, chord, chordName, inversions;
 
 NSString *possibleType;
 NSUInteger possibleInversions;
@@ -90,7 +90,16 @@ NSInteger intSort(id num1, id num2, void *context)
 	NSArray *newChord = [self chooseRootForChord:chordShape];
 	[self setChord:newChord];
 	[self setChordType:possibleType];
+	// had to set the chordName in -chooseRootForChord:
 	[self setInversions:possibleInversions];
+	
+	
+#ifndef DEBUG
+	NSLog(@"(Chord) successful creation: %@ %@ %i", 
+		  self.chordName,
+		  self.chordType,
+		  self.inversions);
+#endif
 	
 	return self.chord;
 }
@@ -234,6 +243,9 @@ NSInteger intSort(id num1, id num2, void *context)
 			[possibleChord addObject:num];
 		}
 	} while (![self canPlayChord:possibleChord]);
+	
+	// now that we have a valid chord, remember its root's name
+	self.chordName = [noteNames objectAtIndex:randomRoot];
 	
 	NSArray *retArray = [NSArray arrayWithArray:possibleChord];
 	[possibleChord release];
