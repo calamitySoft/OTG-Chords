@@ -89,6 +89,8 @@ NSInteger intSort(id num1, id num2, void *context)
 	// Pick and apply root
 	NSArray *newChord = [self chooseRootForChord:chordShape];
 	[self setChord:newChord];
+	[self setChordType:possibleType];
+	[self setInversions:possibleInversions];
 	
 	return self.chord;
 }
