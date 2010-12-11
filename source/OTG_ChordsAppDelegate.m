@@ -168,7 +168,7 @@
 	[myDJ playNotes:temp isArpeggiated:[[Settings sharedSettings] isArpeggiated]];
 }
 
-- (void)arrpegiate{
+- (void)arpeggiate{
 	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
 	[myDJ stop];
 	[myDJ playNotes:temp isArpeggiated:![[Settings sharedSettings] isArpeggiated]];

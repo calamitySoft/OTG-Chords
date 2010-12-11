@@ -190,7 +190,7 @@ BOOL currentlyInGuessingState = YES;
 }
 
 - (IBAction)separate:(id)sender{
-	[delegate arrpegiate];
+	[delegate arpeggiate];
 }
 
 - (IBAction)submitAnswer:(id)sender {

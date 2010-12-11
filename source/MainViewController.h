@@ -74,7 +74,7 @@
 - (void)replayNote;
 - (int)getCurrentInterval;
 - (void)printDifficulty;
-- (void)arrpegiate;
+- (void)arpeggiate;
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;
 - (NSString *)getScoreString;
 - (BOOL)submitAnswer:(NSUInteger)intervalGuessed;

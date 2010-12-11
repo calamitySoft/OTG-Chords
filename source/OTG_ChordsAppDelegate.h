@@ -53,7 +53,7 @@
 - (int)getCurrentInterval;	// returns an int of the interval being played
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;	// intervals enabled are dependent on difficulty setting
 
-- (void)arrpegiate;	// Plays both the root and the target
+- (void)arpeggiate;	// Plays both the root and the target
 
 - (BOOL)rootIsEnabled:(NSUInteger)root;	// root enabled is dependent on the whim of the user
 
