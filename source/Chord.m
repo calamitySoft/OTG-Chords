@@ -86,7 +86,11 @@ NSInteger intSort(id num1, id num2, void *context)
 	// Pick and apply inversions
 	chordShape = [self chooseInversionForChord:chordShape];
 	
-	return nil;
+	// Pick and apply root
+	NSArray *newChord = [self chooseRootForChord:chordShape];
+	[self setChord:newChord];
+	
+	return self.chord;
 }
 
 
@@ -201,20 +205,52 @@ NSInteger intSort(id num1, id num2, void *context)
 }
 
 
+/*
+ *	-chooseRootForChord:
+ *
+ *	Arguement:	(NSArray*)	_chord includes type and inversions
+ *				Example: "Major 6/4": array {-5, 0, 4}
+ *	Returns:	(NSArray*) of NSNumbers representing the complete chord construction.
+ *				Example: "Major 6/4" about C4: array {19, 24, 28}
+ *	Strategy:	Get a new random root in uinteger form
+ *					while that root is not enabled and
+ *					while the new chord is not allowed (out of bounds)
+ *
+ */
 - (NSArray*)chooseRootForChord:(NSArray*)_chord {
-	// pick a root that works with the array we have so far
-	// (includes type and inversions)
 	
-	return nil;
+	NSUInteger randomRoot;
+	NSMutableArray *possibleChord;
+	do {
+		randomRoot = arc4random() % [self.noteNames count];
+		
+		[possibleChord removeAllObjects];					// setup to try again
+		NSEnumerator *e = [_chord objectEnumerator];		// make a chord to check
+		NSNumber *num;
+		while (num = [e nextObject]) {
+			num = [NSNumber numberWithInteger:[num integerValue]+randomRoot];	// add randomRoot value
+			[possibleChord addObject:num];
+		}
+	} while (![self canPlayChord:possibleChord]);
+	
+	NSArray *retArray = [NSArray arrayWithArray:possibleChord];
+	[possibleChord release];
+	
+	return retArray;
 }
 
 
-// check that the chord will fit without exceeding our note ceiling
+/*
+ *	-canPlayChord:
+ *
+ *	Purpose:	Check that the chord will fit without exceeding 
+ *					our note ceiling or going below 0.
+ */
 - (BOOL)canPlayChord:(NSArray*)_chord {
 	NSEnumerator *e = [_chord objectEnumerator];
-	NSUInteger *position;
-	while (position = [e nextObject]) {
-		if (position >= [noteNames count])
+	NSNumber *num;
+	while (num = [e nextObject]) {
+		if ([num integerValue] >= [noteNames count]  ||  [num integerValue] < 0)
 			return FALSE;
 	}
 	
