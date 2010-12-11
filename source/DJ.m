@@ -115,6 +115,7 @@
 		
 		else if (![note isKindOfClass:[NSString class]]) {
 			NSLog(@"(DJ) arg class not recognized: %@", [note class]);
+			return NO;
 		}
 	}
 		
