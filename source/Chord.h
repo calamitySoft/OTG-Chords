@@ -27,6 +27,7 @@
 
 @property (nonatomic, retain) NSString *chordType;
 @property (nonatomic, retain) NSArray *chord;
+@property (nonatomic) NSUInteger inversions;
 
 
 #pragma mark -
@@ -38,9 +39,9 @@
 #pragma mark Private
 
 - (NSArray*)chooseType;
-- (NSArray*)chooseInversionForChord:(NSArray*)chord;
-- (NSArray*)chooseRootForChord:(NSArray*)chord;
-- (BOOL)canPlayChord:(NSArray*)chord;
+- (NSArray*)chooseInversionForChord:(NSArray*)_chord;
+- (NSArray*)chooseRootForChord:(NSArray*)_chord;
+- (BOOL)canPlayChord:(NSArray*)_chord;
 
 
 
