@@ -16,12 +16,12 @@
 - (id)init
 {
 	Note *newNote = [[Note alloc] initWithNoteName:@"A4" withHertz:440];
+	NSLog(@"(Note) Created default note: A4");
 
 	return newNote;
 }
 
--(void)dealloc
-{
+-(void)dealloc {
 	[noteName release];
 	[wholeSample release];
 	

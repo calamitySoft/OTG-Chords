@@ -243,14 +243,14 @@ NSInteger intSort(id num1, id num2, void *context)
 	NSUInteger randomRoot;
 	NSMutableArray *possibleChord;
 	do {
-		randomRoot = arc4random() % [self.noteNames count];
+		randomRoot = arc4random() % [self.noteNames count];	// setup to try again
+		[possibleChord removeAllObjects];					// reconstruct a possible chord to play
 		
-		[possibleChord removeAllObjects];					// setup to try again
-		NSEnumerator *e = [_chord objectEnumerator];		// make a chord to check
+		NSEnumerator *e = [_chord objectEnumerator];		// go through _chord again w/ new randomRoot
 		NSNumber *num;
 		while (num = [e nextObject]) {
-			num = [NSNumber numberWithInteger:[num integerValue]+randomRoot];	// add randomRoot value
-			[possibleChord addObject:num];
+			num = [NSNumber numberWithInteger:[num integerValue]+randomRoot];	// add randomRoot value to construct
+			[possibleChord addObject:num];										//	our new possible chord to play
 		}
 	} while (![self canPlayChord:possibleChord]);
 	
@@ -292,7 +292,7 @@ NSInteger intSort(id num1, id num2, void *context)
 		NSError *loadError;
 		chordTypes = (NSDictionary*) [LoadFromFile objectForKey:@"ChordConstructions" error:&loadError];
 		if (!chordTypes) {
-			NSLog(@"(Chord) Error in loading chord constructions:%@", [loadError domain]);
+			NSLog(@"(Chord) Error in loading chord constructions: %@", [loadError domain]);
 		}
 	}
 	return chordTypes;
@@ -305,7 +305,7 @@ NSInteger intSort(id num1, id num2, void *context)
 		NSError *loadError;
 		NSDictionary *noteNameDict = (NSDictionary*) [LoadFromFile objectForKey:@"NoteNames" error:&loadError];
 		if (!noteNameDict) {
-			NSLog(@"(Chord) Error in loading chord constructions:%@", [loadError domain]);
+			NSLog(@"(Chord) Error in loading note names: %@", [loadError domain]);
 			return noteNames;
 		}
 		
