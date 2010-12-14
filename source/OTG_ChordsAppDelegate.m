@@ -16,7 +16,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, myChord, aNoteStrings, scoreBoard;
+@synthesize myDJ, myChord, scoreBoard;
 
 #define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
 
@@ -68,30 +68,6 @@
 	[self setScoreBoard:tempScore];
 	[tempScore release];
 	
-	
-	/*** Initialize aNoteStrings ***/
-	NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",
-						  @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
-	NSArray *noteOctaves = [[NSArray alloc] initWithObjects:@"2",@"3",@"4",nil];
-	// This is mutable because we want to be changing it. Previous solution was
-	// NSArray alloc init'd pointer that was pointing to larger and larger arrays.
-	// That may have only been part of the crashing problem, but I think this is
-	// more proper anyway.
-	NSMutableArray *tempNoteStrings = [[NSMutableArray alloc] initWithCapacity:1];
-	for(NSUInteger i = 0; i < [noteOctaves count]; i++)
-	{
-		for (NSUInteger k = 0; k < [noteNames count]; k++) 
-		{
-			NSString *tempStr = [[NSString alloc] initWithString:[[noteNames objectAtIndex:k] stringByAppendingString:[noteOctaves objectAtIndex:i]]];
-			[tempNoteStrings addObject:tempStr];
-		}
-	}
-	//NSString *tempStrA3 = [[NSString alloc] initWithString:@"A3"];
-	[self setANoteStrings:tempNoteStrings];
-	[tempNoteStrings release];
-	[noteNames release];
-	[noteOctaves release];
-	
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -133,7 +109,7 @@
 
 /*
  - (void)init {
- aNoteStrings = [[NSArray alloc] initWithObjects:[[NSString alloc ]initWithString:@"A"], nil];
+
  }*/
 
 #pragma mark -
@@ -149,7 +125,7 @@
 - (void)dealloc {
 	[myDJ release];
 	[myChord release];
-	[aNoteStrings release];
+	[scoreBoard release];
 	
     [mainViewController release];
     [window release];

@@ -22,7 +22,6 @@
 	FlipsideViewController *flipsideViewController;
 	DJ *myDJ;
 	Chord *myChord;
-	NSArray *aNoteStrings;
 	
 	Scorekeeper *scoreBoard;
 }
@@ -31,7 +30,6 @@
 @property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
 @property (nonatomic, retain) DJ *myDJ;
 @property (nonatomic, retain) Chord *myChord;
-@property (nonatomic, retain) NSArray *aNoteStrings;
 @property (nonatomic, retain) Scorekeeper *scoreBoard;
 
 - (void)generateQuestion; // An organizer function to put the main workflow in one centralized place
