@@ -330,7 +330,7 @@ NSInteger intSort(id num1, id num2, void *context)
 				[tempNoteStrings addObject:tempStr];
 			}
 		}
-		noteNames = [NSArray arrayWithArray:tempNoteStrings];
+		noteNames = [[NSArray alloc] initWithArray:tempNoteStrings];
 	}
 	return noteNames;
 }

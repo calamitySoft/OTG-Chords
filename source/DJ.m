@@ -229,7 +229,19 @@
 				[tempNoteStrings addObject:tempStr];
 			}
 		}
-		noteNames = [NSArray arrayWithArray:tempNoteStrings];
+		
+		/**** VERY IMPORTANT ****/
+		/*	In an accesssor method like this, it MUST be init like this.
+		 *	Do NOT use an autorelease method, i.e. [NSArray arrayWithArray:]
+		 *
+		 *	[self.noteNames objectAtIndex:[(NSNumber*)note unsignedIntegerValue]]
+		 *	in    -playNotes:_notes isArpeggiated:isArpeggiated    was crashing
+		 *	the app on play #2 :: the second time self.noteNames was accessed.
+		 *
+		 *	I thought for sure the if(noteNames==nil) would take care of
+		 *	problems like this, but it did not.
+		 */
+		noteNames = [[NSArray alloc] initWithArray:tempNoteStrings];
 	}
 	return noteNames;
 }
