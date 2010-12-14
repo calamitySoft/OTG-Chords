@@ -16,7 +16,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, myChord, aNoteStrings, enabledRoot, iCurRoot, iCurTarget, scoreBoard;
+@synthesize myDJ, myChord, aNoteStrings, enabledRoot, scoreBoard;
 
 #define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
 
@@ -155,8 +155,6 @@
 	[myChord release];
 	[aNoteStrings release];
 	[enabledRoot release];
-	[iCurRoot release];
-	[iCurTarget release];
 	
     [mainViewController release];
     [window release];
@@ -185,50 +183,6 @@
 - (void)arpeggiate{
 	[myDJ stop];
 	[myDJ playNotes:[myChord chord] isArpeggiated:![[Settings sharedSettings] isArpeggiated]];
-}
-
-
-/*
- *	selectNextRoot
- *
- *	Purpose:	
- */
-- (void)selectNextRoot {
-	NSLog(@"(Delegate) aNoteStrings count = %i", [aNoteStrings count]);
-	
-	
-	// Generate a valid root.
-	NSUInteger tempRootInt;
-	do {
-		tempRootInt = arc4random() % ([aNoteStrings count] - INTERVAL_RANGE);	// pick random note that'd be within our array
-	} while (![self rootIsEnabled:tempRootInt]);
-	[self setICurRoot:[NSNumber numberWithUnsignedInteger:tempRootInt]];	// once the loop finding is complete, use it
-	
-	
-	NSLog(@"(Delegate) selectNextRoot: %i (%@) (random() mod %i)",
-		  [iCurRoot intValue],
-		  [aNoteStrings objectAtIndex:[iCurRoot intValue]],
-		  [aNoteStrings count]);
-	[self selectNextTarget];
-}
-
-- (void)selectNextTarget {
-	// Generate a target interval.
-	NSUInteger tempInterval;	// we don't have to use an NSNumber here
-	do {
-		tempInterval = arc4random() % INTERVAL_RANGE;	// mod 13 for the size of an octave+1
-														// we're constraining from unison to octave
-	} while (![self intervalIsEnabled:tempInterval]);
-	
-	
-	// Add the temp dude to root to get the target
-	tempInterval += [iCurRoot intValue];
-	[self setICurTarget:[NSNumber numberWithUnsignedInteger:tempInterval]];
-	
-	
-	NSLog(@"(Delegate) selectNextTarget: %i (%@)",
-		  [iCurTarget intValue],
-		  [aNoteStrings objectAtIndex:[iCurTarget intValue]]);
 }
 
 - (void)setDifficulty:(char)theDiff {			
@@ -278,8 +232,8 @@
 /*
  *	submitAnswer:
  *
- *	Takes an interval, does scorekeeping, then tells the caller
- *	whether the interval was correct.
+ *	Takes a string, does scorekeeping, then tells the caller
+ *	whether the string was correct.
  *
  *	Usually methods that return something say it in the name,
  *	e.g. [NSString stringWithString:], but that'd be saying it
@@ -296,31 +250,6 @@
 		return FALSE;
 	}
 }
-
-
-#pragma mark -
-#pragma mark Interval Control
-
-- (int)getCurrentInterval {
-	return [iCurTarget intValue]-[iCurRoot intValue];
-}
-
-
-- (BOOL)intervalIsEnabled:(NSUInteger)distance {
-	// NSUInteger will always be >=0
-	if (distance >= INTERVAL_RANGE) {  // must be >= 0 or < range (because 0 is valid)
-		return false;
-	}
-	
-	if ( [[[Settings sharedSettings].enabledIntervals objectAtIndex:distance] boolValue] ) {
-		//		NSLog(@"The interval %d is enabled!",distance);
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
 
 
 

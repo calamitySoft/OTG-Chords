@@ -178,7 +178,7 @@ BOOL currentlyInGuessingState = YES;
 	[delegate replayNote];									// reinforce the sound while showing the answer
 	
 	// Show the answer.
-	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
+	[self displayInterval:[[delegate myChord] chordType]];
 }
 
 - (IBAction)nextNote:(id)sender {

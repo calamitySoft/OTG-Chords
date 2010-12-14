@@ -73,16 +73,12 @@
 
 - (void)generateQuestion;
 - (void)replayNote;
-- (int)getCurrentInterval;
 - (void)printDifficulty;
 - (void)arpeggiate;
-- (BOOL)intervalIsEnabled:(NSUInteger)distance;
 - (NSString *)getScoreString;
 - (BOOL)submitAnswer:(NSString*)chordTypeGuessed;
 
 @property (nonatomic, retain) Chord *myChord;
-@property (nonatomic, retain) NSNumber *iCurRoot;
-@property (nonatomic, retain) NSNumber *iCurTarget;
 @property (nonatomic, retain) NSString *enabledRoot;
 
 @end
