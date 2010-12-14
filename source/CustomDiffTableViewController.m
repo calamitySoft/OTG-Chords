@@ -110,12 +110,12 @@
 	[[Settings sharedSettings] setCurrentDifficulty:kCustomDifficulty];
 	
 	// If changing that value would leave zero
-	//    custom difficulty intervals enabled
+	//    custom difficulty chords enabled
 	if (![[Settings sharedSettings] setCustomDifficultyAtIndex:[switches indexOfObject:sender] 
 													   toValue:[sender isOn]] ) {		
 		UIAlertView *alert = [[UIAlertView alloc]
 							  initWithTitle: nil
-							  message: @"The Custom difficulty must have at least one interval enabled."
+							  message: @"The Custom difficulty must have at least one chord enabled."
 							  delegate: nil
 							  cancelButtonTitle:@"OK"
 							  otherButtonTitles:nil];
@@ -178,11 +178,11 @@
 - (NSArray *)dataSourceArray {
     if (dataSourceArray == nil) {
 
-		// Initialize dataSourceArray (interval names) from file
+		// Initialize dataSourceArray (chord names) from file
 		NSError *loadError;
 		dataSourceArray = (NSArray*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
 		if (!dataSourceArray) {
-			NSLog(@"(CustomDiffTableVC) Error in loading interval names: %@", [loadError domain]);
+			NSLog(@"(CustomDiffTableVC) Error in loading chord names: %@", [loadError domain]);
 		}
     }
     return dataSourceArray;

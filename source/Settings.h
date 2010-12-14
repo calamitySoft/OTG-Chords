@@ -19,7 +19,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 
 @interface Settings : NSObject {
-	NSArray			*intervalNames;
+	NSArray			*chordNames;
 	
 	BOOL			isArpeggiated;			// True if we're arpeggiating as a base
 	BOOL			allowInversions;		// YES if inversions are allowed
@@ -31,10 +31,10 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	NSArray			*hardDifficulty;		// NSArray of NSNumbers
 	NSMutableArray	*customDifficulty;		// NSArray of NSNumbers
 	NSString		*currentDifficulty;		// kEasyDifficulty, or kMediumDifficulty, etc
-	NSArray			*enabledIntervals;		// always points to easyDifficulty, or mediumDifficulty, etc
+	NSArray			*enabledChords;			// always points to easyDifficulty, or mediumDifficulty, etc
 }
 
-@property (nonatomic, retain, readonly) NSArray *intervalNames;
+@property (nonatomic, retain, readonly) NSArray *chordNames;
 
 @property (nonatomic) BOOL isArpeggiated;
 @property (nonatomic) BOOL allowInversions;
@@ -47,14 +47,14 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain) NSMutableArray *customDifficulty;
 @property (nonatomic, retain) NSString *currentDifficulty;
 
-@property (nonatomic, retain) NSArray *enabledIntervals;
+@property (nonatomic, retain) NSArray *enabledChords;
 
 
 
 + (Settings *)sharedSettings;	// necessary for singelton-ness. DO NOT REMOVE.
 
-- (NSArray*)enabledIntervalsByName;	// currently used in MainVC to show the correct answer options
-- (NSUInteger)numIntervalsEnabled;
+- (NSArray*)enabledChordsByName;	// currently used in MainVC to show the correct answer options
+- (NSUInteger)numChordsEnabled;
 
 // Change particulars of customDifficulty.
 // Used in CustomDiffTableViewController.

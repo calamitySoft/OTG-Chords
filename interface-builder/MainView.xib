@@ -334,14 +334,6 @@
 					<int key="connectionID">35</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">intervalLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="85445020"/>
-					</object>
-					<int key="connectionID">44</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">replayNote:</string>
 						<reference key="source" ref="501410880"/>
@@ -496,6 +488,14 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">165</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">chordLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="85445020"/>
+					</object>
+					<int key="connectionID">166</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -786,7 +786,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">165</int>
+			<int key="maxID">166</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -886,12 +886,12 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>chordLabel</string>
+							<string>chordReplayBtn</string>
 							<string>currentAnswerLabel</string>
 							<string>delegate</string>
 							<string>devHelpLabel</string>
 							<string>doneBarBtn</string>
-							<string>intervalLabel</string>
-							<string>intervalReplayBtn</string>
 							<string>nextOrGiveUpBarBtn</string>
 							<string>printDiffBtn</string>
 							<string>replayBarBtn</string>
@@ -903,11 +903,11 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
+							<string>UIButton</string>
+							<string>UILabel</string>
 							<string>id</string>
 							<string>UILabel</string>
 							<string>UIBarButtonItem</string>
-							<string>UILabel</string>
-							<string>UIButton</string>
 							<string>UIBarButtonItem</string>
 							<string>UIButton</string>
 							<string>UIBarButtonItem</string>
@@ -921,12 +921,12 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>chordLabel</string>
+							<string>chordReplayBtn</string>
 							<string>currentAnswerLabel</string>
 							<string>delegate</string>
 							<string>devHelpLabel</string>
 							<string>doneBarBtn</string>
-							<string>intervalLabel</string>
-							<string>intervalReplayBtn</string>
 							<string>nextOrGiveUpBarBtn</string>
 							<string>printDiffBtn</string>
 							<string>replayBarBtn</string>
@@ -937,6 +937,14 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">chordLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">chordReplayBtn</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">currentAnswerLabel</string>
 								<string key="candidateClassName">UILabel</string>
@@ -952,14 +960,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">doneBarBtn</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">intervalLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">intervalReplayBtn</string>
-								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">nextOrGiveUpBarBtn</string>

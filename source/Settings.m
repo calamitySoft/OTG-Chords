@@ -18,14 +18,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 
 - (id)init {
-	self.enabledIntervals = self.easyDifficulty;
+	self.enabledChords = self.easyDifficulty;
 	[self setIsArpeggiated:TRUE];
 	[self setAllowInversions:NO];
 	return self;
 }
 
 - (void)dealloc {
-	[intervalNames release];
+	[chordNames release];
 	[enabledRoot release];
 	[easyDifficulty release];
 	[mediumDifficulty release];
@@ -44,14 +44,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	
 	// read the _difficulty data from the plist
 	NSString *thePath = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];
-//	NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-//	NSDictionary *difficultyDict = [[NSDictionary alloc] initWithDictionary:[rawConfigDict objectForKey:_difficulty]];
 	NSDictionary *rawConfigDict = [NSDictionary dictionaryWithContentsOfFile:thePath];
 	NSDictionary *difficultyDict = [NSDictionary dictionaryWithDictionary:[rawConfigDict objectForKey:_difficulty]];
 	
-	for (NSUInteger i=0; i<[self.intervalNames count]; i++) {
-		NSString *intervalName = [self.intervalNames objectAtIndex:i];
-		Boolean isEnabled = [[difficultyDict valueForKey:intervalName] boolValue];		
+	for (NSUInteger i=0; i<[self.chordNames count]; i++) {
+		NSString *chordName = [self.chordNames objectAtIndex:i];
+		Boolean isEnabled = [[difficultyDict valueForKey:chordName] boolValue];		
 		[tempArray addObject:[NSNumber numberWithBool:isEnabled]];
 	}
 	
@@ -59,7 +57,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	return tempArray;
 }
 
-- (NSUInteger)numIntervalsEnabledInCustomDifficulty {
+- (NSUInteger)numChordsEnabledInCustomDifficulty {
 	NSUInteger numEnabled = 0;
 	NSEnumerator *e = [customDifficulty objectEnumerator];
 	NSNumber *obj;
@@ -76,41 +74,41 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 #pragma mark Inter-file Methods
 
 /*
- *	enabledIntervalsByName
+ *	enabledChordsByName
  *
  *	Purpose:	Currently used in MainVC to show the correct answer options
  *	Returns:	NSArray of NSStrings -- ONLY the ones enabled.
- *				[enabledIntervalsByName count] should == [numIntervalsEnabled]
+ *				[enabledChordsByName count] should == [numChordsEnabled]
  */
-- (NSArray*)enabledIntervalsByName {
-	NSMutableArray *enabledIntervalNames = [[NSMutableArray alloc] init];
-	for (NSUInteger i=0; i<[intervalNames count] && i<[enabledIntervals count]; i++) {
-		if ([[enabledIntervals objectAtIndex:i] boolValue]) {
-			[enabledIntervalNames addObject:[intervalNames objectAtIndex:i]];
+- (NSArray*)enabledChordsByName {
+	NSMutableArray *enabledChordNames = [[NSMutableArray alloc] init];
+	for (NSUInteger i=0; i<[chordNames count] && i<[enabledChords count]; i++) {
+		if ([[enabledChords objectAtIndex:i] boolValue]) {
+			[enabledChordNames addObject:[chordNames objectAtIndex:i]];
 		}
 	}
 	
-	// there should always be at least one interval enabled
+	// there should always be at least one chord enabled
 	// but this guards against 0 enabled anyway
-	if ([enabledIntervalNames count]==0) {
+	if ([enabledChordNames count]==0) {
 		return nil;
 	}
 	
-	[enabledIntervalNames autorelease];
+	[enabledChordNames autorelease];
 	
-	return (NSArray*)enabledIntervalNames;
+	return (NSArray*)enabledChordNames;
 }
 
 
 /*
- *	numIntervalsEnabled
+ *	numChordsEnabled
  *
- *	Purpose:	Exactly like the private numIntervalsEnabledInCustomDifficulty,
+ *	Purpose:	Exactly like the private numChordsEnabledInCustomDifficulty,
  *				except it's public and for current difficulty only.
  */
-- (NSUInteger)numIntervalsEnabled {
+- (NSUInteger)numChordsEnabled {
 	NSUInteger numEnabled = 0;
-	NSEnumerator *e = [enabledIntervals objectEnumerator];
+	NSEnumerator *e = [enabledChords objectEnumerator];
 	NSNumber *obj;
 	while (obj = [e nextObject]) {
 		if ([obj boolValue]) {
@@ -127,15 +125,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  *
  *	Purpose:	Allows other classes/views to change the settings one at a time.
  *	Arguments:	(NSUInteger)_index:	index of self.customDifficulty
- *				(BOOL)_value:		interval is ON/OFF
- *	Returns:	(BOOL):				1 if the change leaves >=1 interval enabled
- *									0 if there would be 0 intervals enabled
- *										(the last interval is NOT disabled)
+ *				(BOOL)_value:		chord is ON/OFF
+ *	Returns:	(BOOL):				1 if the change leaves >=1 chord enabled
+ *									0 if there would be 0 chords enabled
+ *										(the last chord is NOT disabled)
  */
 - (BOOL)setCustomDifficultyAtIndex:(NSUInteger)_index toValue:(BOOL)_value {
 	
-	// If making the change would mean 0 intervals enabled
-	if (_value == FALSE && [self numIntervalsEnabledInCustomDifficulty] == 1) {
+	// If making the change would mean 0 chords enabled
+	if (_value == FALSE && [self numChordsEnabledInCustomDifficulty] == 1) {
 		return 0;
 	}
 	
@@ -228,13 +226,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  *	lazy init of our vars
  */
 
-- (NSArray*)intervalNames {
-	if (intervalNames == nil) {
+- (NSArray*)chordNames {
+	if (chordNames == nil) {
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-		intervalNames = [rawConfigDict objectForKey:@"IntervalNames"];
+		chordNames = [rawConfigDict objectForKey:@"ChordNames"];
 	}
-	return intervalNames;
+	return chordNames;
 }
 
 #pragma mark -
@@ -294,27 +292,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	
 	// easy
 	if ([_difficulty isEqualToString:kEasyDifficulty]) {
-		[self setEnabledIntervals:self.easyDifficulty];
+		[self setEnabledChords:self.easyDifficulty];
 	}
 	
 	// medium
 	else if ([_difficulty isEqualToString:kMediumDifficulty]) {
-		[self setEnabledIntervals:self.mediumDifficulty];
+		[self setEnabledChords:self.mediumDifficulty];
 	}
 	
 	// hard
 	else if ([_difficulty isEqualToString:kHardDifficulty]) {
-		[self setEnabledIntervals:self.hardDifficulty];
+		[self setEnabledChords:self.hardDifficulty];
 	}
 	
 	// custom
 	else if ([_difficulty isEqualToString:kCustomDifficulty]) {
-		[self setEnabledIntervals:self.customDifficulty];
+		[self setEnabledChords:self.customDifficulty];
 	}
 	
 	// default
 	else {
-		[self setEnabledIntervals:self.easyDifficulty];
+		[self setEnabledChords:self.easyDifficulty];
 	}
 	
 	NSLog(@"(Settings)Difficulty is now %@", currentDifficulty);
@@ -322,15 +320,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 #pragma mark -
 
-- (NSArray*)enabledIntervals {
-	if (enabledIntervals == nil) {
-		enabledIntervals = self.easyDifficulty;
+- (NSArray*)enabledChords {
+	if (enabledChords == nil) {
+		enabledChords = self.easyDifficulty;
 	}
-	return enabledIntervals;
+	return enabledChords;
 }
 
-- (void)setEnabledIntervals:(NSArray*)_enabledIntervals; {
-	enabledIntervals = _enabledIntervals;
+- (void)setEnabledChords:(NSArray*)_enabledChords; {
+	enabledChords = _enabledChords;
 }
 
 

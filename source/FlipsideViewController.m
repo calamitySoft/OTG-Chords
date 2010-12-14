@@ -117,7 +117,7 @@
 	}
 }
 
-//	Allow the player to set his own set of intervals to practice.
+//	Allow the player to set his own set of chords to practice.
 //	Flips to a CustomDiffView.
 - (void)setCustomDifficulty {
 	
@@ -131,7 +131,7 @@
 }
 
 //	Sets indication of the current difficulty, and of the text view
-//		explaining the currently tested intervals.
+//		explaining the currently tested chords.
 //	Side effect: This will invoke [setDifficulty:] (above), due to setting the
 //		selection. (~It doesn't only respond to hardware UI events.)
 - (void)setDifficultyDisplay {
@@ -161,15 +161,15 @@
 		if ([[selectedDifficulty objectAtIndex:i] boolValue]) {
 			tempTestingString = first ?
 			[tempTestingString stringByAppendingFormat:@"%@",
-			 [self.abbrIntervalNames objectAtIndex:i]] :
+			 [self.abbrChordNames objectAtIndex:i]] :
 			[tempTestingString stringByAppendingFormat:@", %@",
-			 [self.abbrIntervalNames objectAtIndex:i]];
+			 [self.abbrChordNames objectAtIndex:i]];
 			first = FALSE;
 		}
 	}
 	[selectedDifficulty release];
 	
-	[intervalSettingsDisplay setText:tempTestingString];
+	[chordSettingsDisplay setText:tempTestingString];
 }
 
 
@@ -219,13 +219,13 @@
  *	lazy init of our vars
  */
 
-- (NSArray*)abbrIntervalNames {
-	if (abbrIntervalNames == nil) {
+- (NSArray*)abbrChordNames {
+	if (abbrChordNames == nil) {
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-		abbrIntervalNames = [rawConfigDict objectForKey:@"AbbrIntervalNames"];
+		abbrChordNames = [rawConfigDict objectForKey:@"AbbrIntervalNames"];
 	}
-	return abbrIntervalNames;
+	return abbrChordNames;
 }
 
 @end

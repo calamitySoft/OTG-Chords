@@ -18,8 +18,6 @@
 @synthesize mainViewController;
 @synthesize myDJ, myChord, scoreBoard;
 
-#define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
-
 #pragma mark -
 #pragma mark Application lifecycle
 
@@ -37,7 +35,7 @@
 	
 	UIAlertView *alert = [[UIAlertView alloc]
 						  initWithTitle: nil
-						  message: @"Use the bottom half to select\nyour interval answer."
+						  message: @"Use the bottom half to select\nyour chord answer."
 						  delegate: nil
 						  cancelButtonTitle:@"OK"
 						  otherButtonTitles:nil];
@@ -182,7 +180,7 @@
 	NSLog(@"** cDifficulty: %@\n", [[Settings sharedSettings] currentDifficulty]);
 	NSLog(@"** index\tenabled?");
 	int i=0;
-	for (NSNumber *num in [[Settings sharedSettings] enabledIntervals]) {
+	for (NSNumber *num in [[Settings sharedSettings] enabledChords]) {
 		NSLog(@"** %i\t\t%i", i, [num intValue]);
 		i++;
 	}

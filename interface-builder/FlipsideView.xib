@@ -10284,14 +10284,6 @@ AAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">intervalSettingsDisplay</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="820666327"/>
-					</object>
-					<int key="connectionID">91</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">isArpeggiatedSwitch</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="197986030"/>
@@ -10315,6 +10307,14 @@ AAEAAQABA</bytes>
 						<int key="IBEventType">13</int>
 					</object>
 					<int key="connectionID">127</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">chordSettingsDisplay</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="820666327"/>
+					</object>
+					<int key="connectionID">128</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -10601,7 +10601,7 @@ AAEAAQABA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">127</int>
+			<int key="maxID">128</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -10674,9 +10674,9 @@ AAEAAQABA</bytes>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>allowInversionsSwitch</string>
+							<string>chordSettingsDisplay</string>
 							<string>delegate</string>
 							<string>difficultySegmentedControl</string>
-							<string>intervalSettingsDisplay</string>
 							<string>isArpeggiatedSwitch</string>
 							<string>rootName</string>
 							<string>switchRootLeftBtn</string>
@@ -10685,9 +10685,9 @@ AAEAAQABA</bytes>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UISwitch</string>
+							<string>UITextView</string>
 							<string>id</string>
 							<string>UISegmentedControl</string>
-							<string>UITextView</string>
 							<string>UISwitch</string>
 							<string>UILabel</string>
 							<string>UIButton</string>
@@ -10699,9 +10699,9 @@ AAEAAQABA</bytes>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>allowInversionsSwitch</string>
+							<string>chordSettingsDisplay</string>
 							<string>delegate</string>
 							<string>difficultySegmentedControl</string>
-							<string>intervalSettingsDisplay</string>
 							<string>isArpeggiatedSwitch</string>
 							<string>rootName</string>
 							<string>switchRootLeftBtn</string>
@@ -10714,16 +10714,16 @@ AAEAAQABA</bytes>
 								<string key="candidateClassName">UISwitch</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">chordSettingsDisplay</string>
+								<string key="candidateClassName">UITextView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">delegate</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">difficultySegmentedControl</string>
 								<string key="candidateClassName">UISegmentedControl</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">intervalSettingsDisplay</string>
-								<string key="candidateClassName">UITextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">isArpeggiatedSwitch</string>

@@ -28,22 +28,22 @@ BOOL currentlyInGuessingState = YES;
 	[super viewDidLoad];
 	
 	
-	// Initialize intervalStrings from file
+	// Initialize chordStrings from file
 	NSError *loadError;
-	intervalStrings = (NSArray*) [LoadFromFile objectForKey:@"IntervalNames" error:&loadError];
-	if (!intervalStrings) {
-		NSLog(@"(MainVC) Error in loading interval names: %@", [loadError domain]);
+	chordStrings = (NSArray*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
+	if (!chordStrings) {
+		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
 	}
 	
 	
-	NSUInteger randomAnswer;
-	do {
-		// get a new random answer in integer form
-		// while that answer is not enabled
-		randomAnswer = arc4random()%[[[Settings sharedSettings] enabledIntervalsByName] count];
-	} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
+	NSUInteger randomAnswer = 0;
+//	do {
+//		// get a new random answer in integer form
+//		// while that answer is not enabled
+//		randomAnswer = arc4random()%[[[Settings sharedSettings] enabledChordsByName] count];
+//	} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 	
-	[self setOptionTextToIntervalIndex:randomAnswer];	// coming back from settings screen, reset answer option
+	[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
 	[self resetArrowVisibility];
 	
 	
@@ -57,7 +57,7 @@ BOOL currentlyInGuessingState = YES;
 						   [[Settings sharedSettings] enabledRoot]]];
 	
 	// Make sure we have the initial difficulty set
-	oldDifficulty = [[Settings sharedSettings] enabledIntervals];
+	oldDifficulty = [[Settings sharedSettings] enabledChords];
 
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];
@@ -99,23 +99,23 @@ BOOL currentlyInGuessingState = YES;
 	//		Go to the next question.
 	//		Reset answer picker.
 	//
-	if (![oldDifficulty isEqualToArray:[[Settings sharedSettings] enabledIntervals]]) {
+	if (![oldDifficulty isEqualToArray:[[Settings sharedSettings] enabledChords]]) {
 
 		// store the old difficulty so we know if we need to get a new quesiton when we come back
 		//		i'm not sure why this works.  i would've thought it'd simply copy the pointer, making
 		//		the two array always equal
-		oldDifficulty = [[Settings sharedSettings] enabledIntervals];
+		oldDifficulty = [[Settings sharedSettings] enabledChords];
 		
 		[self goToNextQuestion];
 		
-		NSUInteger randomAnswer;
-		do {
-			// get a new random answer in integer form
-			// while that answer is not enabled
-			randomAnswer = arc4random()%[[[Settings sharedSettings] enabledIntervalsByName] count];
-		} while (![[[[Settings sharedSettings] enabledIntervals] objectAtIndex:randomAnswer] boolValue]);
+		NSUInteger randomAnswer = 0;
+//		do {
+//			// get a new random answer in integer form
+//			// while that answer is not enabled
+//			randomAnswer = arc4random()%[[[Settings sharedSettings] enabledChordsByName] count];
+//		} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 		
-		[self setOptionTextToIntervalIndex:randomAnswer];	// coming back from settings screen, reset answer option
+		[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
 		
 		[self resetArrowVisibility];
 	}
@@ -143,7 +143,7 @@ BOOL currentlyInGuessingState = YES;
 	// store the old difficulty so we know if we need to get a new quesiton when we come back
 	//		i'm not sure why this works.  i would've thought it'd simply copy the pointer, making
 	//		the two array always equal
-	oldDifficulty = [[Settings sharedSettings] enabledIntervals];
+	oldDifficulty = [[Settings sharedSettings] enabledChords];
 	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
@@ -157,7 +157,7 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)showInstructions:(id)sender{
 	UIAlertView *alert = [[UIAlertView alloc]
 						  initWithTitle: nil
-						  message: @"Use the bottom half to select\nyour interval answer."
+						  message: @"Use the bottom half to select\nyour chord answer."
 						  delegate: nil
 						  cancelButtonTitle:@"OK"
 						  otherButtonTitles:nil];
@@ -178,7 +178,7 @@ BOOL currentlyInGuessingState = YES;
 	[delegate replayNote];									// reinforce the sound while showing the answer
 	
 	// Show the answer.
-	[self displayInterval:[[delegate myChord] chordType]];
+	[self displayChord:[[delegate myChord] chordType]];
 }
 
 - (IBAction)nextNote:(id)sender {
@@ -205,12 +205,12 @@ BOOL currentlyInGuessingState = YES;
 	
 	
 	// Show the answer.
-	[self displayInterval:[[delegate myChord] chordType]];
+	[self displayChord:[[delegate myChord] chordType]];
 
 	
 	// Show whether the user got it right.
-	NSString *tempAnswerString = [[[Settings sharedSettings] enabledIntervalsByName] objectAtIndex:intervalPickerIndex];
-	if ([delegate submitAnswer:tempAnswerString]) {		// if our choice matches the interval being played
+	NSString *tempAnswerString = [[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordPickerIndex];
+	if ([delegate submitAnswer:tempAnswerString]) {		// if our choice matches the chord being played
 		[scoreTextItem setTitle:@"Correct!"];
 		[scoreBar setTintColor:[UIColor colorWithRed:0 green:0.92 blue:0 alpha:1]];	// slightly dark shade of green
 	}
@@ -226,9 +226,9 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)switchAnswerLeft:(id)sender {
 	
 	// if we're currently after the first one
-	if (intervalPickerIndex > 0) {
-		intervalPickerIndex--;
-		[self setOptionTextToIntervalIndex:intervalPickerIndex];
+	if (chordPickerIndex > 0) {
+		chordPickerIndex--;
+		[self setOptionTextToChordIndex:chordPickerIndex];
 	}
 	[self resetArrowVisibility];		// outside the IF just in case
 }
@@ -236,9 +236,9 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)switchAnswerRight:(id)sender {
 	
 	// if we're currently before the last one
-	if (intervalPickerIndex < [[Settings sharedSettings] numIntervalsEnabled]-1) {
-		intervalPickerIndex++;
-		[self setOptionTextToIntervalIndex:intervalPickerIndex];
+	if (chordPickerIndex < [[Settings sharedSettings] numChordsEnabled]-1) {
+		chordPickerIndex++;
+		[self setOptionTextToChordIndex:chordPickerIndex];
 	}
 	[self resetArrowVisibility];		// outside the IF just in case
 }
@@ -246,13 +246,13 @@ BOOL currentlyInGuessingState = YES;
 - (void)resetArrowVisibility {
 	
 	// if at first answer
-	if (intervalPickerIndex == 0) {
+	if (chordPickerIndex == 0) {
 		[switchAnswerLeftBtn setHidden:TRUE];
 		[switchAnswerRightBtn setHidden:FALSE];
 	}
 	
 	// if at last answer
-	else if (intervalPickerIndex >= [[Settings sharedSettings] numIntervalsEnabled]-1) {
+	else if (chordPickerIndex >= [[Settings sharedSettings] numChordsEnabled]-1) {
 		[switchAnswerLeftBtn setHidden:FALSE];
 		[switchAnswerRightBtn setHidden:TRUE];
 	}
@@ -264,17 +264,17 @@ BOOL currentlyInGuessingState = YES;
 	}
 }
 
-- (void)setOptionTextToIntervalIndex:(NSUInteger)intervalIndex {
-	intervalPickerIndex = intervalIndex;		// we won't assume that it's been set
-	[currentAnswerLabel setText:[[[Settings sharedSettings] enabledIntervalsByName] objectAtIndex:intervalIndex]];
+- (void)setOptionTextToChordIndex:(NSUInteger)chordIndex {
+	chordPickerIndex = chordIndex;		// we won't assume that it's been set
+	[currentAnswerLabel setText:[[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordIndex]];
 }
 
 
 #pragma mark -
 #pragma mark View Controlling
 
-- (void)displayInterval:(NSString *)theInterval {
-	[intervalLabel setText:theInterval];
+- (void)displayChord:(NSString *)theChord {
+	[chordLabel setText:theChord];
 }
 
 - (void)checkIsArpeggiatedForGiveUpBtn {
@@ -300,11 +300,11 @@ BOOL currentlyInGuessingState = YES;
 	[scoreTextItem setTitle:[self.delegate getScoreString]];	// set score display in top bar
 	[scoreBar setTintColor:[UIColor blackColor]];	// set the top bar color back to black
 	
-	// Pick and play new interval.
+	// Pick and play new chord.
 	[delegate generateQuestion];
 	
-	// Indicate new interval.
-	[self displayInterval:@"Listen"];
+	// Indicate new chord.
+	[self displayChord:@"Listen"];
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left

@@ -8,7 +8,7 @@
 
 //
 //	Usage:
-//	NSObject *obj = [LoadFromFile objectForKey:@"IntervalNames" error:outError];
+//	NSObject *obj = [LoadFromFile objectForKey:@"ChordNames" error:outError];
 //
 //	error	-2	object for that key does not exist
 //			-1	key == nil
