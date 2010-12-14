@@ -153,7 +153,7 @@
 	
 	// Play chorded
 	else {		
-		NSTimeInterval shortStartDelay = 0.01;				// (seconds)
+		NSTimeInterval shortStartDelay = 0.1;				// (seconds)
 		NSTimeInterval now = [[self.noteObjectsToPlay objectAtIndex:0] wholeSample].deviceCurrentTime;
 		NSTimeInterval playTime = now + shortStartDelay;
 		BOOL retVal = YES;
