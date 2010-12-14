@@ -283,6 +283,16 @@ NSInteger intSort(id num1, id num2, void *context)
 
 
 
+
+#pragma mark -
+#pragma mark Helpers
+
+- (void)echo {
+	NSLog(@"Hello from Chord");
+}
+
+
+
 #pragma mark -
 #pragma mark Accessor Methods
 
