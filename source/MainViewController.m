@@ -210,8 +210,7 @@ BOOL currentlyInGuessingState = YES;
 	
 	// Show whether the user got it right.
 	NSString *tempAnswerString = [[[Settings sharedSettings] enabledIntervalsByName] objectAtIndex:intervalPickerIndex];
-	NSUInteger tempAnswerIndex = [intervalStrings indexOfObject:tempAnswerString];
-	if ([delegate submitAnswer:tempAnswerIndex]) {		// if our choice matches the interval being played
+	if ([delegate submitAnswer:tempAnswerString]) {		// if our choice matches the interval being played
 		[scoreTextItem setTitle:@"Correct!"];
 		[scoreBar setTintColor:[UIColor colorWithRed:0 green:0.92 blue:0 alpha:1]];	// slightly dark shade of green
 	}

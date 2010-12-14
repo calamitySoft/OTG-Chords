@@ -51,7 +51,7 @@
 - (void)selectNextTarget;	// Sets iCurTarget for the index of the target note
 - (void)printDifficulty;	// lets us see the difficulty settings
 - (NSString *)getScoreString;	// Generates the score string to be handed off to MainVC
-- (BOOL)submitAnswer:(NSUInteger)intervalGuessed;	// determines if answer is correct for MainVC; appropriately Scorekeeps
+- (BOOL)submitAnswer:(NSString*)chordTypeGuessed;	// determines if answer is correct for MainVC; appropriately Scorekeeps
 
 - (int)getCurrentInterval;	// returns an int of the interval being played
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;	// intervals enabled are dependent on difficulty setting

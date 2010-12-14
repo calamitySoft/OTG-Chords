@@ -285,8 +285,8 @@
  *	e.g. [NSString stringWithString:], but that'd be saying it
  *	doesn't do the scorekeeping.  Stuck with more general name.
  */
-- (BOOL)submitAnswer:(NSUInteger)intervalGuessed{
-	if ([self getCurrentInterval] == intervalGuessed) {	// if it's the right answer
+- (BOOL)submitAnswer:(NSString*)chordTypeGuessed{
+	if ([[myChord chordType] isEqualToString:chordTypeGuessed]) {	// if it's the right answer
 		[self.scoreBoard success];
 		return TRUE;
 	}

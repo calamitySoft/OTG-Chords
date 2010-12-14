@@ -78,7 +78,7 @@
 - (void)arpeggiate;
 - (BOOL)intervalIsEnabled:(NSUInteger)distance;
 - (NSString *)getScoreString;
-- (BOOL)submitAnswer:(NSUInteger)intervalGuessed;
+- (BOOL)submitAnswer:(NSString*)chordTypeGuessed;
 
 @property (nonatomic, retain) Chord *myChord;
 @property (nonatomic, retain) NSNumber *iCurRoot;
