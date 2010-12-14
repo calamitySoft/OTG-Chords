@@ -53,7 +53,5 @@
 
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
-- (void)setEnabledRoot:(NSString*)str;	// passes along to AppDelegate
-- (NSString*)enabledRoot;	// gets from AppDelegate
 @end
 

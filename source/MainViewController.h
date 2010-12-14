@@ -62,9 +62,6 @@
 
 - (IBAction)printDifficulty:(id)sender;
 
-- (void)setEnabledRoot:(NSString*)str;	// passes along to AppDelegate
-- (NSString*)enabledRoot;	// gets from AppDelegate
-
 @end
 
 
@@ -79,6 +76,5 @@
 - (BOOL)submitAnswer:(NSString*)chordTypeGuessed;
 
 @property (nonatomic, retain) Chord *myChord;
-@property (nonatomic, retain) NSString *enabledRoot;
 
 @end

@@ -23,10 +23,6 @@
 	DJ *myDJ;
 	Chord *myChord;
 	NSArray *aNoteStrings;
-	NSString *enabledRoot;		// ** This is a string so it can be compared to any octave. **
-								// Maybe it could be done with some ints and math, but then the ordering of
-								// Setting's list (seen by user) would be bound to aNoteStrings (programmatic).
-								// That'd mean loss of UI/data independence.  :(  i think...]
 	
 	Scorekeeper *scoreBoard;
 }
@@ -36,7 +32,6 @@
 @property (nonatomic, retain) DJ *myDJ;
 @property (nonatomic, retain) Chord *myChord;
 @property (nonatomic, retain) NSArray *aNoteStrings;
-@property (nonatomic, retain) NSString *enabledRoot;
 @property (nonatomic, retain) Scorekeeper *scoreBoard;
 
 - (void)generateQuestion; // An organizer function to put the main workflow in one centralized place
@@ -48,8 +43,6 @@
 - (BOOL)submitAnswer:(NSString*)chordTypeGuessed;	// determines if answer is correct for MainVC; appropriately Scorekeeps
 
 - (void)arpeggiate;	// Plays both the root and the target
-
-- (BOOL)rootIsEnabled:(NSUInteger)root;	// root enabled is dependent on the whim of the user
 
 
 @end

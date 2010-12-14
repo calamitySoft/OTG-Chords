@@ -16,7 +16,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, myChord, aNoteStrings, enabledRoot, scoreBoard;
+@synthesize myDJ, myChord, aNoteStrings, scoreBoard;
 
 #define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
 
@@ -92,10 +92,6 @@
 	[noteNames release];
 	[noteOctaves release];
 	
-	
-	/*** Set default root - any. ***/
-	[self setEnabledRoot:@"any"];
-	
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -154,7 +150,6 @@
 	[myDJ release];
 	[myChord release];
 	[aNoteStrings release];
-	[enabledRoot release];
 	
     [mainViewController release];
     [window release];
@@ -251,28 +246,6 @@
 	}
 }
 
-
-
-#pragma mark -
-#pragma mark Root Control
-
-//	Is aNoteStrings[root] an allowed root to use?
-//	use enabledRoot to determine
-- (BOOL)rootIsEnabled:(NSUInteger)root {
-	
-	// if ANY root is acceptable
-	if ([enabledRoot isEqualToString:@"any"]) { return TRUE; }
-	
-	// if enabledRoot is specified, check if given root is valid
-	else {
-		NSString *tempRootStr = [aNoteStrings objectAtIndex:root];		// convert rand() to usable str for checking
-																		// removes octave num from the end, so any note that's, say, "C" will do.
-		if ([enabledRoot isEqualToString:[tempRootStr substringToIndex:[tempRootStr length]-1]])
-			return TRUE;
-	}
-	
-	return FALSE;
-}
 
 
 @end

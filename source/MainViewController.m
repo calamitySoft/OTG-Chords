@@ -54,7 +54,7 @@ BOOL currentlyInGuessingState = YES;
 						   [[delegate myChord] rootName],
 						   [[delegate myChord] chordType],
 						   [[Settings sharedSettings] currentDifficulty],
-						   [self enabledRoot]]];
+						   [[Settings sharedSettings] enabledRoot]]];
 	
 	// Make sure we have the initial difficulty set
 	oldDifficulty = [[Settings sharedSettings] enabledIntervals];
@@ -312,27 +312,13 @@ BOOL currentlyInGuessingState = YES;
 						   [[delegate myChord] rootName],
 						   [[delegate myChord] chordType],
 						   [[Settings sharedSettings] currentDifficulty],
-						   [self enabledRoot]]];
+						   [[Settings sharedSettings] enabledRoot]]];
 }
 
 #pragma mark -
 
 - (IBAction)printDifficulty:(id)sender {
 	[delegate printDifficulty];
-}
-
-
-#pragma mark -
-#pragma mark Wrapper
-
-// Pass along to AppDelegate
-- (void)setEnabledRoot:(NSString*)str {
-	[delegate setEnabledRoot:str];
-}
-
-// Gets from AppDelegate
-- (NSString*)enabledRoot {
-	return [delegate enabledRoot];
 }
 
 @end

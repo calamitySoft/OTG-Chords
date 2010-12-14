@@ -33,7 +33,7 @@
 	noteNames = [[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
 				 @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
 	// intermediate str->int step means this list can be in whatever order we want
-	NSString *currentRootSettingStr = [delegate enabledRoot];
+	NSString *currentRootSettingStr = [[Settings sharedSettings] enabledRoot];
 	[self setCurrentRootSetting:[noteNames indexOfObject:currentRootSettingStr]];
 	[self updateRootDisplay];
 }
@@ -179,14 +179,14 @@
 - (IBAction)switchRootLeft {
 	[self setCurrentRootSetting:
 	 currentRootSetting>0 ? currentRootSetting-1 : currentRootSetting];				// set local var for storage
-	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
+	[[Settings sharedSettings] setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];	// tell AppDelegate
 	[self updateRootDisplay];	// update display
 }
 
 - (IBAction)switchRootRight {
 	[self setCurrentRootSetting:
 	 currentRootSetting<[noteNames count]-1 ? currentRootSetting+1 : currentRootSetting];	// set local var for storage
-	[self.delegate setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];		// tell AppDelegate
+	[[Settings sharedSettings] setEnabledRoot:[noteNames objectAtIndex:currentRootSetting]];		// tell AppDelegate
 	[self updateRootDisplay];	// update display
 }
 

@@ -8,12 +8,13 @@
 
 #import "Settings.h"
 #import "SynthesizeSingleton.h"
+#import "LoadFromFile.h"
 
 @implementation Settings
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NOT REMOVE.
 
-@synthesize currentDifficulty, isArpeggiated, allowInversions;
+@synthesize currentDifficulty, isArpeggiated, allowInversions, enabledRoot;
 
 
 - (id)init {
@@ -25,6 +26,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (void)dealloc {
 	[intervalNames release];
+	[enabledRoot release];
 	[easyDifficulty release];
 	[mediumDifficulty release];
 	[hardDifficulty release];
@@ -233,6 +235,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		intervalNames = [rawConfigDict objectForKey:@"IntervalNames"];
 	}
 	return intervalNames;
+}
+
+#pragma mark -
+
+- (NSString*)enabledRoot {
+	if (enabledRoot == nil) {
+		NSString *temp = [[NSString alloc] initWithString:@"any"];
+		[self setEnabledRoot:temp];
+		[temp release];
+	}
+	return enabledRoot;
 }
 
 #pragma mark -
