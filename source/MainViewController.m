@@ -50,8 +50,9 @@ BOOL currentlyInGuessingState = YES;
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%@,\t\t%@",		// help a dev out
-						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@ %@,\t\t%@,\t\t%@",		// help a dev out
+						   [[delegate myChord] rootName],
+						   [[delegate myChord] chordType],
 						   [[Settings sharedSettings] currentDifficulty],
 						   [self enabledRoot]]];
 	
@@ -204,7 +205,7 @@ BOOL currentlyInGuessingState = YES;
 	
 	
 	// Show the answer.
-	[self displayInterval:[intervalStrings objectAtIndex:[delegate getCurrentInterval]]];
+	[self displayInterval:[[delegate myChord] chordType]];
 
 	
 	// Show whether the user got it right.
@@ -308,8 +309,9 @@ BOOL currentlyInGuessingState = YES;
 	
 	// REMOVE ME before launch
 	// Show the answer in the top left
-	[devHelpLabel setText:[NSString stringWithFormat:@"%@,\t\t%@,\t\t%@",		// help a dev out
-						   [intervalStrings objectAtIndex:[delegate getCurrentInterval]],
+	[devHelpLabel setText:[NSString stringWithFormat:@"%@ %@,\t\t%@,\t\t%@",		// help a dev out
+						   [[delegate myChord] rootName],
+						   [[delegate myChord] chordType],
 						   [[Settings sharedSettings] currentDifficulty],
 						   [self enabledRoot]]];
 }

@@ -168,8 +168,6 @@
 
 - (void)generateQuestion{
 	NSLog(@"**** New Question ****");
-//	[self selectNextRoot];
-//	[self replayNote];
 	
 	NSArray *chordToPlay = [myChord createChord];
 	if (chordToPlay == nil) {
@@ -180,14 +178,11 @@
 }	
 
 - (void)replayNote {
-//	NSLog(@"(Delegate) replayNote: root = %d, tar = %d", [iCurRoot intValue], [iCurTarget intValue]);
-//	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
 	[myDJ stop];
 	[myDJ playNotes:[myChord chord] isArpeggiated:[[Settings sharedSettings] isArpeggiated]];
 }
 
 - (void)arpeggiate{
-//	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
 	[myDJ stop];
 	[myDJ playNotes:[myChord chord] isArpeggiated:![[Settings sharedSettings] isArpeggiated]];
 }

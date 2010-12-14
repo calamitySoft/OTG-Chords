@@ -7,6 +7,7 @@
 //
 
 #import "FlipsideViewController.h"
+#import "Chord.h"
 
 @protocol ChordsApplicationDelegate;
 
@@ -79,6 +80,7 @@
 - (NSString *)getScoreString;
 - (BOOL)submitAnswer:(NSUInteger)intervalGuessed;
 
+@property (nonatomic, retain) Chord *myChord;
 @property (nonatomic, retain) NSNumber *iCurRoot;
 @property (nonatomic, retain) NSNumber *iCurTarget;
 @property (nonatomic, retain) NSString *enabledRoot;
