@@ -77,19 +77,23 @@ NSInteger intSort(id num1, id num2, void *context)
  */
 - (NSArray*)createChord {
 	
-	NSArray *retArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:19],
-						 [NSNumber numberWithInt:24], [NSNumber numberWithInt:28], nil];
-	[self setChord:retArray];
-	return self.chord;
+//	NSArray *retArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:19],
+//						 [NSNumber numberWithInt:24], [NSNumber numberWithInt:28], nil];
+//	[self setChord:retArray];
+//	return self.chord;
 	
 	// Pick a chord type
 	NSArray *chordShape = [self chooseType];
 	if (chordShape == nil) {
 		return nil;
 	}
+	for (int i=0; i<[chordShape count]; i++)
+		NSLog(@"chordShape[%i]==%@", i, [chordShape objectAtIndex:i]);
+
 	
 	// Pick and apply inversions
 	chordShape = [self chooseInversionForChord:chordShape];
+	
 	
 	// Pick and apply root
 	NSArray *newChord = [self chooseRootForChord:chordShape];
@@ -136,7 +140,7 @@ NSInteger intSort(id num1, id num2, void *context)
 	// Initialize chordNames from file
 	NSError *loadError;
 	NSArray *chordNames = (NSArray*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
-	if (!chordNames) {
+	if (chordNames == nil) {
 		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
 		return nil;
 	}
@@ -163,7 +167,6 @@ NSInteger intSort(id num1, id num2, void *context)
 	// make chordAsInts an NSArray
 //	NSArray *retArray = [NSArray arrayWithArray:(NSArray*)chordAsInts];
 	NSArray *retArray = [[NSArray alloc] initWithArray:chordAsInts];
-	[chordAsInts release];
 	
 	return retArray;
 }
