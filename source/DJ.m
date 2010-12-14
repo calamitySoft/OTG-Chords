@@ -81,6 +81,10 @@
  *	Purpose:	Plays from self.noteObjectsToPlay
  */
 - (BOOL)playNoteAtIndex:(NSUInteger)_index {
+	if (self.noteObjectsToPlay == nil || [self.noteObjectsToPlay count] == 0) {
+		return NO;
+	}
+	
 	Note *noteToPlay = [self.noteObjectsToPlay objectAtIndex:_index];
 	return [noteToPlay playNote:@"W"];
 }
@@ -100,6 +104,10 @@
  *										init a Note with that name
  */
 -(BOOL)playNotes:(NSArray*)_notes isArpeggiated:(BOOL)isArpeggiated {
+	
+	if (_notes == nil) {
+		return NO;
+	}
 	
 	// If arg theNotes contains NSNumbers (not NSStrings)
 	// convert them to NSStrings

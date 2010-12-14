@@ -274,7 +274,11 @@ BOOL currentlyInGuessingState = YES;
 #pragma mark View Controlling
 
 - (void)displayChord:(NSString *)theChord {
-	[chordLabel setText:theChord];
+	if (theChord == nil) {
+		[chordLabel setText:@"Error: no chord"];
+	} else {
+		[chordLabel setText:theChord];
+	}
 }
 
 - (void)checkIsArpeggiatedForGiveUpBtn {
