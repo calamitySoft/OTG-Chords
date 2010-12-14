@@ -223,7 +223,7 @@
 	if (abbrChordNames == nil) {
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
-		abbrChordNames = [rawConfigDict objectForKey:@"AbbrIntervalNames"];
+		abbrChordNames = [rawConfigDict objectForKey:@"AbbrChordNames"];
 	}
 	return abbrChordNames;
 }

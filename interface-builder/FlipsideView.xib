@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="104"/>
+			<integer value="114"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -152,7 +152,7 @@
 							<object class="IBUITextView" id="820666327">
 								<reference key="NSNextResponder" ref="132840790"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 77}, {280, 59}}</string>
+								<string key="NSFrame">{{20, 77}, {280, 76}}</string>
 								<reference key="NSSuperview" ref="132840790"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="582401037">
 									<int key="NSColorSpace">3</int>
@@ -164,7 +164,7 @@
 									<integer value="256" key="IBUIAccessibilityTraits"/>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">&lt;testing intervals&gt; sdlf  lksad sflkddskld s sd flskd dkl dslk </string>
+								<string key="IBUIText">&lt;testing intervals&gt; sdlf  lksad sflkddskld s sd flskd dkl dslk asdf sdkfsd</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
@@ -176,7 +176,7 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 63.5}, {320, 143}}</string>
+						<string key="NSFrame">{{0, 53}, {320, 153}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="IBUIBackgroundColor" ref="582401037"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -10343,9 +10343,9 @@ AAEAAQABA</bytes>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="871675769"/>
-							<reference ref="132840790"/>
 							<reference ref="259319153"/>
 							<reference ref="116063664"/>
+							<reference ref="132840790"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -10539,7 +10539,7 @@ AAEAAQABA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwzkAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw0yAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
