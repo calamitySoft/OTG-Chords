@@ -181,7 +181,7 @@
 	NSLog(@"** index\tenabled?");
 	int i=0;
 	for (NSNumber *num in [[Settings sharedSettings] enabledChords]) {
-		NSLog(@"** %i\t\t%i", i, [num intValue]);
+		NSLog(@"** %@\t\t%i", [[[Settings sharedSettings] chordNames] objectAtIndex:i], [num intValue]);
 		i++;
 	}
 }

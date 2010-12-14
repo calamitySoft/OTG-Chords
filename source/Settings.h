@@ -55,6 +55,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 - (NSArray*)enabledChordsByName;	// currently used in MainVC to show the correct answer options
 - (NSUInteger)numChordsEnabled;
+- (BOOL)chordIsEnabled:(NSString*)_chordName;
 
 // Change particulars of customDifficulty.
 // Used in CustomDiffTableViewController.

@@ -120,6 +120,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 
+- (BOOL)chordIsEnabled:(NSString*)_chordName {
+	NSString *str;
+	for (str in [self enabledChordsByName]) {
+		if ([str isEqualToString:_chordName]) {
+			return YES;
+		}
+	}
+	return NO;
+}
+
+
 /*
  *	setCustomDifficultyAtIndex: toValue:
  *

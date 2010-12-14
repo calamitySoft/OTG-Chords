@@ -141,13 +141,13 @@ NSInteger intSort(id num1, id num2, void *context)
 	}
 	
 	
-	
-	// Settings doesn't have the difficulties atm.
-	// work a settings check in later
-	
 	// Choose a type
-	NSUInteger randomIndex = arc4random() % [chordNames count];
-	NSString *chosenType = [chordNames objectAtIndex:randomIndex];
+	// Settings check
+	NSString *chosenType;
+	do {
+		NSUInteger randomIndex = arc4random() % [chordNames count];
+		chosenType = [chordNames objectAtIndex:randomIndex];
+	} while (![[Settings sharedSettings] chordIsEnabled:chosenType]);
 	possibleType = chosenType;
 	
 	
