@@ -132,118 +132,102 @@
 	</array>
 	<key>EasyDifficulty</key>
 	<dict>
-		<key>Unison</key>
+		<key>Major</key>
 		<string>1</string>
-		<key>Minor Second</key>
+		<key>Minor</key>
 		<string>0</string>
-		<key>Major Second</key>
+		<key>Augmented</key>
 		<string>0</string>
-		<key>Minor Third</key>
+		<key>Diminished</key>
 		<string>1</string>
-		<key>Major Third</key>
+		<key>Major 7th</key>
 		<string>1</string>
-		<key>Perfect Fourth</key>
+		<key>Minor 7th</key>
 		<string>0</string>
-		<key>Tritone</key>
+		<key>Dominant 7th</key>
 		<string>0</string>
-		<key>Perfect Fifth</key>
+		<key>Diminished 7th</key>
 		<string>1</string>
-		<key>Minor Sixth</key>
+		<key>Augmented Major 7th</key>
 		<string>0</string>
-		<key>Major Sixth</key>
+		<key>Half Diminished</key>
 		<string>0</string>
-		<key>Minor Seventh</key>
+		<key>Augmented 7th</key>
 		<string>0</string>
-		<key>Major Seventh</key>
-		<string>0</string>
-		<key>Octave</key>
-		<string>1</string>
 	</dict>
 	<key>MediumDifficulty</key>
 	<dict>
-		<key>Unison</key>
+		<key>Major</key>
 		<string>1</string>
-		<key>Minor Second</key>
+		<key>Minor</key>
 		<string>0</string>
-		<key>Major Second</key>
-		<string>1</string>
-		<key>Minor Third</key>
-		<string>1</string>
-		<key>Major Third</key>
-		<string>1</string>
-		<key>Perfect Fourth</key>
-		<string>1</string>
-		<key>Tritone</key>
+		<key>Augmented</key>
 		<string>0</string>
-		<key>Perfect Fifth</key>
+		<key>Diminished</key>
 		<string>1</string>
-		<key>Minor Sixth</key>
+		<key>Major 7th</key>
 		<string>1</string>
-		<key>Major Sixth</key>
-		<string>1</string>
-		<key>Minor Seventh</key>
+		<key>Minor 7th</key>
 		<string>0</string>
-		<key>Major Seventh</key>
+		<key>Dominant 7th</key>
 		<string>0</string>
-		<key>Octave</key>
+		<key>Diminished 7th</key>
+		<string>1</string>
+		<key>Augmented Major 7th</key>
+		<string>0</string>
+		<key>Half Diminished</key>
+		<string>0</string>
+		<key>Augmented 7th</key>
 		<string>0</string>
 	</dict>
 	<key>HardDifficulty</key>
 	<dict>
-		<key>Unison</key>
+		<key>Major</key>
 		<string>1</string>
-		<key>Minor Second</key>
+		<key>Minor</key>
+		<string>0</string>
+		<key>Augmented</key>
+		<string>0</string>
+		<key>Diminished</key>
 		<string>1</string>
-		<key>Major Second</key>
+		<key>Major 7th</key>
 		<string>1</string>
-		<key>Minor Third</key>
+		<key>Minor 7th</key>
+		<string>0</string>
+		<key>Dominant 7th</key>
+		<string>0</string>
+		<key>Diminished 7th</key>
 		<string>1</string>
-		<key>Major Third</key>
-		<string>1</string>
-		<key>Perfect Fourth</key>
-		<string>1</string>
-		<key>Tritone</key>
-		<string>1</string>
-		<key>Perfect Fifth</key>
-		<string>1</string>
-		<key>Minor Sixth</key>
-		<string>1</string>
-		<key>Major Sixth</key>
-		<string>1</string>
-		<key>Minor Seventh</key>
-		<string>1</string>
-		<key>Major Seventh</key>
-		<string>1</string>
-		<key>Octave</key>
-		<string>1</string>
+		<key>Augmented Major 7th</key>
+		<string>0</string>
+		<key>Half Diminished</key>
+		<string>0</string>
+		<key>Augmented 7th</key>
+		<string>0</string>
 	</dict>
 	<key>CustomDifficulty</key>
 	<dict>
-		<key>Unison</key>
+		<key>Major</key>
 		<string>1</string>
-		<key>Minor Second</key>
+		<key>Minor</key>
 		<string>0</string>
-		<key>Major Second</key>
-		<string>1</string>
-		<key>Minor Third</key>
-		<string>1</string>
-		<key>Major Third</key>
-		<string>1</string>
-		<key>Perfect Fourth</key>
-		<string>1</string>
-		<key>Tritone</key>
+		<key>Augmented</key>
 		<string>0</string>
-		<key>Perfect Fifth</key>
+		<key>Diminished</key>
 		<string>1</string>
-		<key>Minor Sixth</key>
+		<key>Major 7th</key>
 		<string>1</string>
-		<key>Major Sixth</key>
-		<string>1</string>
-		<key>Minor Seventh</key>
+		<key>Minor 7th</key>
 		<string>0</string>
-		<key>Major Seventh</key>
+		<key>Dominant 7th</key>
 		<string>0</string>
-		<key>Octave</key>
+		<key>Diminished 7th</key>
+		<string>1</string>
+		<key>Augmented Major 7th</key>
+		<string>0</string>
+		<key>Half Diminished</key>
+		<string>0</string>
+		<key>Augmented 7th</key>
 		<string>0</string>
 	</dict>
 	<key>IntervalNames</key>
