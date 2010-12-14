@@ -77,18 +77,11 @@ NSInteger intSort(id num1, id num2, void *context)
  */
 - (NSArray*)createChord {
 	
-//	NSArray *retArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:19],
-//						 [NSNumber numberWithInt:24], [NSNumber numberWithInt:28], nil];
-//	[self setChord:retArray];
-//	return self.chord;
-	
 	// Pick a chord type
 	NSArray *chordShape = [self chooseType];
 	if (chordShape == nil) {
 		return nil;
 	}
-	for (int i=0; i<[chordShape count]; i++)
-		NSLog(@"chordShape[%i]==%@", i, [chordShape objectAtIndex:i]);
 
 	
 	// Pick and apply inversions
@@ -102,9 +95,11 @@ NSInteger intSort(id num1, id num2, void *context)
 	// had to set the rootName in -chooseRootForChord:
 	[self setInversions:possibleInversions];
 	
+	for (int i=0; i<[chord count]; i++)
+		NSLog(@"chord[%i]==%@", i, [chord objectAtIndex:i]);
 	
-#ifndef DEBUG
-	NSLog(@"(Chord) successful creation: %@ %@ %i", 
+#ifdef DEBUG
+	NSLog(@"(Chord) successful creation: %@ %@, %i inversions", 
 		  self.rootName,
 		  self.chordType,
 		  self.inversions);
@@ -165,8 +160,8 @@ NSInteger intSort(id num1, id num2, void *context)
 	}
 	
 	// make chordAsInts an NSArray
-//	NSArray *retArray = [NSArray arrayWithArray:(NSArray*)chordAsInts];
 	NSArray *retArray = [[NSArray alloc] initWithArray:chordAsInts];
+	[chordAsInts release];
 	
 	return retArray;
 }
@@ -231,8 +226,10 @@ NSInteger intSort(id num1, id num2, void *context)
 	// Sort to be == {-5, 0, 4}
 	//
 	NSArray *sortedArray = [_chord sortedArrayUsingFunction:intSort context:NULL];
+	NSArray *retArray = [[NSArray alloc] initWithArray:sortedArray];
+	[sortedArray release];
 	
-	return sortedArray;
+	return retArray;
 }
 
 
@@ -251,7 +248,7 @@ NSInteger intSort(id num1, id num2, void *context)
 - (NSArray*)chooseRootForChord:(NSArray*)_chord {
 	
 	NSUInteger randomRoot;
-	NSMutableArray *possibleChord;
+	NSMutableArray *possibleChord = [[NSMutableArray alloc] initWithCapacity:1];
 	do {
 		randomRoot = arc4random() % [self.noteNames count];	// setup to try again
 		[possibleChord removeAllObjects];					// reconstruct a possible chord to play
@@ -267,7 +264,7 @@ NSInteger intSort(id num1, id num2, void *context)
 	// now that we have a valid chord, remember its root's name
 	[self setRootName:[noteNames objectAtIndex:randomRoot]];
 	
-	NSArray *retArray = [NSArray arrayWithArray:possibleChord];
+	NSArray *retArray = [[NSArray alloc] initWithArray:possibleChord];
 	[possibleChord release];
 	
 	return retArray;
