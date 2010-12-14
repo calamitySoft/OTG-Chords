@@ -45,6 +45,8 @@
 			// are _chordType and _inversions
 			// the correct answers?
 
+- (void)echo;
+
 
 #pragma mark Private
 
