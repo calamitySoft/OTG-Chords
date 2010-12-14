@@ -249,8 +249,21 @@ NSInteger intSort(id num1, id num2, void *context)
 	
 	NSUInteger randomRoot;
 	NSMutableArray *possibleChord = [[NSMutableArray alloc] initWithCapacity:1];
+	NSString *_enabledRoot = [[Settings sharedSettings] enabledRoot];
+	NSString *tempRoot;
 	do {
-		randomRoot = arc4random() % [self.noteNames count];	// setup to try again
+		// setup root to try again
+		if ([_enabledRoot isEqualToString:@"any"]) {					// if any is the root preference
+			randomRoot = arc4random() % [self.noteNames count];
+		} else {														// otherwise select only for the pref
+			do {
+				randomRoot = arc4random() % [self.noteNames count];
+				tempRoot = [self.noteNames objectAtIndex:randomRoot];
+				tempRoot = [tempRoot substringToIndex:[tempRoot length]-1];
+			} while (![tempRoot isEqualToString:_enabledRoot]);
+		}
+		
+		// setup possibleChord to try again
 		[possibleChord removeAllObjects];					// reconstruct a possible chord to play
 		
 		NSEnumerator *e = [_chord objectEnumerator];		// go through _chord again w/ new randomRoot
