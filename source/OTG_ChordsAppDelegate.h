@@ -10,16 +10,18 @@
 #import "MainViewController.h"
 #import "DJ.h"
 #import "Scorekeeper.h"
+#import "Chord.h"
 #import <stdlib.h>
 
 @class MainViewController;
 
 
-@interface OTG_ChordsAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate> {
+@interface OTG_ChordsAppDelegate : NSObject <UIApplicationDelegate, UIAlertViewDelegate, ChordsApplicationDelegate> {
     UIWindow *window;
     MainViewController *mainViewController;
 	FlipsideViewController *flipsideViewController;
 	DJ *myDJ;
+	Chord *myChord;
 	NSArray *aNoteStrings;
 	NSString *enabledRoot;		// ** This is a string so it can be compared to any octave. **
 								// Maybe it could be done with some ints and math, but then the ordering of
@@ -34,6 +36,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
 @property (nonatomic, retain) DJ *myDJ;
+@property (nonatomic, retain) Chord *myChord;
 @property (nonatomic, retain) NSArray *aNoteStrings;
 @property (nonatomic, retain) NSString *enabledRoot;
 @property (nonatomic, retain) NSNumber *iCurRoot;

@@ -77,9 +77,14 @@ NSInteger intSort(id num1, id num2, void *context)
  */
 - (NSArray*)createChord {
 	
+	NSArray *retArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:19],
+						 [NSNumber numberWithInt:24], [NSNumber numberWithInt:28], nil];
+	[self setChord:retArray];
+	return self.chord;
+	
 	// Pick a chord type
 	NSArray *chordShape = [self chooseType];
-	if (!chordShape) {
+	if (chordShape == nil) {
 		return nil;
 	}
 	
@@ -149,13 +154,15 @@ NSInteger intSort(id num1, id num2, void *context)
 	
 	// Turn the array of strings into array of ints
 	NSArray *chordAsStrings = [self.chordTypes objectForKey:chosenType];
-	NSMutableArray *chordAsInts = [[NSMutableArray alloc] initWithCapacity:[self.chordTypes count]];
+//	NSMutableArray *chordAsInts = [[NSMutableArray alloc] initWithCapacity:[self.chordTypes count]];
+	NSMutableArray *chordAsInts = [[NSMutableArray alloc] initWithCapacity:1];
 	for (NSString *str in chordAsStrings) {
 		[chordAsInts addObject:[NSNumber numberWithInteger:[str integerValue]]];
 	}
 	
 	// make chordAsInts an NSArray
-	NSArray *retArray = [NSArray arrayWithArray:(NSArray*)chordAsInts];
+//	NSArray *retArray = [NSArray arrayWithArray:(NSArray*)chordAsInts];
+	NSArray *retArray = [[NSArray alloc] initWithArray:chordAsInts];
 	[chordAsInts release];
 	
 	return retArray;

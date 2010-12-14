@@ -16,7 +16,7 @@
 
 @synthesize window;
 @synthesize mainViewController;
-@synthesize myDJ, aNoteStrings, enabledRoot, iCurRoot, iCurTarget, scoreBoard;
+@synthesize myDJ, myChord, aNoteStrings, enabledRoot, iCurRoot, iCurTarget, scoreBoard;
 
 #define INTERVAL_RANGE 13	// defines how many intervals we can have. 13 half tones --> unison to octave
 
@@ -55,9 +55,19 @@
 	[tempDJ release];
 	[myDJ echo];	// Verify myDJ has been initialized correctly. (Print to NSLog)
 	
+	
+	/*** Initialize myChord ***/
+	Chord *tempChord = [[Chord alloc] init];
+	[self setMyChord:tempChord];
+	[tempChord release];
+	[myChord echo];
+	
+
+	/*** Initialize scoreBoard ***/
 	Scorekeeper *tempScore = [[Scorekeeper alloc] initScore];
 	[self setScoreBoard:tempScore];
 	[tempScore release];
+	
 	
 	/*** Initialize aNoteStrings ***/
 	NSArray *noteNames = [[NSArray alloc] initWithObjects:@"C",@"C#",@"D",@"D#",@"E",
@@ -142,6 +152,7 @@
 
 - (void)dealloc {
 	[myDJ release];
+	[myChord release];
 	[aNoteStrings release];
 	[enabledRoot release];
 	[iCurRoot release];
@@ -157,21 +168,28 @@
 
 - (void)generateQuestion{
 	NSLog(@"**** New Question ****");
-	[self selectNextRoot];
-	[self replayNote];
+//	[self selectNextRoot];
+//	[self replayNote];
+	
+	NSArray *chordToPlay = [myChord createChord];
+	if (chordToPlay == nil) {
+		NSLog(@"Chord could not be generated.");
+	} else {
+		[self replayNote];
+	}
 }	
 
 - (void)replayNote {
-	NSLog(@"(Delegate) replayNote: root = %d, tar = %d", [iCurRoot intValue], [iCurTarget intValue]);
-	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
+//	NSLog(@"(Delegate) replayNote: root = %d, tar = %d", [iCurRoot intValue], [iCurTarget intValue]);
+//	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
 	[myDJ stop];
-	[myDJ playNotes:temp isArpeggiated:[[Settings sharedSettings] isArpeggiated]];
+	[myDJ playNotes:[myChord chord] isArpeggiated:[[Settings sharedSettings] isArpeggiated]];
 }
 
 - (void)arpeggiate{
-	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
+//	NSArray *temp = [NSArray arrayWithObjects:[aNoteStrings objectAtIndex:[iCurRoot intValue]], [aNoteStrings objectAtIndex:[iCurTarget intValue]], nil];
 	[myDJ stop];
-	[myDJ playNotes:temp isArpeggiated:![[Settings sharedSettings] isArpeggiated]];
+	[myDJ playNotes:[myChord chord] isArpeggiated:![[Settings sharedSettings] isArpeggiated]];
 }
 
 
