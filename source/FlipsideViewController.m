@@ -18,10 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
-	
-	// Arpeggiate setup
-	[isArpeggiatedSwitch setOn:[[Settings sharedSettings] isArpeggiated] animated:NO];
+    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
 	
 	
 	// Difficulty setup
@@ -42,8 +39,11 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	[isArpeggiatedSwitch setOn:[[Settings sharedSettings] isArpeggiated]];
-	[allowInversionsSwitch setOn:[[Settings sharedSettings] allowInversions]];
+	// Arpeggiate setup
+	[isArpeggiatedSwitch setOn:[[Settings sharedSettings] isArpeggiated] animated:NO];
+	
+	// Inversion setup
+	[allowInversionsSwitch setOn:[[Settings sharedSettings] allowInversions] animated:NO];
 }
 
 
