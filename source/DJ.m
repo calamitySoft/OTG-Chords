@@ -160,16 +160,46 @@
 	}
 	
 	// Play chorded
-	else {		
-		NSTimeInterval shortStartDelay = 0.1;				// (seconds)
-		NSTimeInterval now = [[self.noteObjectsToPlay objectAtIndex:0] wholeSample].deviceCurrentTime;
-		NSTimeInterval playTime = now + shortStartDelay;
+	else {
+		AVAudioPlayer *sampleToPlay = [[self.noteObjectsToPlay objectAtIndex:0] wholeSample];
 		BOOL retVal = YES;
+
 		
-		for (Note *note in self.noteObjectsToPlay) {
-			BOOL ret = [note playNote:@"W" atTime:playTime];
-			retVal = retVal && ret;
+		// AVAudioPlayer.deviceCurrentTime is only available on iOS 4.0 or later.
+		// If we're able to use it, we can get better chord playing.
+		if ([sampleToPlay respondsToSelector:@selector(deviceCurrentTime)]) {
+			NSTimeInterval shortStartDelay = 0.1;				// (seconds)
+			NSTimeInterval now = sampleToPlay.deviceCurrentTime;
+			NSTimeInterval playTime = now + shortStartDelay;
+			
+			// prepare to play
+			Note *note;
+			for (note in self.noteObjectsToPlay) {
+				[[note wholeSample] prepareToPlay];
+			}
+			// play
+			for (note in self.noteObjectsToPlay) {
+				BOOL ret = [note playNote:@"W" atTime:playTime];
+				retVal = retVal && ret;								// if any of the notes don't play, return NO
+			}
 		}
+
+		
+		// If we can't use deviceCurrentTime (iOS <4.0)
+		// just play it straight
+		else {
+			// prepare to play
+			Note *note;
+			for (note in self.noteObjectsToPlay) {
+				[[note wholeSample] prepareToPlay];
+			}
+			// play
+			for (note in self.noteObjectsToPlay) {
+				BOOL ret = [note playNote:@"W"];
+				retVal = retVal && ret;								// if any of the notes don't play, return NO
+			}
+		}
+		
 		
 		return retVal;
 	}
