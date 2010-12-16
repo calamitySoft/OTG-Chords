@@ -145,6 +145,7 @@
 		[tempNoteArray addObject:tempNote];
 	}
 	self.noteObjectsToPlay = [NSArray arrayWithArray:(NSArray*)tempNoteArray];
+//	self.noteObjectsToPlay = [[[NSArray alloc] initWithArray:(NSArray*)tempNoteArray] autorelease];
 
 	
 	[self setNoteStringsToPlay:theNotes];

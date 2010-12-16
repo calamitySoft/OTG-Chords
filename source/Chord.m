@@ -185,13 +185,14 @@ NSInteger intSort(id num1, id num2, void *context)
 	if (![[Settings sharedSettings] allowInversions])
 		return _chord;
 	
+	NSMutableArray *_mutableChord = [[NSMutableArray alloc] initWithArray:_chord];
 	
 	//
 	// Choose num inversions
 	//		rand % count-1 :: only invert fewer times than there are notes
 	//		(count==3 ---> can't invert 3x, that would just be the original)
 	//
-	NSUInteger randomNumInversions = arc4random() % [_chord count]-1;
+	NSUInteger randomNumInversions = arc4random() % ([_chord count]-1);
 	possibleInversions = randomNumInversions;
 	
 	//
@@ -205,19 +206,18 @@ NSInteger intSort(id num1, id num2, void *context)
 	} else {
 		/* Phase 1 */
 		// subtract 12 from all, move them up from there
-		NSEnumerator *e1 = [_chord objectEnumerator];
 		NSNumber *num;
-		while (num = [e1 nextObject]) {
-			num = [NSNumber numberWithInteger:[num integerValue]-12];
+		for (NSUInteger i=0; i < [_mutableChord count]; i++) {
+			num = [NSNumber numberWithInteger:[[_mutableChord objectAtIndex:i] integerValue]-12];	// subtract 12
+			[_mutableChord replaceObjectAtIndex:i withObject:num];									// new object!
 		}
 		
 		/* Phase 2 */
 		// add 12 to notes for each inversion, starting at the root
-		NSEnumerator *e2 = [_chord objectEnumerator];
-		while (randomNumInversions > 0) {
-			NSNumber *num = [e2 nextObject];							// next from the front
-			num = [NSNumber numberWithInteger:[num integerValue]+12];	// add 12
-			randomNumInversions--;										// countdown
+		for (NSUInteger i=0; randomNumInversions>0 && i<[_mutableChord count]; i++) {
+			num = [NSNumber numberWithInteger:[[_mutableChord objectAtIndex:i] integerValue]+12];	// add 12
+			[_mutableChord replaceObjectAtIndex:i withObject:num];									// new object!
+			randomNumInversions--;																	// countdown
 		}
 	}
 	
@@ -225,9 +225,8 @@ NSInteger intSort(id num1, id num2, void *context)
 	// Now "Major 6/4" _chord == {0, 4, -5}
 	// Sort to be == {-5, 0, 4}
 	//
-	NSArray *sortedArray = [_chord sortedArrayUsingFunction:intSort context:NULL];
+	NSArray *sortedArray = [_mutableChord sortedArrayUsingFunction:intSort context:NULL];
 	NSArray *retArray = [[NSArray alloc] initWithArray:sortedArray];
-	[sortedArray release];
 	
 	return retArray;
 }
