@@ -82,9 +82,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  */
 - (NSArray*)enabledChordsByName {
 	NSMutableArray *enabledChordNames = [[NSMutableArray alloc] init];
-	for (NSUInteger i=0; i<[chordNames count] && i<[enabledChords count]; i++) {
+	for (NSUInteger i=0; i<[self.chordNames count] && i<[enabledChords count]; i++) {
 		if ([[enabledChords objectAtIndex:i] boolValue]) {
-			[enabledChordNames addObject:[chordNames objectAtIndex:i]];
+			[enabledChordNames addObject:[self.chordNames objectAtIndex:i]];
 		}
 	}
 	
