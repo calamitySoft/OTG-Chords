@@ -135,19 +135,19 @@
 		<key>Major</key>
 		<string>1</string>
 		<key>Minor</key>
-		<string>0</string>
+		<string>1</string>
 		<key>Augmented</key>
-		<string>0</string>
+		<string>1</string>
 		<key>Diminished</key>
 		<string>1</string>
 		<key>Major 7th</key>
-		<string>1</string>
+		<string>0</string>
 		<key>Minor 7th</key>
 		<string>0</string>
 		<key>Dominant 7th</key>
 		<string>0</string>
 		<key>Diminished 7th</key>
-		<string>1</string>
+		<string>0</string>
 		<key>Augmented Major 7th</key>
 		<string>0</string>
 		<key>Half Diminished</key>
@@ -162,7 +162,7 @@
 		<key>Minor</key>
 		<string>1</string>
 		<key>Augmented</key>
-		<string>0</string>
+		<string>1</string>
 		<key>Diminished</key>
 		<string>1</string>
 		<key>Major 7th</key>
@@ -172,7 +172,7 @@
 		<key>Dominant 7th</key>
 		<string>1</string>
 		<key>Diminished 7th</key>
-		<string>1</string>
+		<string>0</string>
 		<key>Augmented Major 7th</key>
 		<string>0</string>
 		<key>Half Diminished</key>
