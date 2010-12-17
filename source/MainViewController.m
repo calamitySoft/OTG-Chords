@@ -245,6 +245,12 @@ BOOL currentlyInGuessingState = YES;
 
 - (void)resetArrowVisibility {
 	
+	if ([[Settings sharedSettings] numChordsEnabled]==1) {
+		[switchAnswerLeftBtn setHidden:TRUE];
+		[switchAnswerRightBtn setHidden:TRUE];
+		return;
+	}
+	
 	// if at first answer
 	if (chordPickerIndex == 0) {
 		[switchAnswerLeftBtn setHidden:TRUE];
