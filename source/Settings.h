@@ -19,7 +19,9 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 
 
 @interface Settings : NSObject {
-	NSArray			*chordNames;
+	NSUserDefaults	*userDefaults;			// Saving user settings between sessions
+	
+	NSArray			*chordNames;			// NSArray of NSStrings (Major, Minor, Augmented, etc)
 	
 	BOOL			isArpeggiated;			// True if we're arpeggiating as a base
 	BOOL			allowInversions;		// YES if inversions are allowed
@@ -33,6 +35,8 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	NSString		*currentDifficulty;		// kEasyDifficulty, or kMediumDifficulty, etc
 	NSArray			*enabledChords;			// always points to easyDifficulty, or mediumDifficulty, etc
 }
+
+@property (nonatomic, retain) NSUserDefaults *userDefaults;
 
 @property (nonatomic, retain, readonly) NSArray *chordNames;
 

@@ -14,13 +14,45 @@
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NOT REMOVE.
 
-@synthesize currentDifficulty, isArpeggiated, allowInversions, enabledRoot;
+@synthesize userDefaults, currentDifficulty, isArpeggiated, allowInversions, enabledRoot;
 
+#define kIsArpeggiated		@"isArpeggiated"
+#define kAllowInversions	@"allowInversions"
+#define kCurrentDifficulty	@"currentDifficulty"
 
 - (id)init {
-	self.enabledChords = self.easyDifficulty;
-	[self setIsArpeggiated:TRUE];
-	[self setAllowInversions:NO];
+	/*** Get and use user settings ***/
+	self.userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	// We care about saving these settings:
+	//	isArpeggiated, allowInversions, customDifficulty, and currentDifficulty
+	// Notice: We do NOT care about enabledChords, as it is taken care of in
+	//	setCurrentDifficulty.
+
+	NSString *testValue = [self.userDefaults stringForKey:kCurrentDifficulty];
+	if (testValue != nil) {
+		[self setIsArpeggiated:[self.userDefaults boolForKey:kIsArpeggiated]];
+		[self setAllowInversions:[userDefaults boolForKey:kAllowInversions]];
+		NSMutableArray *tempArray = [[NSMutableArray alloc] initWithArray:[userDefaults arrayForKey:kCustomDifficulty]];
+		[self setCustomDifficulty:tempArray];
+		[self setCurrentDifficulty:[userDefaults stringForKey:kCurrentDifficulty]];
+	}
+
+	else {
+		[self setIsArpeggiated:TRUE];
+		[self setAllowInversions:YES];
+		[self customDifficulty];				// invoke customDifficulty so that we can set the obj below
+		[self setCurrentDifficulty:kEasyDifficulty];
+		
+		// Set all of the userDefaults we load to something.
+		// We don't want testValue!=nil and have one of them missing. (-> maybe crash?)
+		[self.userDefaults setBool:self.isArpeggiated forKey:kIsArpeggiated];
+		[userDefaults setBool:self.allowInversions forKey:kAllowInversions];
+		[userDefaults setObject:self.customDifficulty forKey:kCustomDifficulty];
+		[userDefaults setObject:self.currentDifficulty forKey:kCurrentDifficulty];
+		[self.userDefaults synchronize];
+	}
+	
 	return self;
 }
 
@@ -153,6 +185,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		NSNumber *tempValue = [[NSNumber alloc] initWithBool:_value];
 		[self.customDifficulty replaceObjectAtIndex:_index withObject:tempValue];
 		[tempValue release];
+		
+		// Set user default
+		[userDefaults setObject:self.customDifficulty forKey:kCustomDifficulty];
+		[userDefaults synchronize];
+		
 		return 1;
 	}
 }
@@ -248,6 +285,24 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 #pragma mark -
 
+- (void)setIsArpeggiated:(BOOL)_isArpeggiated {
+	isArpeggiated = _isArpeggiated;
+	
+	// Set user default
+	[self.userDefaults setBool:isArpeggiated forKey:kIsArpeggiated];
+	[self.userDefaults synchronize];
+}
+
+- (void)setAllowInversions:(BOOL)_allowInversions {
+	allowInversions = _allowInversions;
+	
+	// Set user default
+	[userDefaults setBool:allowInversions forKey:kAllowInversions];
+	[userDefaults synchronize];
+}
+
+#pragma mark -
+
 - (NSString*)enabledRoot {
 	if (enabledRoot == nil) {
 		NSString *temp = [[NSString alloc] initWithString:@"any"];
@@ -288,7 +343,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 - (void)setCustomDifficulty:(NSMutableArray *)_customDifficulty {
-	self.customDifficulty = _customDifficulty;
+	if (customDifficulty != _customDifficulty) {
+		[_customDifficulty retain];
+		[customDifficulty release];
+		customDifficulty = _customDifficulty;
+		
+		// Set user default
+		[userDefaults setObject:customDifficulty forKey:kCustomDifficulty];
+		[userDefaults synchronize];
+	}
 }
 
 - (NSString*)currentDifficulty {
@@ -299,34 +362,42 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 - (void)setCurrentDifficulty:(NSString*)_difficulty {
-	currentDifficulty = _difficulty;
-	
-	// easy
-	if ([_difficulty isEqualToString:kEasyDifficulty]) {
-		[self setEnabledChords:self.easyDifficulty];
+	if (currentDifficulty != _difficulty) {
+		[_difficulty retain];
+		[currentDifficulty release];
+		currentDifficulty = _difficulty;
+		
+		// easy
+		if ([_difficulty isEqualToString:kEasyDifficulty]) {
+			[self setEnabledChords:self.easyDifficulty];
+		}
+		
+		// medium
+		else if ([_difficulty isEqualToString:kMediumDifficulty]) {
+			[self setEnabledChords:self.mediumDifficulty];
+		}
+		
+		// hard
+		else if ([_difficulty isEqualToString:kHardDifficulty]) {
+			[self setEnabledChords:self.hardDifficulty];
+		}
+		
+		// custom
+		else if ([_difficulty isEqualToString:kCustomDifficulty]) {
+			[self setEnabledChords:self.customDifficulty];
+		}
+		
+		// default
+		else {
+			[self setEnabledChords:self.easyDifficulty];
+		}
+		
+		NSLog(@"(Settings)Difficulty is now %@", currentDifficulty);
+		
+		// Set user default
+		[userDefaults setObject:currentDifficulty forKey:kCurrentDifficulty];
+		[userDefaults synchronize];
 	}
-	
-	// medium
-	else if ([_difficulty isEqualToString:kMediumDifficulty]) {
-		[self setEnabledChords:self.mediumDifficulty];
-	}
-	
-	// hard
-	else if ([_difficulty isEqualToString:kHardDifficulty]) {
-		[self setEnabledChords:self.hardDifficulty];
-	}
-	
-	// custom
-	else if ([_difficulty isEqualToString:kCustomDifficulty]) {
-		[self setEnabledChords:self.customDifficulty];
-	}
-	
-	// default
-	else {
-		[self setEnabledChords:self.easyDifficulty];
-	}
-	
-	NSLog(@"(Settings)Difficulty is now %@", currentDifficulty);
 }
 
 #pragma mark -
@@ -339,7 +410,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 - (void)setEnabledChords:(NSArray*)_enabledChords; {
-	enabledChords = _enabledChords;
+	if (enabledChords != _enabledChords) {
+		[_enabledChords retain];
+		[enabledChords release];
+		enabledChords = _enabledChords;
+	}
 }
 
 
