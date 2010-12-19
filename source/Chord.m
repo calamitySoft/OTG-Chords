@@ -148,6 +148,8 @@ NSInteger intSort(id num1, id num2, void *context)
 		NSUInteger randomIndex = arc4random() % [chordNames count];
 		chosenType = [chordNames objectAtIndex:randomIndex];
 	} while (![[Settings sharedSettings] chordIsEnabled:chosenType]);
+	[chosenType retain];
+	[chordNames release];		// var must be released, but it's a part of chosenType, so that one would be released as well (I think?)
 	possibleType = chosenType;
 	
 	
@@ -202,6 +204,7 @@ NSInteger intSort(id num1, id num2, void *context)
 	//			ensures that the root always == 0
 	//
 	if (randomNumInversions == 0) {		// nothing to do
+		[_mutableChord release];
 		return _chord;
 	} else {
 		/* Phase 1 */
@@ -339,17 +342,23 @@ NSInteger intSort(id num1, id num2, void *context)
 		}
 		
 		
-		NSArray *notes = [NSArray arrayWithArray:[noteNameDict objectForKey:@"Notes"]];
-		NSArray *octaves = [NSArray arrayWithArray:[noteNameDict objectForKey:@"Octaves"]];
+		NSArray *notes = [[NSArray alloc] initWithArray:[noteNameDict objectForKey:@"Notes"]];
+		NSArray *octaves = [[NSArray alloc] initWithArray:[noteNameDict objectForKey:@"Octaves"]];
+		[noteNameDict release];
 		NSMutableArray *tempNoteStrings = [[NSMutableArray alloc] initWithCapacity:1];
 		for (NSUInteger i = 0; i < [octaves count]; i++) {
 			for (NSUInteger k = 0; k < [notes count]; k++) {
 				NSString *tempStr = [[NSString alloc] initWithString:[[notes objectAtIndex:k] 
 																	  stringByAppendingString:[octaves objectAtIndex:i]]];
 				[tempNoteStrings addObject:tempStr];
+				[tempStr release];
 			}
 		}
+		[notes release];
+		[octaves release];
 		noteNames = [[NSArray alloc] initWithArray:tempNoteStrings];
+		[noteNames retain];
+		[tempNoteStrings release];		// var must be released, but it's a part of abbrChordNames, so that one would be released as well (I think?)
 	}
 	return noteNames;
 }

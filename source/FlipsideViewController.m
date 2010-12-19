@@ -155,7 +155,7 @@
 			return;
 	}
 	
-	NSString *tempTestingString = [[NSString alloc] initWithString:@""];
+	NSString *tempTestingString = [NSString stringWithString:@""];
 	BOOL first = TRUE;
 	for (NSUInteger i=0; i<[selectedDifficulty count]; i++) {
 		if ([[selectedDifficulty objectAtIndex:i] boolValue]) {
@@ -224,6 +224,8 @@
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
 		abbrChordNames = [rawConfigDict objectForKey:@"AbbrChordNames"];
+		[abbrChordNames retain];
+		[rawConfigDict release];		// var must be released, but it's a part of abbrChordNames, so that one would be released as well (I think?)
 	}
 	return abbrChordNames;
 }

@@ -126,11 +126,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	// there should always be at least one chord enabled
 	// but this guards against 0 enabled anyway
 	if ([enabledChordNames count]==0) {
+		[enabledChordNames release];
 		return nil;
 	}
-	
-	[enabledChordNames autorelease];
-	
+		
 	return (NSArray*)enabledChordNames;
 }
 
@@ -198,11 +197,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 - (char)getDifficulty {
-	char *chars;
-	[self.currentDifficulty characterAtIndex:0];
-	NSLog(@"\t\t(Settings)\t\t%c", chars[0]);
+	char char0 = [self.currentDifficulty characterAtIndex:0];
+	NSLog(@"\t\t(Settings)\t\t%c", char0);
 	
-	return chars[0];
+	return char0;
 }
 
 - (NSUInteger)getDifficultyAsUInt {
@@ -282,6 +280,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
 		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
 		chordNames = [rawConfigDict objectForKey:@"ChordNames"];
+		[chordNames retain];
+		[rawConfigDict release];
 	}
 	return chordNames;
 }

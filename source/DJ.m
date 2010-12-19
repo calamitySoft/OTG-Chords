@@ -57,6 +57,7 @@
 		NSLog(@"(DJ) playNote:%@", _note);
 		Note *noteToPlay = [[Note alloc] initWithNoteName:(NSString*)_note];
 		[noteToPlay playNote:@"W"];
+		[noteToPlay release];
 	}
 	
 	// If arg _note is an NSNumber
@@ -64,6 +65,7 @@
 		NSString *noteName = [self.noteNames objectAtIndex:[(NSNumber*)_note unsignedIntegerValue]];
 		Note *noteToPlay = [[Note alloc] initWithNoteName:noteName];
 		[noteToPlay playNote:@"W"];
+		[noteToPlay release];
 	}
 	
 	// If neither NSString or NSNumber
@@ -143,10 +145,10 @@
 	for (NSString *noteName in theNotes) {
 		Note *tempNote = [[Note	alloc] initWithNoteName:noteName];
 		[tempNoteArray addObject:tempNote];
+		[tempNote release];
 	}
-	self.noteObjectsToPlay = [NSArray arrayWithArray:(NSArray*)tempNoteArray];
-//	self.noteObjectsToPlay = [[[NSArray alloc] initWithArray:(NSArray*)tempNoteArray] autorelease];
-
+	self.noteObjectsToPlay = [[NSArray alloc] initWithArray:(NSArray*)tempNoteArray];
+	
 	
 	[self setNoteStringsToPlay:theNotes];
 	
@@ -258,16 +260,20 @@
 		}
 		
 		
-		NSArray *notes = [NSArray arrayWithArray:[noteNameDict objectForKey:@"Notes"]];
-		NSArray *octaves = [NSArray arrayWithArray:[noteNameDict objectForKey:@"Octaves"]];
+		NSArray *notes = [[NSArray alloc] initWithArray:[noteNameDict objectForKey:@"Notes"]];
+		NSArray *octaves = [[NSArray alloc] initWithArray:[noteNameDict objectForKey:@"Octaves"]];
+		[noteNameDict release];
 		NSMutableArray *tempNoteStrings = [[NSMutableArray alloc] initWithCapacity:1];
 		for (NSUInteger i = 0; i < [octaves count]; i++) {
 			for (NSUInteger k = 0; k < [notes count]; k++) {
 				NSString *tempStr = [[NSString alloc] initWithString:[[notes objectAtIndex:k] 
 																	  stringByAppendingString:[octaves objectAtIndex:i]]];
 				[tempNoteStrings addObject:tempStr];
+				[tempStr release];
 			}
 		}
+		[notes release];
+		[octaves release];
 		
 		/**** VERY IMPORTANT ****/
 		/*	In an accesssor method like this, it MUST be init like this.
@@ -281,6 +287,7 @@
 		 *	problems like this, but it did not.
 		 */
 		noteNames = [[NSArray alloc] initWithArray:tempNoteStrings];
+		[tempNoteStrings release];
 	}
 	return noteNames;
 }
