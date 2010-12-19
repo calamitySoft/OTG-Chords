@@ -41,7 +41,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	}
 
 	else {
-		[self setIsArpeggiated:TRUE];
+		[self setIsArpeggiated:FALSE];
 		[self setAllowInversions:YES];
 		[self customDifficulty];				// invoke customDifficulty so that we can set the obj below
 		[self setCurrentDifficulty:kEasyDifficulty];
