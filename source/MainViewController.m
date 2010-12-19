@@ -214,6 +214,7 @@ BOOL currentlyInGuessingState = YES;
 	
 	// Show whether the user got it right.
 	NSString *tempAnswerString = [[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordPickerIndex];
+	[tempAnswerString retain];
 	if ([delegate submitAnswer:tempAnswerString]) {		// if our choice matches the chord being played
 		[scoreTextItem setTitle:@"Correct!"];
 		[scoreBar setTintColor:[UIColor colorWithRed:0 green:0.92 blue:0 alpha:1]];	// slightly dark shade of green
@@ -222,6 +223,7 @@ BOOL currentlyInGuessingState = YES;
 		[scoreTextItem setTitle:@"Nope"];
 		[scoreBar setTintColor:[UIColor redColor]];
 	}
+	[tempAnswerString release];
 
 }
 

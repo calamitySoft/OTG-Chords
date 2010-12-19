@@ -88,6 +88,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		[tempArray addObject:[NSNumber numberWithBool:isEnabled]];
 	}
 	
+	[tempArray autorelease];
 	
 	return tempArray;
 }
@@ -129,6 +130,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		[enabledChordNames release];
 		return nil;
 	}
+	
+	[enabledChordNames autorelease];
 		
 	return (NSArray*)enabledChordNames;
 }
@@ -331,28 +334,32 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (NSArray*)easyDifficulty {
 	if (easyDifficulty == nil) {
-		easyDifficulty = [self loadDifficulty:kEasyDifficulty];
+		easyDifficulty = [self loadDifficulty:kEasyDifficulty];			// returns an autoreleased (+0 retain count) object
+		[easyDifficulty retain];
 	}
 	return easyDifficulty;
 }
 
 - (NSArray*)mediumDifficulty {
 	if (mediumDifficulty == nil) {
-		mediumDifficulty = [self loadDifficulty:kMediumDifficulty];
+		mediumDifficulty = [self loadDifficulty:kMediumDifficulty];		// returns an autoreleased (+0 retain count) object
+		[mediumDifficulty retain];
 	}
 	return mediumDifficulty;
 }
 
 - (NSArray*)hardDifficulty {
 	if (hardDifficulty == nil) {
-		hardDifficulty = [self loadDifficulty:kHardDifficulty];
+		hardDifficulty = [self loadDifficulty:kHardDifficulty];			// returns an autoreleased (+0 retain count) object
+		[hardDifficulty retain];
 	}
 	return hardDifficulty;
 }
 
 - (NSMutableArray*)customDifficulty {
     if (customDifficulty == nil) {
-		customDifficulty = (NSMutableArray*) [self loadDifficulty:kCustomDifficulty];
+		customDifficulty = (NSMutableArray*) [self loadDifficulty:kCustomDifficulty];	// returns an autoreleased (+0 retain count) object
+		[customDifficulty retain];
     }
     return customDifficulty;	
 }

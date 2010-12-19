@@ -79,17 +79,25 @@ NSInteger intSort(id num1, id num2, void *context)
 	
 	// Pick a chord type
 	NSArray *chordShape = [self chooseType];
+	[chordShape retain];
 	if (chordShape == nil) {
 		return nil;
 	}
 
 	
 	// Pick and apply inversions
-	chordShape = [self chooseInversionForChord:chordShape];
+	NSArray *chordInverted = [self chooseInversionForChord:chordShape];
+	[chordInverted retain];
+	[chordShape release];
 	
 	
 	// Pick and apply root
-	NSArray *newChord = [self chooseRootForChord:chordShape];
+	NSArray *newChord = [self chooseRootForChord:chordInverted];
+	[newChord retain];
+	[chordInverted release];
+	
+	
+	// Remember the chord
 	[self setChord:newChord];
 	[self setChordType:possibleType];
 	// had to set the rootName in -chooseRootForChord:
@@ -164,6 +172,7 @@ NSInteger intSort(id num1, id num2, void *context)
 	// make chordAsInts an NSArray
 	NSArray *retArray = [[NSArray alloc] initWithArray:chordAsInts];
 	[chordAsInts release];
+	[retArray autorelease];
 	
 	return retArray;
 }
@@ -229,7 +238,9 @@ NSInteger intSort(id num1, id num2, void *context)
 	// Sort to be == {-5, 0, 4}
 	//
 	NSArray *sortedArray = [_mutableChord sortedArrayUsingFunction:intSort context:NULL];
+	[_mutableChord release];
 	NSArray *retArray = [[NSArray alloc] initWithArray:sortedArray];
+	[retArray autorelease];
 	
 	return retArray;
 }
@@ -281,6 +292,7 @@ NSInteger intSort(id num1, id num2, void *context)
 	
 	NSArray *retArray = [[NSArray alloc] initWithArray:possibleChord];
 	[possibleChord release];
+	[retArray autorelease];
 	
 	return retArray;
 }
