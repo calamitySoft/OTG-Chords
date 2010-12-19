@@ -141,13 +141,14 @@
 		self.noteObjectsToPlay = nil;
 	}
 	// Init the notes that will be played
-	NSMutableArray *tempNoteArray = [NSMutableArray arrayWithCapacity:[theNotes count]];
+	NSMutableArray *tempNoteArray = [[NSMutableArray alloc] initWithCapacity:[theNotes count]];
 	for (NSString *noteName in theNotes) {
 		Note *tempNote = [[Note	alloc] initWithNoteName:noteName];
 		[tempNoteArray addObject:tempNote];
 		[tempNote release];
 	}
-	self.noteObjectsToPlay = [[NSArray alloc] initWithArray:(NSArray*)tempNoteArray];
+	self.noteObjectsToPlay = [[NSArray alloc] initWithArray:tempNoteArray];
+	[tempNoteArray release];
 	
 	
 	[self setNoteStringsToPlay:theNotes];
