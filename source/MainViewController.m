@@ -57,7 +57,7 @@ BOOL currentlyInGuessingState = YES;
 						   [[Settings sharedSettings] enabledRoot]]];
 	
 	// Make sure we have the initial difficulty set
-	oldDifficulty = [[Settings sharedSettings] enabledChords];
+	self.oldDifficulty = [[NSArray alloc] initWithArray:[[Settings sharedSettings] enabledChords]];
 
 #ifndef DEBUG
 	[devHelpLabel setHidden:TRUE];
@@ -99,12 +99,13 @@ BOOL currentlyInGuessingState = YES;
 	//		Go to the next question.
 	//		Reset answer picker.
 	//
-	if (![oldDifficulty isEqualToArray:[[Settings sharedSettings] enabledChords]]) {
+	if (![self.oldDifficulty isEqualToArray:[[Settings sharedSettings] enabledChords]]) {
 
 		// store the old difficulty so we know if we need to get a new quesiton when we come back
 		//		i'm not sure why this works.  i would've thought it'd simply copy the pointer, making
 		//		the two array always equal
-		oldDifficulty = [[Settings sharedSettings] enabledChords];
+		[oldDifficulty release];
+		self.oldDifficulty = [[NSArray alloc] initWithArray:[[Settings sharedSettings] enabledChords]];
 		
 		[self goToNextQuestion];
 		
@@ -132,6 +133,8 @@ BOOL currentlyInGuessingState = YES;
 
 
 - (void)dealloc {
+	[oldDifficulty release];
+	
     [super dealloc];
 }
 
@@ -143,7 +146,8 @@ BOOL currentlyInGuessingState = YES;
 	// store the old difficulty so we know if we need to get a new quesiton when we come back
 	//		i'm not sure why this works.  i would've thought it'd simply copy the pointer, making
 	//		the two array always equal
-	oldDifficulty = [[Settings sharedSettings] enabledChords];
+	[oldDifficulty release];
+	self.oldDifficulty = [[NSArray alloc] initWithArray:[[Settings sharedSettings] enabledChords]];
 	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
 	controller.delegate = self;
