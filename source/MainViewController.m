@@ -30,7 +30,7 @@ BOOL currentlyInGuessingState = YES;
 	
 	// Initialize chordStrings from file
 	NSError *loadError;
-	chordStrings = (NSArray*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
+	chordStrings = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
 	if (!chordStrings) {
 		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
 	}

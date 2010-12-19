@@ -251,7 +251,7 @@
 	if (noteNames == nil) {
 		
 		NSError *loadError;
-		NSDictionary *noteNameDict = (NSDictionary*) [LoadFromFile objectForKey:@"NoteNames" error:&loadError];
+		NSDictionary *noteNameDict = (NSDictionary*) [LoadFromFile newObjectForKey:@"NoteNames" error:&loadError];
 		if (!noteNameDict) {
 			NSLog(@"(DJ) Error in loading note names: %@", [loadError domain]);
 			return noteNames;

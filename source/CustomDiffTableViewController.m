@@ -180,7 +180,7 @@
 
 		// Initialize dataSourceArray (chord names) from file
 		NSError *loadError;
-		dataSourceArray = (NSArray*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
+		dataSourceArray = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
 		if (!dataSourceArray) {
 			NSLog(@"(CustomDiffTableVC) Error in loading chord names: %@", [loadError domain]);
 		}

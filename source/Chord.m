@@ -134,7 +134,7 @@ NSInteger intSort(id num1, id num2, void *context)
 	
 	// Initialize chordNames from file
 	NSError *loadError;
-	NSArray *chordNames = (NSArray*) [LoadFromFile objectForKey:@"ChordNames" error:&loadError];
+	NSArray *chordNames = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
 	if (chordNames == nil) {
 		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
 		return nil;
@@ -319,7 +319,7 @@ NSInteger intSort(id num1, id num2, void *context)
 - (NSDictionary*)chordTypes {
 	if (chordTypes == nil) {
 		NSError *loadError;
-		chordTypes = (NSDictionary*) [LoadFromFile objectForKey:@"ChordConstructions" error:&loadError];
+		chordTypes = (NSDictionary*) [LoadFromFile newObjectForKey:@"ChordConstructions" error:&loadError];
 		if (!chordTypes) {
 			NSLog(@"(Chord) Error in loading chord constructions: %@", [loadError domain]);
 		}
@@ -332,7 +332,7 @@ NSInteger intSort(id num1, id num2, void *context)
 	if (noteNames == nil) {
 		
 		NSError *loadError;
-		NSDictionary *noteNameDict = (NSDictionary*) [LoadFromFile objectForKey:@"NoteNames" error:&loadError];
+		NSDictionary *noteNameDict = (NSDictionary*) [LoadFromFile newObjectForKey:@"NoteNames" error:&loadError];
 		if (!noteNameDict) {
 			NSLog(@"(Chord) Error in loading note names: %@", [loadError domain]);
 			return noteNames;

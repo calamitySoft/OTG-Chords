@@ -22,6 +22,6 @@
 }
 
 
-+ (NSObject*)objectForKey:(NSString*)key error:(NSError**)outError;
++ (NSObject*)newObjectForKey:(NSString*)key error:(NSError**)outError;
 
 @end
