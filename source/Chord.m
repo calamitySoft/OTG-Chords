@@ -202,10 +202,10 @@ NSInteger intSort(id num1, id num2, void *context)
 	
 	//
 	// Choose num inversions
-	//		rand % count-1 :: only invert fewer times than there are notes
+	//		rand % count :: only invert fewer times than there are notes
 	//		(count==3 ---> can't invert 3x, that would just be the original)
 	//
-	NSUInteger randomNumInversions = arc4random() % ([_chord count]-1);
+	NSUInteger randomNumInversions = arc4random() % [_chord count];
 	possibleInversions = randomNumInversions;
 	
 	//
