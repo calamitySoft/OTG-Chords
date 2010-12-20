@@ -193,8 +193,10 @@ NSInteger intSort(id num1, id num2, void *context)
 - (NSArray*)chooseInversionForChord:(NSArray*)_chord {
 	
 	// if inversions aren't allowed, return given array
-	if (![[Settings sharedSettings] allowInversions])
+	if (![[Settings sharedSettings] allowInversions]) {
+		possibleInversions = 0;
 		return _chord;
+	}
 	
 	NSMutableArray *_mutableChord = [[NSMutableArray alloc] initWithArray:_chord];
 	

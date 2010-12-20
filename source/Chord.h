@@ -13,11 +13,11 @@
 	
 	/* Loaded from file, unchanging */
 	NSDictionary	*chordTypes;	// contains all chord types, which are arrays of set intervals, referenceable by name
-	NSArray			*noteNames;		// (C2, C#2,..B4) to fill the array to return to delegate, which sends to DJ
+	NSArray			*noteNames;		// (C2, C#2,..B4), used to know if we can use a certain root
 	
 	/* These change for each new chord */
-	NSString		*chordType;		// contains the name of the instance chord
-	NSArray			*chord;			// contains the NSUINTEGERS belonging to the chord.
+	NSString		*chordType;		// contains the name of the instance chord (“Type” instead of “Name”, to be consistent with var chordTypes)
+	NSArray			*chord;			// contains the NSNumbers of notes belonging to this chord. This is what we will send to the delegate, and then the DJ.
 	NSString		*rootName;		// holds the name of the name
 	NSUInteger		inversions;		// holds number of inversions
 	
