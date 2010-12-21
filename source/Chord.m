@@ -103,8 +103,8 @@ NSInteger intSort(id num1, id num2, void *context)
 	// had to set the rootName in -chooseRootForChord:
 	[self setInversions:possibleInversions];
 	
-	for (int i=0; i<[chord count]; i++)
-		NSLog(@"chord[%i]==%@", i, [chord objectAtIndex:i]);
+	for (int i=0; i<[self.chord count]; i++)
+		NSLog(@"chord[%i]==%@", i, [self.chord objectAtIndex:i]);
 	
 #ifdef DEBUG
 	NSLog(@"(Chord) successful creation: %@ %@, %i inversions", 
@@ -310,7 +310,7 @@ NSInteger intSort(id num1, id num2, void *context)
 	NSEnumerator *e = [_chord objectEnumerator];
 	NSNumber *num;
 	while (num = [e nextObject]) {
-		if ([num integerValue] >= [noteNames count]  ||  [num integerValue] < 0)
+		if ([num integerValue] >= [self.noteNames count]  ||  [num integerValue] < 0)
 			return FALSE;
 	}
 	

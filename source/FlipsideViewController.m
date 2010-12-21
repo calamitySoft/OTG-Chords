@@ -27,8 +27,8 @@
 	
 	
 	// Root setup
-	noteNames = [[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
-				 @"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil];
+	[self setNoteNames:[[NSArray alloc] initWithObjects:@"any", @"C",@"C#",@"D",@"D#",@"E",
+						@"F",@"F#",@"G",@"G#",@"A",@"A#",@"B",nil]];
 	// intermediate str->int step means this list can be in whatever order we want
 	NSString *currentRootSettingStr = [[Settings sharedSettings] enabledRoot];
 	[self setCurrentRootSetting:[noteNames indexOfObject:currentRootSettingStr]];

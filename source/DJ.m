@@ -157,7 +157,7 @@
 	// Play arpeggiated
 	if(isArpeggiated)
 	{
-		curNote = 0;
+		self.curNote = 0;
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 		[nc addObserver:self selector:@selector(playNextNote:) name:@"NotePlayed" object:nil];
 		return [self playNoteAtIndex:curNote];

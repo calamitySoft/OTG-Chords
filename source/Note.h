@@ -17,11 +17,13 @@
 	// The actual samples
 	AVAudioPlayer *wholeSample;
 	
+	/*
 	// The rest of these we probably won't use for this app
 	AVAudioPlayer *halfSample;
 	AVAudioPlayer *quarterSample;
 	AVAudioPlayer *eighthSample;
 	AVAudioPlayer *sixteenthSample;
+	 */
 }
 
 @property (nonatomic) float hertz;
@@ -36,10 +38,12 @@
 - (void)stop;	// stops the playing note
 // Functions to play the samples
 - (BOOL)playWhole;
+/*
 - (BOOL)playHalf;
 - (BOOL)playQuarter;
 - (BOOL)playEighth;
 - (BOOL)playSixteenth;
+ */
 
 - (void)echo; // Used to test if I exist.
 

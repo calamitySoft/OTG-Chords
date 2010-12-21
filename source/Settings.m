@@ -95,7 +95,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (NSUInteger)numChordsEnabledInCustomDifficulty {
 	NSUInteger numEnabled = 0;
-	NSEnumerator *e = [customDifficulty objectEnumerator];
+	NSEnumerator *e = [self.customDifficulty objectEnumerator];
 	NSNumber *obj;
 	while (obj = [e nextObject]) {
 		if ([obj boolValue]) {
@@ -118,8 +118,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  */
 - (NSArray*)enabledChordsByName {
 	NSMutableArray *enabledChordNames = [[NSMutableArray alloc] init];
-	for (NSUInteger i=0; i<[self.chordNames count] && i<[enabledChords count]; i++) {
-		if ([[enabledChords objectAtIndex:i] boolValue]) {
+	for (NSUInteger i=0; i<[self.chordNames count] && i<[self.enabledChords count]; i++) {
+		if ([[self.enabledChords objectAtIndex:i] boolValue]) {
 			[enabledChordNames addObject:[self.chordNames objectAtIndex:i]];
 		}
 	}
@@ -145,7 +145,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  */
 - (NSUInteger)numChordsEnabled {
 	NSUInteger numEnabled = 0;
-	NSEnumerator *e = [enabledChords objectEnumerator];
+	NSEnumerator *e = [self.enabledChords objectEnumerator];
 	NSNumber *obj;
 	while (obj = [e nextObject]) {
 		if ([obj boolValue]) {

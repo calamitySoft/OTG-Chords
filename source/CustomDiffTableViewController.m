@@ -111,7 +111,7 @@
 	
 	// If changing that value would leave zero
 	//    custom difficulty chords enabled
-	if (![[Settings sharedSettings] setCustomDifficultyAtIndex:[switches indexOfObject:sender] 
+	if (![[Settings sharedSettings] setCustomDifficultyAtIndex:[self.switches indexOfObject:sender] 
 													   toValue:[sender isOn]] ) {		
 		UIAlertView *alert = [[UIAlertView alloc]
 							  initWithTitle: nil

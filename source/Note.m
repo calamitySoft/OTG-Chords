@@ -69,8 +69,8 @@
 	{
 		// Create a sound ID at var wholeSample.
 		NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-		wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-		[wholeSample setDelegate:self];
+		self.wholeSample = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+		[self.wholeSample setDelegate:self];
 	}
 	else
 	{
@@ -101,7 +101,7 @@
 // I'll fill this function out more later.
 -(void)stop
 {
-	[wholeSample stop];
+	[self.wholeSample stop];
 }
 
 -(void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
@@ -112,28 +112,30 @@
 
 - (BOOL)playWhole
 {
-	return [wholeSample play];
+	return [self.wholeSample play];
 }
 
+/*
 - (BOOL)playHalf
 {
-	return [halfSample play];
+	return [self.halfSample play];
 }
 
 - (BOOL)playQuarter
 {
-	return [quarterSample play];
+	return [self.quarterSample play];
 }
 
 - (BOOL)playEighth
 {
-	return [eighthSample play];
+	return [self.eighthSample play];
 }
 
 - (BOOL)playSixteenth
 {
-	return [sixteenthSample play];
+	return [self.sixteenthSample play];
 }
+ */
 
 
 #pragma mark -

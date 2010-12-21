@@ -43,6 +43,8 @@
 
 @property (nonatomic, assign) <ChordsApplicationDelegate> delegate;
 @property (nonatomic, retain) NSArray *oldDifficulty;
+@property (nonatomic, retain) NSArray *chordStrings;
+@property (nonatomic) NSUInteger chordPickerIndex;
 
 - (IBAction)showSettings:(id)sender;		// flips to the settings view
 - (IBAction)showInstructions:(id)sender;	// repops the instruction alert

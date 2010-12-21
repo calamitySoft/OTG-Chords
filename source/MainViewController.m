@@ -14,7 +14,7 @@
 
 @implementation MainViewController
 
-@synthesize delegate, oldDifficulty;
+@synthesize delegate, oldDifficulty, chordStrings, chordPickerIndex;
 
 #define DEFAULT_ANSWER 4
 
@@ -30,8 +30,8 @@ BOOL currentlyInGuessingState = YES;
 	
 	// Initialize chordStrings from file
 	NSError *loadError;
-	chordStrings = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
-	if (!chordStrings) {
+	self.chordStrings = (NSArray*) [LoadFromFile newObjectForKey:@"ChordNames" error:&loadError];
+	if (!self.chordStrings) {
 		NSLog(@"(MainVC) Error in loading chord names: %@", [loadError domain]);
 	}
 	
@@ -232,9 +232,9 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)switchAnswerLeft:(id)sender {
 	
 	// if we're currently after the first one
-	if (chordPickerIndex > 0) {
-		chordPickerIndex--;
-		[self setOptionTextToChordIndex:chordPickerIndex];
+	if (self.chordPickerIndex > 0) {
+		self.chordPickerIndex--;
+		[self setOptionTextToChordIndex:self.chordPickerIndex];
 	}
 	[self resetArrowVisibility];		// outside the IF just in case
 }
@@ -242,9 +242,9 @@ BOOL currentlyInGuessingState = YES;
 - (IBAction)switchAnswerRight:(id)sender {
 	
 	// if we're currently before the last one
-	if (chordPickerIndex < [[Settings sharedSettings] numChordsEnabled]-1) {
-		chordPickerIndex++;
-		[self setOptionTextToChordIndex:chordPickerIndex];
+	if (self.chordPickerIndex < [[Settings sharedSettings] numChordsEnabled]-1) {
+		self.chordPickerIndex++;
+		[self setOptionTextToChordIndex:self.chordPickerIndex];
 	}
 	[self resetArrowVisibility];		// outside the IF just in case
 }
@@ -264,7 +264,7 @@ BOOL currentlyInGuessingState = YES;
 	}
 	
 	// if at last answer
-	else if (chordPickerIndex >= [[Settings sharedSettings] numChordsEnabled]-1) {
+	else if (self.chordPickerIndex >= [[Settings sharedSettings] numChordsEnabled]-1) {
 		[switchAnswerLeftBtn setHidden:FALSE];
 		[switchAnswerRightBtn setHidden:TRUE];
 	}
@@ -277,7 +277,7 @@ BOOL currentlyInGuessingState = YES;
 }
 
 - (void)setOptionTextToChordIndex:(NSUInteger)chordIndex {
-	chordPickerIndex = chordIndex;		// we won't assume that it's been set
+	self.chordPickerIndex = chordIndex;		// we won't assume that it's been set
 	[currentAnswerLabel setText:[[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordIndex]];
 }
 
