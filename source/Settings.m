@@ -66,6 +66,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	[mediumDifficulty release];
 	[hardDifficulty release];
 	[customDifficulty release];
+	[enabledChords release];
+	[enabledInversions release];
 	
 	[super dealloc];
 }
@@ -107,7 +109,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 }
 
 #pragma mark -
+#pragma mark -
 #pragma mark Inter-file Methods
+
+#pragma mark Chord Accessing
 
 /*
  *	enabledChordsByName
@@ -166,6 +171,48 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 	}
 	return NO;
 }
+
+
+#pragma mark Inversions Accessing
+
+- (NSArray*)enabledInversionsByName {
+	NSLog(@"(Settings) -- enabledInversionsByName --");
+	NSMutableArray *enabledInversionNames = [[NSMutableArray alloc] init];
+	for (NSUInteger i=0; i<[self.inversionNames count] && i<[self.enabledInversions count]; i++) {
+		if ([[self.enabledInversions objectAtIndex:i] boolValue]) {
+			[enabledInversionNames addObject:[self.inversionNames objectAtIndex:i]];
+			NSLog(@"%@", [self.inversionNames objectAtIndex:i]);
+		}
+	}
+	
+	// there should always be at least one chord enabled
+	// but this guards against 0 enabled anyway
+	if ([enabledInversionNames count]==0) {
+		[enabledInversionNames release];
+		return nil;
+	}
+	
+	[enabledInversionNames autorelease];
+	
+	return (NSArray*)enabledInversionNames;
+}
+
+
+- (NSUInteger)numInversionsEnabled {
+	NSUInteger numEnabled = 0;
+	NSEnumerator *e = [self.enabledInversions objectEnumerator];
+	NSNumber *obj;
+	while (obj = [e nextObject]) {
+		if ([obj boolValue]) {
+			numEnabled++;
+		}
+	}
+	
+	return numEnabled;
+}
+
+
+#pragma mark -
 
 
 /*
@@ -272,6 +319,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 
 #pragma mark -
+#pragma mark -
 #pragma mark Accessor Methods
 
 /*
@@ -287,6 +335,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		[rawConfigDict release];
 	}
 	return chordNames;
+}
+
+- (NSArray*)inversionNames {
+	if (inversionNames == nil) {
+		NSString *thePath = [[NSBundle mainBundle]  pathForResource:@"Config" ofType:@"plist"];
+		NSDictionary *rawConfigDict = [[NSDictionary alloc] initWithContentsOfFile:thePath];
+		inversionNames = [rawConfigDict objectForKey:@"InversionNames"];
+		[inversionNames retain];
+		[rawConfigDict release];
+	}
+	return inversionNames;
 }
 
 #pragma mark -
@@ -436,6 +495,31 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		[_enabledChords retain];
 		[enabledChords release];
 		enabledChords = _enabledChords;
+	}
+}
+
+
+- (NSArray*)enabledInversions {
+	if (enabledInversions == nil) {
+		
+		// Initialize chordStrings from file
+		NSError *loadError;
+		NSDictionary *tempDict = (NSDictionary*) [LoadFromFile newObjectForKey:@"EnabledInversions" error:&loadError];
+		if (!tempDict) {
+			NSLog(@"(Settings) Error in loading inversion names: %@", [loadError domain]);
+		} else {
+			enabledInversions = [tempDict allValues];
+			[enabledInversions retain];
+		}
+	}
+	return enabledInversions;
+}
+
+- (void)setEnabledInversions:(NSArray*)_enabledInversions; {
+	if (enabledInversions != _enabledInversions) {
+		[_enabledInversions retain];
+		[enabledInversions release];
+		enabledInversions = _enabledInversions;
 	}
 }
 

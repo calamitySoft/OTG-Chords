@@ -262,5 +262,20 @@
 		<string>M7</string>
 		<string>P8</string>
 	</array>
+	<key>EnabledInversions</key>
+	<dict>
+		<key>First Inversion</key>
+		<string>1</string>
+		<key>Second Inversion</key>
+		<string>1</string>
+		<key>Third Inversion</key>
+		<string>1</string>
+	</dict>
+	<key>InversionNames</key>
+	<array>
+		<string>First Inversion</string>
+		<string>Second Inversion</string>
+		<string>Third Inversion</string>
+	</array>
 </dict>
 </plist>
