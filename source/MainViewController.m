@@ -118,10 +118,10 @@ BOOL currentlyInGuessingState = YES;
 //		} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 		
 		[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
-		[self setInversionsTextToInversionIndex:0];
-		
-		[self resetArrowVisibility];
+		[self setInversionsTextToInversionIndex:0];		
 	}
+	
+	[self resetArrowVisibility];
 }
 
 
@@ -321,9 +321,11 @@ BOOL currentlyInGuessingState = YES;
 	
 	/* Inversion Picker */
 	{
-		if ([[Settings sharedSettings] numInversionsEnabled]==1) {
-			[switchInversionsLeftBtn setHidden:TRUE];
-			[switchInversionsRightBtn setHidden:TRUE];
+		// if inversions are disabled
+		if ([[Settings sharedSettings] allowInversions] == FALSE) {
+			[switchInversionsLeftBtn setHidden:TRUE];		// hide both
+			[switchInversionsRightBtn setHidden:TRUE];		//	L/R arrows
+			[self setInversionsTextToInversionIndex:0];		// set picker to "Root Position"
 			return;
 		}
 		
