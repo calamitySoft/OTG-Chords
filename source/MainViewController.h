@@ -21,7 +21,6 @@
 	IBOutlet UIButton *printDiffBtn;	// ** dev help ** //
 	
 	IBOutlet UILabel *chordLabel;		// big "Listen" or "<chord>" label
-	IBOutlet UIButton *chordReplayBtn;	// invisible button atop chordLabel to replayNote:
 	
 	IBOutlet UIBarButtonItem *replayBarBtn;
 	IBOutlet UIBarButtonItem *nextOrGiveUpBarBtn;
@@ -30,6 +29,9 @@
 	IBOutlet UIButton *switchAnswerLeftBtn;
 	IBOutlet UIButton *switchAnswerRightBtn;
 	IBOutlet UILabel *currentAnswerLabel;
+	IBOutlet UIButton *switchInversionsLeftBtn;
+	IBOutlet UIButton *switchInversionsRightBtn;
+	IBOutlet UILabel *currentInversionsLabel;
 	// helps determine if we should switch questions
 	NSArray *oldDifficulty;
 	
@@ -39,12 +41,14 @@
 									// NOTE:	chordPickerIndex is the index in the enabledChordsByName array.
 									//			The index in relation to chordStrings (all chords) is figured
 									//				immediately before submitting the answer.
+	NSUInteger inversionPickerIndex;
 }
 
 @property (nonatomic, assign) <ChordsApplicationDelegate> delegate;
 @property (nonatomic, retain) NSArray *oldDifficulty;
 @property (nonatomic, retain) NSArray *chordStrings;
 @property (nonatomic) NSUInteger chordPickerIndex;
+@property (nonatomic) NSUInteger inversionPickerIndex;
 
 - (IBAction)showSettings:(id)sender;		// flips to the settings view
 - (IBAction)showInstructions:(id)sender;	// repops the instruction alert
@@ -53,10 +57,19 @@
 - (IBAction)nextNote:(id)sender;			// tells delegate to generate another chord question
 - (IBAction)submitAnswer:(id)sender;		// answers with the chord displayed
 - (IBAction)separate:(id)sender;			// plays the notes seperately
+
+/* Answer Picking */
+//	Chords
 - (IBAction)switchAnswerLeft:(id)sender;	// sets the user's tentative answer
 - (IBAction)switchAnswerRight:(id)sender;	// sets the user's tentative answer
-- (void)resetArrowVisibility;				// rechecks and sets answer picker arrows
 - (void)setOptionTextToChordIndex:(NSUInteger)chordIndex;	// wrapper for easy answer option setting
+//	Inversions
+- (IBAction)switchInversionsLeft:(id)sender;	// sets the user's tentative answer
+- (IBAction)switchInversionsRight:(id)sender;	// sets the user's tentative answer
+- (void)setInversionsTextToInversionIndex:(NSUInteger)inversionIndex;	// wrapper for easy answer option setting
+//	Both
+- (void)resetArrowVisibility;				// rechecks and sets answer picker arrows
+
 
 - (void)displayChord:(NSString *)theInterval;	// sets the big label of MainView.xib
 - (void)checkIsArpeggiatedForGiveUpBtn;				// makes the btn read "Separate" or "Together", whichever's correct and if it should
@@ -76,6 +89,8 @@
 - (void)arpeggiate;
 - (NSString *)getScoreString;
 - (BOOL)submitAnswer:(NSString*)chordTypeGuessed;
+- (BOOL)submitAnswer:(NSString*)chordTypeGuessed andNumInversions:(NSUInteger)inversionGuessed;
+
 
 @property (nonatomic, retain) Chord *myChord;
 

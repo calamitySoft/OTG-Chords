@@ -14,7 +14,7 @@
 
 @implementation MainViewController
 
-@synthesize delegate, oldDifficulty, chordStrings, chordPickerIndex;
+@synthesize delegate, oldDifficulty, chordStrings, chordPickerIndex, inversionPickerIndex;
 
 #define DEFAULT_ANSWER 4
 
@@ -44,6 +44,7 @@ BOOL currentlyInGuessingState = YES;
 //	} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 	
 	[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
+	[self setInversionsTextToInversionIndex:0];
 	[self resetArrowVisibility];
 	
 	
@@ -117,9 +118,10 @@ BOOL currentlyInGuessingState = YES;
 //		} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 		
 		[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
-		
-		[self resetArrowVisibility];
+		[self setInversionsTextToInversionIndex:0];		
 	}
+	
+	[self resetArrowVisibility];
 }
 
 
@@ -138,6 +140,7 @@ BOOL currentlyInGuessingState = YES;
     [super dealloc];
 }
 
+#pragma mark -
 #pragma mark -
 #pragma mark Interface Elements
 
@@ -182,7 +185,11 @@ BOOL currentlyInGuessingState = YES;
 	[delegate replayNote];									// reinforce the sound while showing the answer
 	
 	// Show the answer.
-	[self displayChord:[[delegate myChord] chordType]];
+	if ([[Settings sharedSettings] allowInversions]) {
+		[self displayChord:[[delegate myChord] currentChordAndInversionNames]];
+	} else {
+		[self displayChord:[[delegate myChord] chordType]];
+	}
 }
 
 - (IBAction)nextNote:(id)sender {
@@ -209,13 +216,19 @@ BOOL currentlyInGuessingState = YES;
 	
 	
 	// Show the answer.
-	[self displayChord:[[delegate myChord] chordType]];
-
+	if ([[Settings sharedSettings] allowInversions]) {
+		[self displayChord:[[delegate myChord] currentChordAndInversionNames]];
+	} else {
+		[self displayChord:[[delegate myChord] chordType]];
+	}
+		 
 	
 	// Show whether the user got it right.
 	NSString *tempAnswerString = [[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordPickerIndex];
 	[tempAnswerString retain];
-	if ([delegate submitAnswer:tempAnswerString]) {		// if our choice matches the chord being played
+	NSLog(@"currentInversionsLabel: %@", currentInversionsLabel.text);
+	if ([delegate submitAnswer:tempAnswerString
+				 andNumInversions:self.inversionPickerIndex]) {		// if our choice matches the chord being played
 		[scoreTextItem setTitle:@"Correct!"];
 		[scoreBar setTintColor:[UIColor colorWithRed:0 green:0.92 blue:0 alpha:1]];	// slightly dark shade of green
 	}
@@ -227,7 +240,7 @@ BOOL currentlyInGuessingState = YES;
 
 }
 
-#pragma mark -
+#pragma mark Chord Picker
 
 - (IBAction)switchAnswerLeft:(id)sender {
 	
@@ -249,39 +262,104 @@ BOOL currentlyInGuessingState = YES;
 	[self resetArrowVisibility];		// outside the IF just in case
 }
 
-- (void)resetArrowVisibility {
-	
-	if ([[Settings sharedSettings] numChordsEnabled]==1) {
-		[switchAnswerLeftBtn setHidden:TRUE];
-		[switchAnswerRightBtn setHidden:TRUE];
-		return;
-	}
-	
-	// if at first answer
-	if (chordPickerIndex == 0) {
-		[switchAnswerLeftBtn setHidden:TRUE];
-		[switchAnswerRightBtn setHidden:FALSE];
-	}
-	
-	// if at last answer
-	else if (self.chordPickerIndex >= [[Settings sharedSettings] numChordsEnabled]-1) {
-		[switchAnswerLeftBtn setHidden:FALSE];
-		[switchAnswerRightBtn setHidden:TRUE];
-	}
-	
-	// if inbetween
-	else {
-		[switchAnswerLeftBtn setHidden:FALSE];
-		[switchAnswerRightBtn setHidden:FALSE];
-	}
-}
-
 - (void)setOptionTextToChordIndex:(NSUInteger)chordIndex {
 	self.chordPickerIndex = chordIndex;		// we won't assume that it's been set
 	[currentAnswerLabel setText:[[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordIndex]];
 }
 
 
+#pragma mark Inversion Picker
+
+- (IBAction)switchInversionsLeft:(id)sender {
+	
+	// if we're currently after the first one
+	if (self.inversionPickerIndex > 0) {
+		self.inversionPickerIndex--;
+		[self setInversionsTextToInversionIndex:self.inversionPickerIndex];
+	}
+	[self resetArrowVisibility];		// outside the IF just in case
+}
+
+- (IBAction)switchInversionsRight:(id)sender {
+	
+	// if we're currently before the last one
+	if (self.inversionPickerIndex < [[Settings sharedSettings] numInversionsEnabled]-1) {
+		self.inversionPickerIndex++;
+		[self setInversionsTextToInversionIndex:self.inversionPickerIndex];
+	}
+	[self resetArrowVisibility];		// outside the IF just in case
+}
+
+- (void)setInversionsTextToInversionIndex:(NSUInteger)inversionIndex {
+	self.inversionPickerIndex = inversionIndex;		// we won't assume that it's been set
+	[currentInversionsLabel setText:[[[Settings sharedSettings] enabledInversionsByName] objectAtIndex:inversionIndex]];
+}
+
+
+
+- (void)resetArrowVisibility {
+	
+	/* Chord Picker */
+	{
+		if ([[Settings sharedSettings] numChordsEnabled]==1) {
+			[switchAnswerLeftBtn setHidden:TRUE];
+			[switchAnswerRightBtn setHidden:TRUE];
+			return;
+		}
+		
+		// if at first answer
+		if (self.chordPickerIndex == 0) {
+			[switchAnswerLeftBtn setHidden:TRUE];
+			[switchAnswerRightBtn setHidden:FALSE];
+		}
+		
+		// if at last answer
+		else if (self.chordPickerIndex >= [[Settings sharedSettings] numChordsEnabled]-1) {
+			[switchAnswerLeftBtn setHidden:FALSE];
+			[switchAnswerRightBtn setHidden:TRUE];
+		}
+		
+		// if inbetween
+		else {
+			[switchAnswerLeftBtn setHidden:FALSE];
+			[switchAnswerRightBtn setHidden:FALSE];
+		}
+	}
+	
+	
+	/* Inversion Picker */
+	{
+		// if inversions are disabled
+		if ([[Settings sharedSettings] allowInversions] == FALSE) {
+			[switchInversionsLeftBtn setHidden:TRUE];		// hide both
+			[switchInversionsRightBtn setHidden:TRUE];		//	L/R arrows
+			[self setInversionsTextToInversionIndex:0];		// set picker to "Root Position"
+			return;
+		}
+		
+		// if at first answer
+		if (self.inversionPickerIndex == 0) {
+			[switchInversionsLeftBtn setHidden:TRUE];
+			[switchInversionsRightBtn setHidden:FALSE];
+		}
+		
+		// if at last answer
+		else if (self.inversionPickerIndex >= [[Settings sharedSettings] numInversionsEnabled]-1) {
+			[switchInversionsLeftBtn setHidden:FALSE];
+			[switchInversionsRightBtn setHidden:TRUE];
+		}
+		
+		// if inbetween
+		else {
+			[switchInversionsLeftBtn setHidden:FALSE];
+			[switchInversionsRightBtn setHidden:FALSE];
+		}
+	}
+}
+
+
+
+#pragma mark -
 #pragma mark -
 #pragma mark View Controlling
 

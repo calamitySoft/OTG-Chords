@@ -22,6 +22,7 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	NSUserDefaults	*userDefaults;			// Saving user settings between sessions
 	
 	NSArray			*chordNames;			// NSArray of NSStrings (Major, Minor, Augmented, etc)
+	NSArray			*inversionNames;		// NSArray of NSStrings ("First Inversion", etc)
 	
 	BOOL			isArpeggiated;			// True if we're arpeggiating as a base
 	BOOL			allowInversions;		// YES if inversions are allowed
@@ -33,12 +34,15 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 	NSArray			*hardDifficulty;		// NSArray of NSNumbers
 	NSMutableArray	*customDifficulty;		// NSArray of NSNumbers
 	NSString		*currentDifficulty;		// kEasyDifficulty, or kMediumDifficulty, etc
+	
 	NSArray			*enabledChords;			// always points to easyDifficulty, or mediumDifficulty, etc
+	NSArray			*enabledInversions;		// like enabledChords; used in MainVC for answer picker
 }
 
 @property (nonatomic, retain) NSUserDefaults *userDefaults;
 
 @property (nonatomic, retain, readonly) NSArray *chordNames;
+@property (nonatomic, retain, readonly) NSArray *inversionNames;
 
 @property (nonatomic) BOOL isArpeggiated;
 @property (nonatomic) BOOL allowInversions;
@@ -52,14 +56,20 @@ typedef enum interval { unison, minSecond, majSecond, minThird, majThird, perFou
 @property (nonatomic, retain) NSString *currentDifficulty;
 
 @property (nonatomic, retain) NSArray *enabledChords;
+@property (nonatomic, retain) NSArray *enabledInversions;
 
 
 
 + (Settings *)sharedSettings;	// necessary for singelton-ness. DO NOT REMOVE.
 
+// Chord accessing
 - (NSArray*)enabledChordsByName;	// currently used in MainVC to show the correct answer options
 - (NSUInteger)numChordsEnabled;
 - (BOOL)chordIsEnabled:(NSString*)_chordName;
+
+// Inversions accessing
+- (NSArray*)enabledInversionsByName;
+- (NSUInteger)numInversionsEnabled;
 
 // Change particulars of customDifficulty.
 // Used in CustomDiffTableViewController.

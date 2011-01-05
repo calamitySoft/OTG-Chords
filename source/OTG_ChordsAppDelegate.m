@@ -209,7 +209,7 @@
  *	doesn't do the scorekeeping.  Stuck with more general name.
  */
 - (BOOL)submitAnswer:(NSString*)chordTypeGuessed{
-	if ([[myChord chordType] isEqualToString:chordTypeGuessed]) {	// if it's the right answer
+	if ([myChord verifyChordAnswer:chordTypeGuessed]) {	// if it's the right answer
 		[self.scoreBoard success];
 		return TRUE;
 	}
@@ -220,6 +220,15 @@
 	}
 }
 
+- (BOOL)submitAnswer:(NSString*)chordTypeGuessed andNumInversions:(NSUInteger)inversionGuessed {
+	if ([myChord verifyChordAnswer:chordTypeGuessed andNumInversions:inversionGuessed]) {
+		[self.scoreBoard success];
+		return TRUE;
+	} else {
+		[self.scoreBoard failure];
+		return FALSE;
+	}
+}
 
 
 @end

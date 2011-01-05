@@ -44,6 +44,7 @@
 - (BOOL)verifyChordAnswer:(NSString*)_chordType andNumInversions:(NSUInteger)_inversions;
 			// are _chordType and _inversions
 			// the correct answers?
+- (NSString*)currentChordAndInversionNames;
 
 - (void)echo;
 

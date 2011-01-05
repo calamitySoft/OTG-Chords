@@ -39,6 +39,7 @@
 - (void)printDifficulty;	// lets us see the difficulty settings
 - (NSString *)getScoreString;	// Generates the score string to be handed off to MainVC
 - (BOOL)submitAnswer:(NSString*)chordTypeGuessed;	// determines if answer is correct for MainVC; appropriately Scorekeeps
+- (BOOL)submitAnswer:(NSString*)chordTypeGuessed andNumInversions:(NSUInteger)inversionGuessed;
 
 - (void)arpeggiate;	// Plays both the root and the target
 
