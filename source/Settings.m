@@ -176,12 +176,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 #pragma mark Inversions Accessing
 
 - (NSArray*)enabledInversionsByName {
-	NSLog(@"(Settings) -- enabledInversionsByName --");
 	NSMutableArray *enabledInversionNames = [[NSMutableArray alloc] init];
 	for (NSUInteger i=0; i<[self.inversionNames count] && i<[self.enabledInversions count]; i++) {
 		if ([[self.enabledInversions objectAtIndex:i] boolValue]) {
 			[enabledInversionNames addObject:[self.inversionNames objectAtIndex:i]];
-			NSLog(@"%@", [self.inversionNames objectAtIndex:i]);
 		}
 	}
 	

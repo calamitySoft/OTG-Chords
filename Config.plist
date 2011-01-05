@@ -264,6 +264,8 @@
 	</array>
 	<key>EnabledInversions</key>
 	<dict>
+		<key>Root Position</key>
+		<string>1</string>
 		<key>First Inversion</key>
 		<string>1</string>
 		<key>Second Inversion</key>
@@ -273,6 +275,7 @@
 	</dict>
 	<key>InversionNames</key>
 	<array>
+		<string>Root Position</string>
 		<string>First Inversion</string>
 		<string>Second Inversion</string>
 		<string>Third Inversion</string>

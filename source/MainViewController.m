@@ -44,6 +44,7 @@ BOOL currentlyInGuessingState = YES;
 //	} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 	
 	[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
+	[self setInversionsTextToInversionIndex:0];
 	[self resetArrowVisibility];
 	
 	
@@ -117,6 +118,7 @@ BOOL currentlyInGuessingState = YES;
 //		} while (![[[[Settings sharedSettings] enabledChords] objectAtIndex:randomAnswer] boolValue]);
 		
 		[self setOptionTextToChordIndex:randomAnswer];	// coming back from settings screen, reset answer option
+		[self setInversionsTextToInversionIndex:0];
 		
 		[self resetArrowVisibility];
 	}
