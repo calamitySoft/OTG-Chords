@@ -127,6 +127,14 @@ NSInteger intSort(id num1, id num2, void *context)
 }
 
 
+- (NSString*)currentChordAndInversionNames {
+	NSString *inversionName = [[[Settings sharedSettings] inversionNames] objectAtIndex:self.inversions];
+	NSString *retStr = [NSString stringWithFormat:@"%@\n%@", self.chordType, inversionName];
+	
+	return retStr;
+}
+
+
 
 #pragma mark Private
 

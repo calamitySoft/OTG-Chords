@@ -185,7 +185,11 @@ BOOL currentlyInGuessingState = YES;
 	[delegate replayNote];									// reinforce the sound while showing the answer
 	
 	// Show the answer.
-	[self displayChord:[[delegate myChord] chordType]];
+	if ([[Settings sharedSettings] allowInversions]) {
+		[self displayChord:[[delegate myChord] currentChordAndInversionNames]];
+	} else {
+		[self displayChord:[[delegate myChord] chordType]];
+	}
 }
 
 - (IBAction)nextNote:(id)sender {
@@ -212,8 +216,12 @@ BOOL currentlyInGuessingState = YES;
 	
 	
 	// Show the answer.
-	[self displayChord:[[delegate myChord] chordType]];
-
+	if ([[Settings sharedSettings] allowInversions]) {
+		[self displayChord:[[delegate myChord] currentChordAndInversionNames]];
+	} else {
+		[self displayChord:[[delegate myChord] chordType]];
+	}
+		 
 	
 	// Show whether the user got it right.
 	NSString *tempAnswerString = [[[Settings sharedSettings] enabledChordsByName] objectAtIndex:chordPickerIndex];
