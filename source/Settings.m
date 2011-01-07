@@ -97,6 +97,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (NSUInteger)numChordsEnabledInCustomDifficulty {
 	NSUInteger numEnabled = 0;
+	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	NSEnumerator *e = [self.customDifficulty objectEnumerator];
 	NSNumber *obj;
 	while (obj = [e nextObject]) {
@@ -104,6 +105,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 			numEnabled++;
 		}
 	}
+	[pool release];
 	
 	return numEnabled;
 }
@@ -150,6 +152,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
  */
 - (NSUInteger)numChordsEnabled {
 	NSUInteger numEnabled = 0;
+	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	NSEnumerator *e = [self.enabledChords objectEnumerator];
 	NSNumber *obj;
 	while (obj = [e nextObject]) {
@@ -157,6 +160,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 			numEnabled++;
 		}
 	}
+	[pool release];
 	
 	return numEnabled;
 }
@@ -198,6 +202,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 
 - (NSUInteger)numInversionsEnabled {
 	NSUInteger numEnabled = 0;
+	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	NSEnumerator *e = [self.enabledInversions objectEnumerator];
 	NSNumber *obj;
 	while (obj = [e nextObject]) {
@@ -205,6 +210,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 			numEnabled++;
 		}
 	}
+	[pool release];
 	
 	return numEnabled;
 }
@@ -508,6 +514,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Settings);	// necessary for singelton-ness. DO NO
 		} else {
 			enabledInversions = [tempDict allValues];
 			[enabledInversions retain];
+			[tempDict release];
 		}
 	}
 	return enabledInversions;

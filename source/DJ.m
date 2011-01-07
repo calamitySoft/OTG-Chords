@@ -141,14 +141,15 @@
 		self.noteObjectsToPlay = nil;
 	}
 	// Init the notes that will be played
-	NSMutableArray *tempNoteArray = [[NSMutableArray alloc] initWithCapacity:[theNotes count]];
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	NSMutableArray *tempNoteArray = [NSMutableArray arrayWithCapacity:[theNotes count]];
 	for (NSString *noteName in theNotes) {
 		Note *tempNote = [[Note	alloc] initWithNoteName:noteName];
 		[tempNoteArray addObject:tempNote];
 		[tempNote release];
 	}
-	self.noteObjectsToPlay = [[NSArray alloc] initWithArray:tempNoteArray];
-	[tempNoteArray release];
+	self.noteObjectsToPlay = [[tempNoteArray copy] autorelease];
+	[pool release];
 	
 	
 	[self setNoteStringsToPlay:theNotes];
@@ -177,6 +178,7 @@
 			NSTimeInterval playTime = now + shortStartDelay;
 			
 			// prepare to play
+			NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 			Note *note;
 			for (note in self.noteObjectsToPlay) {
 				[[note wholeSample] prepareToPlay];
@@ -186,6 +188,7 @@
 				BOOL ret = [note playNote:@"W" atTime:playTime];
 				retVal = retVal && ret;								// if any of the notes don't play, return NO
 			}
+			[pool release];
 		}
 
 		
@@ -193,6 +196,7 @@
 		// just play it straight
 		else {
 			// prepare to play
+			NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 			Note *note;
 			for (note in self.noteObjectsToPlay) {
 				[[note wholeSample] prepareToPlay];
@@ -202,6 +206,7 @@
 				BOOL ret = [note playNote:@"W"];
 				retVal = retVal && ret;								// if any of the notes don't play, return NO
 			}
+			[pool release];
 		}
 		
 		

@@ -289,12 +289,14 @@ NSInteger intSort(id num1, id num2, void *context)
 		// setup possibleChord to try again
 		[possibleChord removeAllObjects];					// reconstruct a possible chord to play
 		
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		NSEnumerator *e = [_chord objectEnumerator];		// go through _chord again w/ new randomRoot
 		NSNumber *num;
 		while (num = [e nextObject]) {
 			num = [NSNumber numberWithInteger:[num integerValue]+randomRoot];	// add randomRoot value to construct
 			[possibleChord addObject:num];										//	our new possible chord to play
 		}
+		[pool release];
 	} while (![self canPlayChord:possibleChord]);
 	
 	// now that we have a valid chord, remember its root's name
@@ -315,13 +317,17 @@ NSInteger intSort(id num1, id num2, void *context)
  *					our note ceiling or going below 0.
  */
 - (BOOL)canPlayChord:(NSArray*)_chord {
+	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	NSEnumerator *e = [_chord objectEnumerator];
 	NSNumber *num;
 	while (num = [e nextObject]) {
-		if ([num integerValue] >= [self.noteNames count]  ||  [num integerValue] < 0)
+		if ([num integerValue] >= [self.noteNames count]  ||  [num integerValue] < 0) {
+			[pool release];
 			return FALSE;
+		}
 	}
-	
+	[pool release];
+
 	return TRUE;
 }
 
