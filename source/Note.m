@@ -22,6 +22,8 @@
 }
 
 -(void)dealloc {
+	[self stop];
+	
 	[noteName release];
 	[wholeSample release];
 	

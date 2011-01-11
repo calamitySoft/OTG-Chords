@@ -111,6 +111,8 @@
 		return NO;
 	}
 	
+	[self stop];
+	
 	// If arg theNotes contains NSNumbers (not NSStrings)
 	// convert them to NSStrings
 	NSMutableArray *theNotes = [NSMutableArray arrayWithArray:_notes];
@@ -135,9 +137,10 @@
 	// This will restart the notes from the beginning.
 	//
 	if (self.noteObjectsToPlay) {
-		for (Note *note in self.noteObjectsToPlay) {
-			[note release];
-		}
+//		for (Note *note in self.noteObjectsToPlay) {
+//			[note release];
+//		}
+		[self.noteObjectsToPlay removeAllObjects];
 		self.noteObjectsToPlay = nil;
 	}
 	// Init the notes that will be played
@@ -148,7 +151,7 @@
 		[tempNoteArray addObject:tempNote];
 		[tempNote release];
 	}
-	self.noteObjectsToPlay = [[tempNoteArray copy] autorelease];
+	self.noteObjectsToPlay = [[tempNoteArray mutableCopy] autorelease];
 	[pool release];
 	
 	

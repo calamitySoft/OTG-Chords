@@ -14,7 +14,7 @@
 	NSArray *noteNames;				// NSStrings (C2, C#2,..B4) to fill the NSArray
 	NSArray *noteStringsToPlay;		// If a series of notes to be played is entered, this is set to it
 									// NSArray of NSStrings to play
-	NSArray *noteObjectsToPlay;		// NSArray of Note objects to play
+	NSMutableArray *noteObjectsToPlay;		// NSArray of Note objects to play
 	NSUInteger curNote;				// Keeps track of where in the notesToPlay array we are
 	NSIndexSet *viableNotes;	
 }
@@ -23,7 +23,7 @@
 @property (nonatomic, retain) NSArray *noteNames;
 @property (nonatomic, retain) NSIndexSet *viableNotes;
 @property (nonatomic, retain) NSArray *noteStringsToPlay;
-@property (nonatomic, retain) NSArray *noteObjectsToPlay;
+@property (nonatomic, retain) NSMutableArray *noteObjectsToPlay;
 @property (nonatomic) NSUInteger curNote;
 
 
