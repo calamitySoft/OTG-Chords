@@ -32,7 +32,9 @@
 	self = [super init];
 	if (!self) return nil;
 	
+#ifdef DEBUG
 	NSLog(@"(Note) Initializing note with noteName=%@", _noteName);
+#endif
 	
 	// Get the filepath to _noteName (whole note).
 	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"wav"];
@@ -61,7 +63,9 @@
 	if(!self)
 		return nil;
 	
+#ifdef DEBUG
 	NSLog(@"(Note) Initializing note with noteName=%@", _noteName);
+#endif
 	
 	// Get the filepath to _noteName (whole note).
 	NSString *soundPath = [[NSBundle mainBundle] pathForResource:[_noteName stringByAppendingString:@"W"] ofType:@"wav"];
