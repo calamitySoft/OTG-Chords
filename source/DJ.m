@@ -12,7 +12,7 @@
 
 @implementation DJ
 
-@synthesize noteNames, viableNotes, noteStringsToPlay, noteObjectsToPlay, curNote;
+@synthesize noteNames, noteStringsToPlay, noteObjectsToPlay, oldNoteObjectsToPlay, curNote;
 
 #pragma mark Setup
 
@@ -27,9 +27,11 @@
 }
 
 -(void)dealloc {
-	[viableNotes release];
+	[noteNames release];
 	[noteStringsToPlay release];
 	[noteObjectsToPlay release];
+	[oldNoteObjectsToPlay release];
+	
 	[super dealloc];
 }
 
@@ -136,13 +138,19 @@
 	// Always make a new array.
 	// This will restart the notes from the beginning.
 	//
+	// First clear oldNotes so we can dispose the new old ones.
+	if (self.oldNoteObjectsToPlay) {
+		for (Note *note in self.oldNoteObjectsToPlay) {
+			[note release];
+		}
+		[self.oldNoteObjectsToPlay removeAllObjects];
+	}
 	if (self.noteObjectsToPlay) {
-//		for (Note *note in self.noteObjectsToPlay) {
-//			[note release];
-//		}
-		[self.noteObjectsToPlay removeAllObjects];
+		self.oldNoteObjectsToPlay = self.noteObjectsToPlay;
 		self.noteObjectsToPlay = nil;
 	}
+	
+	
 	// Init the notes that will be played
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	NSMutableArray *tempNoteArray = [NSMutableArray arrayWithCapacity:[theNotes count]];
